@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>NUVO — salon automation</title>
+<meta name="description" content="AI та автоматизація для салонів краси. Менше рутини, більше клієнтів.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NUVO — автоматизація салонів краси">
+<meta property="og:description" content="AI відповідає клієнтам за 3–5 секунд, записує та повертає їх. Менше рутини — більше записів.">
+<meta property="og:site_name" content="NUVO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVO — автоматизація салонів краси">
+<meta name="twitter:description" content="AI відповідає клієнтам за 3–5 секунд, записує та повертає їх. Менше рутини — більше записів.">
+<meta name="theme-color" content="#f4f4f3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1c1a'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light only;
+  --bg:#f4f4f3;
+  --bg-2:#ececeb;
+  --surface:#ffffff;
+  --ink:#1c1c1a;
+  --ink-2:#55554f;
+  --ink-3:#8a8a82;
+  --line:#e2e2df;
+  --line-2:#d4d4cf;
+  --accent:#1c1c1a;
+  --accent-soft:#2b2b28;
+  --radius:18px;
+  --radius-sm:12px;
+  --maxw:1180px;
+  --shadow-sm:0 1px 2px rgba(28,28,26,.04),0 2px 8px rgba(28,28,26,.04);
+  --shadow:0 8px 30px rgba(28,28,26,.07);
+  --shadow-lg:0 24px 60px rgba(28,28,26,.10);
+  --display:'Sora',sans-serif;
+  --body:'Manrope',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:#f4f4f3 !important;color-scheme:light only}
+section[id]{scroll-margin-top:88px}
+body{
+  font-family:var(--body);
+  background:#f4f4f3 !important;
+  color:#1c1c1a !important;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* subtle grain + gradient atmosphere */
+body::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(1200px 600px at 80% -5%, rgba(255,255,255,.9), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(255,255,255,.55), transparent 55%);
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.08}
+a{color:inherit;text-decoration:none}
+section{position:relative;z-index:1}
+.eyebrow{
+  font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:18px;display:inline-flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--line-2)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--body);font-weight:600;
+  font-size:15px;padding:14px 24px;border-radius:999px;cursor:pointer;border:1px solid transparent;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,box-shadow .25s,color .25s;white-space:nowrap;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow),0 0 0 5px rgba(28,28,26,.07);background:var(--accent-soft)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{transform:translateY(-2px);background:#fff;border-color:var(--ink);box-shadow:var(--shadow-sm)}
+.btn svg{width:17px;height:17px}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:saturate(140%) blur(14px);
+  background:rgba(244,244,243,.72);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+}
+header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.03em;display:flex;align-items:baseline;gap:9px}
+.logo .dotai{color:var(--ink)}
+.logo .tag{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.05em;color:var(--ink-3);text-transform:lowercase}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:15px;color:var(--ink-2);font-weight:500;transition:color .2s;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--ink);transition:width .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:16px}
+/* lang switch */
+.lang{display:flex;gap:2px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{
+  font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.03em;color:var(--ink-3);
+  background:transparent;border:none;cursor:pointer;padding:6px 11px;border-radius:999px;transition:all .2s;
+}
+.lang button.active{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+.lang button:hover:not(.active){color:var(--ink-2)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed;inset:72px 0 auto 0;background:rgba(244,244,243,.98);backdrop-filter:blur(12px);
+  z-index:99;transform:translateY(-120%);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  border-bottom:1px solid var(--line);padding:24px;
+}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{display:block;padding:14px 4px;font-size:18px;font-family:var(--display);font-weight:500;border-bottom:1px solid var(--line)}
+.mobile-menu a:last-of-type{border-bottom:none}
+
+/* ---------- reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- HERO ---------- */
+.hero{padding:128px 0 64px;position:relative;background:#f4f4f3 !important}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,66px);font-weight:700;margin-bottom:24px}
+.hero h1 .hl{position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;height:12px;background:var(--bg-2);z-index:-1;border-radius:3px}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--ink-2);max-width:520px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.hero-meta{display:flex;align-items:center;gap:14px;color:var(--ink-3);font-size:14px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--line);padding:8px 13px 8px 10px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.chip svg{width:15px;height:15px;color:var(--ink-3);flex-shrink:0}
+.chip-free{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip-free svg{color:#fff}
+.hero-meta .dots{display:flex;gap:6px}
+.hero-meta .dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2);display:block}
+.hero-meta .dots i:nth-child(1){background:var(--ink-3)}
+
+/* hero visual — stylized dashboard mock */
+.hero-visual{position:relative}
+.mock{
+  background:linear-gradient(160deg,#fff,#f7f7f6);border:1px solid var(--line);border-radius:24px;
+  padding:22px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.mock::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 90% 0%,rgba(28,28,26,.04),transparent 70%)}
+.mock-top{display:flex;align-items:center;gap:7px;margin-bottom:18px}
+.mock-top i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
+.mock-row{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;background:#fff;border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow-sm)}
+.mock-row .ic{width:34px;height:34px;border-radius:9px;background:var(--bg-2);display:grid;place-items:center;flex-shrink:0}
+.mock-row .ic svg{width:18px;height:18px;color:var(--ink)}
+.mock-row .tx{flex:1}
+.mock-row .tx b{font-family:var(--display);font-size:13.5px;font-weight:600;display:block}
+.mock-row .tx span{font-size:12px;color:var(--ink-3)}
+.mock-row .badge{font-size:11px;font-weight:600;color:#fff;background:var(--ink);padding:4px 9px;border-radius:999px;font-family:var(--body)}
+.mock-row .badge.g{background:#e7e7e4;color:var(--ink-2)}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ---------- platforms strip ---------- */
+.platforms{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+.platforms-in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between}
+.platforms-label{font-size:13px;font-weight:600;color:var(--ink-3);white-space:nowrap}
+.platforms-row{display:flex;gap:10px;flex-wrap:wrap}
+.pchip{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+.pchip svg{width:16px;height:16px;color:var(--ink)}
+
+/* ---------- generic section ---------- */
+.section{padding:62px 0}
+.section-head{max-width:680px;margin-bottom:38px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head h2{font-size:clamp(28px,3.8vw,46px);margin-bottom:16px}
+.section-head p{font-size:17px;color:var(--ink-2)}
+.alt{background:var(--bg-2)}
+
+/* problems */
+.prob-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.prob{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.prob:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.prob .x{width:38px;height:38px;border-radius:10px;background:var(--bg-2);display:grid;place-items:center;margin-bottom:16px;color:var(--ink)}
+.prob .x svg{width:20px;height:20px}
+.prob h3{font-size:17px;margin-bottom:8px;font-weight:600}
+.prob p{font-size:14.5px;color:var(--ink-2)}
+.prob-foot{margin-top:34px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.prob-foot .line{font-family:var(--display);font-size:clamp(20px,2.6vw,28px);font-weight:600}
+
+/* results */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.res{display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
+.res .chk{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.res .chk svg{width:16px;height:16px}
+.res b{font-family:var(--display);font-size:16px;font-weight:600;display:block;margin-bottom:4px}
+.res span{font-size:14px;color:var(--ink-2)}
+
+/* services */
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.serv{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.serv:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--ink)}
+.serv .ic{width:48px;height:48px;border-radius:13px;background:var(--bg-2);display:grid;place-items:center;margin-bottom:20px;color:var(--ink);transition:background .3s,color .3s}
+.serv:hover .ic{background:var(--ink);color:#fff}
+.serv .ic svg{width:24px;height:24px}
+.serv h3{font-size:18px;margin-bottom:10px;font-weight:600}
+.serv p{font-size:14.5px;color:var(--ink-2)}
+
+/* process */
+/* tech flow */
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px 8px}
+.flow-step{display:flex;flex-direction:column;align-items:center;gap:10px;width:108px;text-align:center}
+.flow-step span{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.3}
+.fic{width:52px;height:52px;border-radius:15px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow-sm)}
+.fic svg{width:24px;height:24px}
+.fic.ok{background:var(--ink);color:#fff;border-color:var(--ink)}
+.flow-arrow{color:var(--line-2);font-size:20px;font-weight:300;flex-shrink:0}
+@media (max-width:640px){
+  .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 10px}
+  .flow-step{width:auto}
+  .flow-arrow{display:none}
+}
+
+.proc-intro{max-width:720px;margin:0 auto 44px;text-align:center}
+.proc-intro p{font-size:16.5px;line-height:1.7;color:var(--ink-2)}
+.proc-intro p::first-line{font-weight:500}
+.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;counter-reset:step;position:relative}
+.proc-step{padding:28px 22px;position:relative;border-left:1px solid var(--line)}
+.proc-step:first-child{border-left:none}
+.proc-step .n{font-family:var(--display);font-size:14px;font-weight:700;color:#fff;background:var(--ink);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}
+.proc-step h3{font-size:16.5px;margin-bottom:8px;font-weight:600}
+.proc-step p{font-size:14px;color:var(--ink-2)}
+
+/* for whom */
+.fw-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.fw{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+.fw:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--ink)}
+.fw-emoji{font-size:28px}
+.fw span:last-child{font-family:var(--display);font-size:13.5px;font-weight:600}
+
+/* about me */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
+.photo-ph{aspect-ratio:4/5;border-radius:20px;background:var(--surface);border:1px dashed var(--line-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--ink-3)}
+.photo-ph svg{width:56px;height:56px;opacity:.5}
+.photo-ph span{font-size:14px;font-weight:600}
+.about-text h2{font-size:clamp(26px,3.4vw,40px);margin-bottom:18px}
+.about-text p{font-size:16px;color:var(--ink-2);margin-bottom:16px;max-width:520px}
+.about-text .btn{margin-top:8px}
+
+/* portfolio */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.proj:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--ink)}
+.proj-img{aspect-ratio:16/9;background:#101012;overflow:hidden}
+.proj-img img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-body{padding:20px 22px 22px}
+.proj-body b{font-family:var(--display);font-size:17px;font-weight:600;display:block;margin-bottom:8px}
+.proj-body>span{font-size:14px;color:var(--ink-2);display:block;margin-bottom:14px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:7px}
+.proj-tags i{font-style:normal;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg-2);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.proj{cursor:pointer}
+.proj-img{position:relative}
+.proj-hint{position:absolute;top:12px;right:12px;z-index:2;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.92);padding:6px 12px;border-radius:999px;box-shadow:var(--shadow-sm);pointer-events:none}
+
+/* project modal */
+.pmodal{position:fixed;inset:0;z-index:120;background:rgba(28,28,26,.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .3s}
+.pmodal.open{opacity:1;pointer-events:auto}
+.pmodal-box{position:relative;background:#fff;border-radius:24px;max-width:720px;width:100%;max-height:calc(100dvh - 36px);overflow-y:auto;transform:translateY(18px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-lg)}
+.pmodal.open .pmodal-box{transform:none}
+.pmodal-box::-webkit-scrollbar{width:6px}
+.pmodal-box::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
+.pmodal-close{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);cursor:pointer;display:grid;place-items:center;color:var(--ink);transition:transform .2s,background .2s}
+.pmodal-close:hover{transform:scale(1.06);background:#fff}
+.pmodal-close svg{width:18px;height:18px}
+.pmodal-img{aspect-ratio:16/9;background:#101012}
+.pmodal-img img{width:100%;height:100%;object-fit:cover;display:block}
+.pmodal-body{padding:26px 28px 30px}
+.pmodal-body h3{font-size:24px;margin-bottom:12px}
+.pm-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.pm-tags i{font-style:normal;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg-2);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.pm-block{margin-bottom:18px}
+.pm-label{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.pm-label::before{content:"";width:16px;height:1.5px;background:var(--line-2)}
+.pm-block p{font-size:15px;color:var(--ink-2);line-height:1.65}
+.pm-res{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.pm-res .pm-label{color:var(--ink)}
+.pm-res p{color:var(--ink)}
+.pm-cta{margin-top:8px}
+@media (max-width:640px){
+  .pmodal{padding:10px}
+  .pmodal-body{padding:20px 18px 24px}
+  .pmodal-body h3{font-size:20px}
+}
+
+/* case */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.case-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);background:var(--bg-2);padding:6px 13px;border-radius:999px;margin-bottom:18px}
+.case-tag i{width:7px;height:7px;border-radius:50%;background:var(--ink-3);display:block}
+.case-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.case-left{padding:40px}
+.case-left h3{font-size:24px;margin-bottom:14px}
+.case-left>p{font-size:15px;color:var(--ink-2);margin-bottom:24px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba-col{padding:18px;border-radius:14px;border:1px solid var(--line)}
+.ba-col.before{background:var(--bg)}
+.ba-col.after{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ba-col h4{font-family:var(--body);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;opacity:.7;font-weight:600}
+.ba-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ba-col li{font-size:13.5px;display:flex;gap:8px;align-items:flex-start}
+.ba-col li svg{width:14px;height:14px;flex-shrink:0;margin-top:3px}
+.case-right{background:linear-gradient(165deg,var(--bg-2),var(--bg));display:grid;place-items:center;padding:40px;position:relative}
+/* phone mock */
+.phone{width:200px;height:400px;background:#fff;border-radius:30px;border:8px solid var(--ink);box-shadow:var(--shadow-lg);overflow:hidden;position:relative}
+.phone .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2}
+.phone .pchat{padding:30px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.phone .pb{font-size:10.5px;line-height:1.4;padding:8px 11px;border-radius:13px;max-width:85%;animation:msgin .5s ease both}
+.phone .pb.left{background:var(--bg-2);color:var(--ink);border-bottom-left-radius:4px;align-self:flex-start}
+.phone .pb.right{background:var(--ink);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.phone .pb:nth-child(2){animation-delay:.5s}
+.phone .pb:nth-child(3){animation-delay:1.1s}
+.phone .pb:nth-child(4){animation-delay:1.7s}
+.phone .ptop{padding:12px 12px 0;display:flex;align-items:center;gap:8px}
+.phone .ptop .av{width:26px;height:26px;border-radius:50%;background:var(--bg-2)}
+.phone .ptop .pl{height:6px;width:60px;background:var(--bg-2);border-radius:3px}
+
+/* research */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:28px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:transform .3s,box-shadow .3s}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.stat .big{font-family:var(--display);font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:14px}
+.stat .big small{font-size:18px;font-weight:600;color:var(--ink-3);margin-left:4px}
+.stat p{font-size:14px;color:var(--ink-2);margin-bottom:14px}
+.stat .src{font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:12px}
+.stat .src a{text-decoration:underline;text-underline-offset:2px;color:var(--ink-2)}
+.research-note{font-size:13px;color:var(--ink-3);text-align:center;max-width:560px;margin:0 auto}
+
+/* FAQ */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:var(--line-2)}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--display);font-size:16.5px;font-weight:500;color:var(--ink)}
+.faq-q .pm{flex-shrink:0;width:24px;height:24px;position:relative;transition:transform .3s}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--ink);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-q .pm::before{width:13px;height:2px}
+.faq-q .pm::after{width:2px;height:13px;transition:transform .3s}
+.faq-item.open .pm::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding:0 24px 22px;font-size:15px;color:var(--ink-2)}
+
+/* contacts */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-info h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px}
+.contact-info>p{font-size:17px;color:var(--ink-2);margin-bottom:32px;max-width:420px}
+.contact-cards{display:flex;flex-direction:column;gap:14px}
+.contact-social{display:flex;gap:12px;margin-top:4px}
+.csoc{width:52px;height:52px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow-sm);transition:background .25s,color .25s,transform .25s,border-color .25s}
+.csoc:hover{background:var(--ink);color:#fff;transform:translateY(-3px);border-color:var(--ink)}
+.csoc svg{width:23px;height:23px}
+.cc{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .3s,box-shadow .3s,border-color .3s}
+.cc:hover{transform:translateX(4px);box-shadow:var(--shadow-sm);border-color:var(--ink)}
+.cc .ic{width:44px;height:44px;border-radius:12px;background:var(--bg-2);display:grid;place-items:center;color:var(--ink);flex-shrink:0}
+.cc .ic svg{width:21px;height:21px}
+.cc .l{font-size:12.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
+.cc .v{font-family:var(--display);font-size:16px;font-weight:500}
+.cform{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:var(--shadow-sm)}
+.cform label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
+.cform .field{margin-bottom:18px}
+.cform input,.cform textarea{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-family:var(--body);font-size:15px;color:var(--ink);background:var(--bg);transition:border-color .2s,background .2s}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.cform textarea{resize:vertical;min-height:110px}
+.cform .btn{width:100%;justify-content:center}
+.form-note{font-size:12.5px;color:var(--ink-3);margin-top:14px;text-align:center}
+
+/* footer */
+footer{padding:40px 0;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--ink-3);font-size:13.5px}
+
+/* ---------- ALL CAPABILITIES ---------- */
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;gap:15px;align-items:flex-start;transition:transform .3s,box-shadow .3s,border-color .3s}
+.cap:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ink)}
+.cap .ic{width:42px;height:42px;border-radius:11px;background:var(--bg-2);display:grid;place-items:center;color:var(--ink);flex-shrink:0}
+.cap .ic svg{width:21px;height:21px}
+.cap b{font-family:var(--display);font-size:15.5px;font-weight:600;display:block;margin-bottom:5px}
+.cap span{font-size:13.5px;color:var(--ink-2)}
+.serv.hidden-cap{display:none}
+.serv.hidden-cap.shown{display:block;animation:msgin .4s ease both}
+.caps-more{text-align:center;margin-top:30px}
+
+/* ---------- FINAL CTA BAND ---------- */
+.cta-band{background:#1c1c1a;padding:76px 0;text-align:center}
+.cta-badge{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1c1c1a;background:#fff;padding:9px 18px;border-radius:999px;margin-bottom:20px}
+.cta-band-in h2{color:#fff;font-size:clamp(26px,3.6vw,42px);margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+.cta-band-in p{color:#9a9a92;font-size:16.5px;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+.btn-lg{padding:16px 32px;font-size:16px}
+
+/* ---------- DARK FOOTER ---------- */
+footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;z-index:1}
+.foot-top{padding:58px 0 44px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
+.foot-brand .logo{font-size:24px;color:#fff;margin-bottom:14px}
+.foot-brand .logo .dotai{color:#fff}
+.foot-brand .logo .tag{color:#8a8a82}
+.foot-brand p{font-size:15px;color:#9a9a92;max-width:340px}
+.foot-contacts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.foot-social{grid-column:1/-1;display:flex;gap:12px;margin-top:2px}
+.foot-social .soc{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:#fff;transition:background .25s,transform .25s,border-color .25s}
+.foot-social .soc:hover{background:#fff;color:#1c1c1a;transform:translateY(-3px);border-color:#fff}
+.foot-social .soc svg{width:21px;height:21px}
+.fcc{display:flex;align-items:center;gap:13px;padding:15px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;transition:background .25s,border-color .25s,transform .25s}
+.fcc:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
+.fcc .ic{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;flex-shrink:0}
+.fcc .ic svg{width:19px;height:19px}
+.fcc .l{font-size:11.5px;color:#8a8a82;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
+.fcc .v{font-family:var(--display);font-size:14.5px;font-weight:500;color:#fff}
+.fcc.wide{grid-column:1/-1}
+.fcc .v.nowrap{white-space:nowrap}
+.foot-bot{padding:22px 0;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;color:#8a8a82;font-size:13.5px;text-align:center}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .hero-visual{order:0;max-width:440px;margin:0 auto;width:100%}
+  .prob-grid{grid-template-columns:repeat(2,1fr)}
+  .res-grid{grid-template-columns:repeat(2,1fr)}
+  .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .caps-grid{grid-template-columns:repeat(2,1fr)}
+  .fw-grid{grid-template-columns:repeat(3,1fr)}
+  .port-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
+  .about-grid{grid-template-columns:1fr;gap:28px}
+  .about-photo{max-width:300px}
+  .port-card{justify-content:center;text-align:center}
+  .case-body{grid-template-columns:1fr}
+  .case-right{order:-1;padding:32px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .proc-step{border-left:none;border-top:1px solid var(--line)}
+  .proc-step:first-child{border-top:none}
+}
+@media (max-width:760px){
+  body::before{display:none}
+  .hero,.hero-text,section{background:#f4f4f3}
+  .hero h1{color:#1c1c1a !important}
+  .hero-sub{color:#55554f !important}
+  .eyebrow{color:#8a8a82 !important}
+  .hero-text{position:relative;z-index:2}
+  .nav-links{display:none}
+  .nav-right .btn-primary{display:none}
+  .burger{display:flex}
+  .hero{padding:108px 0 50px}
+  .hero h1{font-size:34px;line-height:1.12;margin-bottom:20px}
+  .hero h1 .hl{white-space:normal}
+  .hero h1 .hl::after{display:none}
+  .hero-sub{font-size:16px;margin-bottom:28px}
+  .hero-cta{gap:12px;margin-bottom:32px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .section{padding:50px 0}
+  .prob-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr}
+  .serv-grid{grid-template-columns:1fr}
+  .caps-grid{grid-template-columns:1fr}
+  .fw-grid{grid-template-columns:repeat(2,1fr)}
+  .platforms-in{justify-content:center;text-align:center}
+  .platforms-row{justify-content:center}
+  .ba{grid-template-columns:1fr}
+  .foot-contacts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo">NUVO<span class="tag">salon automation</span></a>
+    <nav class="nav-links">
+      <a href="#problems" data-i18n="nav_problems">Проблеми</a>
+      <a href="#services" data-i18n="nav_services">Послуги</a>
+      <a href="#process" data-i18n="nav_process">Як працюю</a>
+      <a href="#portfolio" data-i18n="nav_case">Портфоліо</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="#contact" data-i18n="nav_contact">Контакти</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button data-lang="uk" class="active">UA</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" data-i18n="nav_cta">Консультація</a>
+      <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#problems" data-i18n="nav_problems">Проблеми</a>
+  <a href="#services" data-i18n="nav_services">Послуги</a>
+  <a href="#process" data-i18n="nav_process">Як працюю</a>
+  <a href="#portfolio" data-i18n="nav_case">Портфоліо</a>
+  <a href="#faq" data-i18n="nav_faq">FAQ</a>
+  <a href="#contact" data-i18n="nav_contact">Контакти</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow reveal" data-i18n="hero_eyebrow">NUVO — салон на автопілоті</span>
+      <h1 class="reveal" data-d="1"><span data-i18n="hero_h1_a">Ваш салон не повинен</span><br><span class="hl" data-i18n="hero_h1_b">втрачати клієнтів</span></h1>
+      <p class="hero-sub reveal" data-d="2" data-i18n="hero_sub">Поки адміністратор зайнятий, AI вже відповідає клієнту за 3–5 секунд, записує його в Instagram чи Telegram і синхронізує запис із календарем — цілодобово.</p>
+      <div class="hero-chips reveal" data-d="2">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span data-i18n="chip_1">Відповідає за 3–5 сек</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="chip_2">Інтеграція з календарем</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="chip_3">Instagram + Telegram</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="chip_4">Працює 24/7</span></span>
+        <span class="chip chip-free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg><span data-i18n="chip_5">Перші 14 днів — безкоштовно</span></span>
+      </div>
+      <div class="hero-cta reveal" data-d="3">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Отримати консультацію
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero_cta2">Написати в Telegram
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></a>
+      </div>
+      <div class="hero-meta reveal" data-d="4">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span data-i18n="hero_meta">Працює 24/7 — навіть коли салон зачинено</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal" data-d="2">
+      <div class="mock float">
+        <div class="mock-top"><i></i><i></i><i></i></div>
+        <div class="mock-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="tx"><b data-i18n="mock_1t">Нове повідомлення в Direct</b><span data-i18n="mock_1s">«Скільки коштує манікюр?»</span></div>
+          <span class="badge pulse" data-i18n="mock_1b">AI відповів</span>
+        </div>
+        <div class="mock-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <div class="tx"><b data-i18n="mock_2t">Запис підтверджено</b><span data-i18n="mock_2s">Завтра, 14:00 — стрижка</span></div>
+          <span class="badge g" data-i18n="mock_2b">Авто</span>
+        </div>
+        <div class="mock-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3 3-2-2"/></svg></div>
+          <div class="tx"><b data-i18n="mock_3t">Клієнта повернуто</b><span data-i18n="mock_3s">Не був 3 місяці → записався</span></div>
+          <span class="badge g" data-i18n="mock_2b">Авто</span>
+        </div>
+        <div class="mock-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="tx"><b data-i18n="mock_4t">Нагадування надіслано</b><span data-i18n="mock_4s">12 клієнтам про візит</span></div>
+          <span class="badge pulse" data-i18n="mock_4b">+3 записи</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORMS STRIP ============ -->
+<section class="platforms">
+  <div class="wrap platforms-in reveal">
+    <span class="platforms-label" data-i18n="plat_label">Працює там, де вже є ваші клієнти</span>
+    <div class="platforms-row">
+      <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</span>
+      <span class="pchip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>Telegram</span>
+      <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9 9 0 0 1-4-.9L3 21l1.9-4.5A8.4 8.4 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>WhatsApp</span>
+      <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Google Calendar</span>
+      <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>CRM</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMS ============ -->
+<section class="section alt" id="problems">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="prob_eyebrow">Проблема</span>
+      <h2 data-i18n="prob_h2">Що забирає гроші у вашого салону</h2>
+      <p data-i18n="prob_sub">Найчастіше клієнти втрачаються не через ціни, а через дрібниці, які легко автоматизувати.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob reveal" data-d="1">
+        <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3 data-i18n="prob_1t">Повільні відповіді в Direct</h3>
+        <p data-i18n="prob_1p">Поки ви зайняті клієнтом, повідомлення лишаються без відповіді — і людина йде до конкурента.</p>
+      </div>
+      <div class="prob reveal" data-d="2">
+        <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.73 21a2 2 0 0 1-3.46 0M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
+        <h3 data-i18n="prob_2t">Пропущені повідомлення</h3>
+        <p data-i18n="prob_2p">Запити вночі та у вихідні залишаються непоміченими, а це втрачені записи й дохід.</p>
+      </div>
+      <div class="prob reveal" data-d="3">
+        <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></div>
+        <h3 data-i18n="prob_3t">Хаос із записами</h3>
+        <p data-i18n="prob_3p">Подвійні бронювання, плутанина в часі та забуті візити псують репутацію салону.</p>
+      </div>
+      <div class="prob reveal" data-d="4">
+        <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 data-i18n="prob_4t">Все тримається на людях</h3>
+        <p data-i18n="prob_4p">Записи, відповіді й нагадування залежать від того, чи встиг адміністратор — а він не робот.</p>
+      </div>
+      <div class="prob reveal" data-d="1">
+        <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3 3-2-2"/></svg></div>
+        <h3 data-i18n="prob_5t">Клієнти не повертаються</h3>
+        <p data-i18n="prob_5p">Без нагадувань про повторний візит люди просто забувають записатися знову.</p>
+      </div>
+    </div>
+    <div class="prob-foot reveal">
+      <div class="line" data-i18n="prob_foot">Хороша новина — це все можна автоматизувати.</div>
+      <a href="#services" class="btn btn-primary" data-i18n="prob_cta">Подивитись рішення
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="res_eyebrow">Результат</span>
+      <h2 data-i18n="res_h2">Що зміниться після автоматизації</h2>
+      <p data-i18n="res_sub">Ви купуєте не «технології» — ви купуєте більше записів, менше рутини та вільний час.</p>
+    </div>
+    <div class="res-grid">
+      <div class="res reveal" data-d="1">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_1t">Швидші відповіді</b><span data-i18n="res_1s">Клієнт отримує відповідь за секунди, у будь-який час.</span></div>
+      </div>
+      <div class="res reveal" data-d="2">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_2t">Менше ручної роботи</b><span data-i18n="res_2s">Рутину бере на себе автоматизація, а ви — клієнтів.</span></div>
+      </div>
+      <div class="res reveal" data-d="3">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_3t">Більше записів</b><span data-i18n="res_3s">Жоден запит не губиться — навіть уночі та у вихідні.</span></div>
+      </div>
+      <div class="res reveal" data-d="1">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_4t">Порядок у записах</b><span data-i18n="res_4s">Жодних подвійних бронювань і забутих клієнтів.</span></div>
+      </div>
+      <div class="res reveal" data-d="2">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_5t">Менше втрачених лідів</b><span data-i18n="res_5s">Нагадування повертають клієнтів на повторний візит.</span></div>
+      </div>
+      <div class="res reveal" data-d="3">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><b data-i18n="res_6t">Більше вільного часу</b><span data-i18n="res_6s">Ви займаєтесь салоном, а не листуванням і постами.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section alt" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="serv_eyebrow">Рішення</span>
+      <h2 data-i18n="serv_h2">Що я автоматизую для вашого салону</h2>
+      <p data-i18n="serv_sub">Кожна послуга вирішує конкретну проблему — і працює без вашої участі.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv reveal" data-d="1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 data-i18n="serv_1t">AI-відповіді в Instagram</h3>
+        <p data-i18n="serv_1p">Бот миттєво відповідає на питання про ціни, послуги й вільні години — 24/7.</p>
+      </div>
+      <div class="serv reveal" data-d="2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3 data-i18n="serv_2t">Автоматичний запис клієнтів</h3>
+        <p data-i18n="serv_2p">Клієнт сам обирає час, а система записує його без дзвінків і плутанини.</p>
+      </div>
+      <div class="serv reveal" data-d="3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.7 9.7 0 0 0-6.7 2.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3 data-i18n="serv_3t">Реактивація клієнтів</h3>
+        <p data-i18n="serv_3p">Пости й сторіс публікуються автоматично за вашим контент-планом.</p>
+      </div>
+      <div class="serv reveal" data-d="4">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 data-i18n="serv_4t">Нагадування про візит</h3>
+        <p data-i18n="serv_4p">Автоматичні нагадування зменшують неявки й повертають клієнтів.</p>
+      </div>
+      <div class="serv reveal" data-d="1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
+        <h3 data-i18n="serv_5t">AI-консультант для клієнтів</h3>
+        <p data-i18n="serv_5p">Розумний помічник підбирає послугу та веде клієнта до запису.</p>
+      </div>
+      <div class="serv reveal" data-d="2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 data-i18n="serv_6t">Налаштування під ваш салон</h3>
+        <p data-i18n="serv_6p">Усе підлаштовується під ваші послуги, ціни й стиль спілкування.</p>
+      </div>
+      <!-- приховані можливості (розгортаються кнопкою) -->
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l2 13a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2l1-7H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg></div><h3 data-i18n="cap_7t">Збір та продаж послуг</h3><p data-i18n="cap_7s">Бот пропонує додаткові послуги й акції.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3 data-i18n="cap_8t">Прийом передоплат</h3><p data-i18n="cap_8s">Бронювання з передоплатою проти неявок.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 17a4 4 0 0 1-4-4V5a3 3 0 0 1 6 0v8M19 11a7 7 0 0 1-14 0M12 19v3"/></svg></div><h3 data-i18n="cap_9t">Голосові та аудіо</h3><p data-i18n="cap_9s">Обробка голосових повідомлень клієнтів.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><h3 data-i18n="cap_10t">Звіти й аналітика</h3><p data-i18n="cap_10s">Бачите, скільки записів і звідки клієнти.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9 9 0 0 1-4-.9L3 21l1.9-4.5A8.4 8.4 0 0 1 3 11.5 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg></div><h3 data-i18n="cap_11t">Чат на кількох платформах</h3><p data-i18n="cap_11s">Instagram, Telegram, WhatsApp — в одному місці.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h3 data-i18n="cap_12t">Збір відгуків</h3><p data-i18n="cap_12s">Автоматичний запит відгуку після візиту.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><h3 data-i18n="cap_13t">Програма лояльності</h3><p data-i18n="cap_13s">Бонуси й знижки для постійних клієнтів.</p></div>
+      <div class="serv hidden-cap"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3 data-i18n="cap_14t">Безпечне зберігання даних</h3><p data-i18n="cap_14s">База клієнтів під вашим контролем.</p></div>
+    </div>
+    <div class="caps-more reveal">
+      <button class="btn btn-ghost" id="capsToggle"><span id="capsLabel">Показати всі можливості</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="capsArrow"><path d="m6 9 6 6 6-6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH FLOW ============ -->
+<section class="section" id="techflow">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="flow_eyebrow">Зсередини</span>
+      <h2 data-i18n="flow_h2">Як це працює технічно</h2>
+      <p data-i18n="flow_sub">Просто й прозоро — від повідомлення клієнта до готового запису у вашому календарі.</p>
+    </div>
+    <div class="flow reveal">
+      <div class="flow-step"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><span data-i18n="flow_1">Клієнт пише</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div><span data-i18n="flow_2">Instagram / Telegram</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div><span>NUVO</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><span data-i18n="flow_3">CRM</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><span data-i18n="flow_4">Календар</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><span data-i18n="flow_5">Запис створено</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section alt" id="process">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="proc_eyebrow">Процес</span>
+      <h2 data-i18n="proc_h2">Як проходить робота</h2>
+      <p data-i18n="proc_sub">Прозоро й покроково — ви завжди розумієте, що відбувається і навіщо.</p>
+    </div>
+    <div class="proc-intro reveal">
+      <p data-i18n="proc_intro">Мене звати Олександр — я закладаю AI-автоматизацію для б'юті-бізнесів. Не продаю «технології заради технологій»: спершу розбираюся, де ваш салон втрачає клієнтів і час, а тоді будую рішення саме під нього. Ви завжди на зв'язку особисто зі мною, а не з підтримкою.</p>
+    </div>
+    <div class="proc reveal">
+      <div class="proc-step"><div class="n">1</div><h3 data-i18n="proc_1t">Аналіз бізнесу</h3><p data-i18n="proc_1p">Вивчаю ваш салон, послуги та як зараз ведеться комунікація.</p></div>
+      <div class="proc-step"><div class="n">2</div><h3 data-i18n="proc_2t">Пошук слабких місць</h3><p data-i18n="proc_2p">Знаходжу, де саме губляться клієнти та час.</p></div>
+      <div class="proc-step"><div class="n">3</div><h3 data-i18n="proc_3t">Налаштування</h3><p data-i18n="proc_3p">Підключаю та налаштовую автоматизацію під ваші задачі.</p></div>
+      <div class="proc-step"><div class="n">4</div><h3 data-i18n="proc_4t">Тестування</h3><p data-i18n="proc_4p">Перевіряю, що все працює коректно на реальних сценаріях.</p></div>
+      <div class="proc-step"><div class="n">5</div><h3 data-i18n="proc_5t">Підтримка</h3><p data-i18n="proc_5p">Залишаюсь на зв'язку й допомагаю, коли щось потрібно.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR WHOM ============ -->
+<section class="section" id="forwhom">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="fw_eyebrow">Для кого</span>
+      <h2 data-i18n="fw_h2">Підходить будь-якому бьюті-бізнесу</h2>
+    </div>
+    <div class="fw-grid">
+      <div class="fw reveal" data-d="1"><span class="fw-emoji">💅</span><span data-i18n="fw_1">Nail Studio</span></div>
+      <div class="fw reveal" data-d="2"><span class="fw-emoji">💇</span><span data-i18n="fw_2">Hair Salon</span></div>
+      <div class="fw reveal" data-d="3"><span class="fw-emoji">💈</span><span data-i18n="fw_3">Barbershop</span></div>
+      <div class="fw reveal" data-d="1"><span class="fw-emoji">👁</span><span data-i18n="fw_4">Lash Studio</span></div>
+      <div class="fw reveal" data-d="2"><span class="fw-emoji">💆</span><span data-i18n="fw_5">Cosmetology</span></div>
+      <div class="fw reveal" data-d="3"><span class="fw-emoji">🌿</span><span data-i18n="fw_6">Spa</span></div>
+      <div class="fw reveal" data-d="1"><span class="fw-emoji">💆‍♀️</span><span data-i18n="fw_7">Massage</span></div>
+      <div class="fw reveal" data-d="2"><span class="fw-emoji">💄</span><span data-i18n="fw_8">Makeup</span></div>
+      <div class="fw reveal" data-d="3"><span class="fw-emoji">🖌</span><span data-i18n="fw_9">Brows &amp; PMU</span></div>
+      <div class="fw reveal" data-d="1"><span class="fw-emoji">🖋</span><span data-i18n="fw_10">Tattoo</span></div>
+      <div class="fw reveal" data-d="2"><span class="fw-emoji">☀️</span><span data-i18n="fw_11">Solarium</span></div>
+      <div class="fw reveal" data-d="3"><span class="fw-emoji">✨</span><span data-i18n="fw_12">Epilation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="section alt" id="portfolio">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="port_eyebrow">Портфоліо</span>
+      <h2 data-i18n="port_h2">Мої роботи</h2>
+      <p data-i18n="port_sub">Реальні автоматизації, які я вже побудував.</p>
+    </div>
+    <div class="port-grid">
+      <div class="proj reveal" data-d="1" data-proj="1" role="button" tabindex="0">
+        <div class="proj-img"><span class="proj-hint" data-i18n="proj_hint">Деталі</span><img src="data:image/webp;base64,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" alt="AI Receptionist workflow" loading="lazy"></div>
+        <div class="proj-body">
+          <b data-i18n="proj1_t">AI-ресепшн для салону краси</b>
+          <span data-i18n="proj1_d">24/7 AI відповідає в Instagram Direct, перевіряє вільні години та сам записує клієнта в календар.</span>
+          <div class="proj-tags"><i>n8n</i><i>Instagram API</i><i>Google Calendar</i></div>
+        </div>
+      </div>
+      <div class="proj reveal" data-d="2" data-proj="2" role="button" tabindex="0">
+        <div class="proj-img"><span class="proj-hint" data-i18n="proj_hint">Деталі</span><img src="data:image/webp;base64,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" alt="Lead generation workflow" loading="lazy"></div>
+        <div class="proj-body">
+          <b data-i18n="proj2_t">Автозбір лідів для салонів</b>
+          <span data-i18n="proj2_d">Автоматика знаходить салони краси на картах, збирає дані й формує готову базу лідів у таблиці.</span>
+          <div class="proj-tags"><i>n8n</i><i>Google Maps API</i><i>Google Sheets</i></div>
+        </div>
+      </div>
+      <div class="proj reveal" data-d="3" data-proj="3" role="button" tabindex="0">
+        <div class="proj-img"><span class="proj-hint" data-i18n="proj_hint">Деталі</span><img src="data:image/webp;base64,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" alt="Business AI automation workflow" loading="lazy"></div>
+        <div class="proj-body">
+          <b data-i18n="proj3_t">AI-система для бізнесу</b>
+          <span data-i18n="proj3_d">AI-агент у Telegram: обробляє повідомлення, працює з API та відповідає клієнтам автоматично.</span>
+          <div class="proj-tags"><i>n8n</i><i>OpenAI</i><i>Telegram</i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="stat_eyebrow">Чому це працює</span>
+      <h2 data-i18n="stat_h2">Дані по галузі говорять самі за себе</h2>
+      <p data-i18n="stat_sub">Це загальна статистика по бізнесу й автоматизації — не результати конкретного салону, а підтвердження тренду.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal" data-d="1">
+        <div class="big">95<small>%</small></div>
+        <p data-i18n="stat_1p">фахівців відзначили зростання продуктивності після впровадження автоматизації процесів.</p>
+        <div class="src">Regina Corso Consulting · <a href="https://ziphq.com/blog/business-process-automation-statistics" target="_blank" rel="noopener">джерело</a></div>
+      </div>
+      <div class="stat reveal" data-d="2">
+        <div class="big">20<small>%</small></div>
+        <p data-i18n="stat_2p">часу на рутинних завданнях можуть зекономити керівники завдяки автоматизації.</p>
+        <div class="src">McKinsey · <a href="https://www.cflowapps.com/workflow-automation-statistics/" target="_blank" rel="noopener">джерело</a></div>
+      </div>
+      <div class="stat reveal" data-d="3">
+        <div class="big">30<small>%</small></div>
+        <p data-i18n="stat_3p">робочого навантаження бізнес-лідери вважають можливим автоматизувати.</p>
+        <div class="src">McKinsey · <a href="https://www.cflowapps.com/business-process-automation-statistics/" target="_blank" rel="noopener">джерело</a></div>
+      </div>
+    </div>
+    <p class="research-note reveal" data-i18n="stat_note">Джерела: дослідження McKinsey та галузеві опитування. Наведені цифри відображають загальні тенденції автоматизації бізнесу, а не гарантований результат для конкретного салону.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="faq_eyebrow">FAQ</span>
+      <h2 data-i18n="faq_h2">Часті запитання</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_1q">Скільки це коштує?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_1a">Залежить від вашого бізнесу — обсягу задач і того, що саме автоматизуємо. Точну вартість розрахую особисто в чаті після короткої розмови про ваш салон. А перші 14 днів — безкоштовно, тож ви нічого не ризикуєте.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_2q">Скільки займає налаштування?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_2a">Залежить від складності. Прості сценарії — кілька днів, складніші — трохи довше. Точні терміни назву після аналізу вашого випадку.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_3q">Чи потрібні мої паролі?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_3a">Здебільшого підключення робиться через офіційні безпечні інтеграції, без передачі паролів напряму. Усі деталі безпеки обговорюємо до старту.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_4q">Чи це безпечно?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_4a">Так. Використовую офіційні інструменти та інтеграції. Ваші дані й доступи лишаються під вашим контролем.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_5q">Чи працює це для маленьких салонів?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_5a">Так. Автоматизація особливо корисна, коли руки не доходять до всього — а саме так і буває в невеликих салонах.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_6q">А якщо AI помилиться?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_6a">Складні або нетипові запити передаються вам особисто, а не губляться. AI бере на себе рутину, а не рішення в незрозумілих ситуаціях.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_7q">Це заміна адміністратора?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_7a">Ні. Це помічник, який бере на себе рутинні відповіді й записи, щоб адміністратор або ви самі витрачали час на важливіше.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_8q">Чи можна вимкнути AI, коли потрібно?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_8a">Так, у будь-який момент. Контроль завжди лишається у вас.</p></div>
+      </div>
+      <div class="faq-item reveal" data-d="1">
+        <button class="faq-q"><span data-i18n="faq_9q">Що потрібно від мене для старту?</span><span class="pm"></span></button>
+        <div class="faq-a"><p data-i18n="faq_9a">Коротка розмова про ваш салон (15 хвилин) і доступи через офіційні інтеграції. Решту налаштувань беру на себе — вам не треба нічого вивчати.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<!-- ============ FINAL CTA BAND ============ -->
+<section class="cta-band">
+  <div class="wrap cta-band-in reveal">
+    <span class="cta-badge" data-i18n="ctaband_badge">Перші 14 днів — безкоштовно</span>
+    <h2 data-i18n="ctaband_h2">Досить втрачати клієнтів через рутину</h2>
+    <p data-i18n="ctaband_p">Напишіть мені — і за один дзвінок ми знайдемо, що саме автоматизувати у вашому салоні.</p>
+    <a href="#contact" class="btn btn-primary btn-lg" data-i18n="ctaband_btn">Обговорити мій салон
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<section class="section alt" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow" data-i18n="cont_eyebrow">Контакти</span>
+      <h2 data-i18n="cont_h2">Готові отримати більше клієнтів?</h2>
+      <p data-i18n="cont_sub">Напишіть мені — обговоримо ваш салон і я підкажу, що варто автоматизувати в першу чергу.</p>
+      <div class="contact-cards">
+        <a href="mailto:nuvo.automation.studio@gmail.com" class="cc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+          <div><div class="l">Email</div><div class="v">nuvo.automation.studio@gmail.com</div></div>
+        </a>
+        <a href="tel:+380981521050" class="cc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><div class="l" data-i18n="foot_phone_l">Телефон</div><div class="v">+380 98 152 1050</div></div>
+        </a>
+        <div class="contact-social">
+          <a href="https://instagram.com/nuvo.automation" target="_blank" rel="noopener" aria-label="Instagram" class="csoc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" aria-label="Telegram" class="csoc">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="cform reveal" data-d="1">
+      <div class="field"><label data-i18n="form_name">Ваше ім'я</label><input type="text" id="fName" data-i18n-ph="form_name_ph" placeholder="Як до вас звертатися"></div>
+      <div class="field"><label data-i18n="form_contact">Instagram, Telegram або Email</label><input type="text" id="fContact" data-i18n-ph="form_contact_ph" placeholder="@нік в Instagram, Telegram або пошта"></div>
+      <div class="field"><label data-i18n="form_msg">Повідомлення</label><textarea id="fMsg" data-i18n-ph="form_msg_ph" placeholder="Розкажіть коротко про ваш салон і що хочете покращити"></textarea></div>
+      <button class="btn btn-primary" id="formBtn" data-i18n="form_btn">Надіслати заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
+      <p class="form-note" data-i18n="form_note">Відповім особисто й без спаму. Зазвичай протягом доби.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DARK FOOTER ============ -->
+<footer>
+  <div class="foot-top">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <div class="logo">NUVO<span class="tag">salon automation</span></div>
+        <p data-i18n="foot_about">AI та автоматизація для салонів краси. Менше рутини, більше клієнтів і вільного часу.</p>
+      </div>
+      <div class="foot-contacts">
+        <a href="mailto:nuvo.automation.studio@gmail.com" class="fcc wide">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+          <div><div class="l">Email</div><div class="v">nuvo.automation.studio@gmail.com</div></div>
+        </a>
+        <a href="tel:+380981521050" class="fcc wide">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><div class="l" data-i18n="foot_phone_l">Телефон</div><div class="v nowrap">+380 98 152 1050</div></div>
+        </a>
+        <div class="foot-social">
+          <a href="https://instagram.com/nuvo.automation" target="_blank" rel="noopener" aria-label="Instagram" class="soc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" aria-label="Telegram" class="soc">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bot">
+    <span>© 2026 NUVO — <span data-i18n="foot_rights">усі права захищені</span></span>
+  </div>
+</footer>
+
+<!-- ============ PROJECT MODAL ============ -->
+<div class="pmodal" id="pmodal" aria-hidden="true">
+  <div class="pmodal-box">
+    <button class="pmodal-close" id="pmClose" aria-label="close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <div class="pmodal-img"><img id="pmImg" src="" alt="workflow"></div>
+    <div class="pmodal-body">
+      <h3 id="pmTitle"></h3>
+      <div class="pm-tags" id="pmTags"></div>
+      <div class="pm-block">
+        <span class="pm-label" data-i18n="modal_problem">Проблема</span>
+        <p id="pmProb"></p>
+      </div>
+      <div class="pm-block">
+        <span class="pm-label" data-i18n="modal_solution">Рішення</span>
+        <p id="pmSol"></p>
+      </div>
+      <div class="pm-block pm-res">
+        <span class="pm-label" data-i18n="modal_result">Результат</span>
+        <p id="pmRes"></p>
+      </div>
+      <a href="#contact" class="btn btn-primary pm-cta" id="pmCta" data-i18n="modal_cta">Хочу таке для свого салону
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====================================================================
+   ПЕРЕКЛАДИ — 3 мови. Щоб змінити текст — редагуй тут.
+   ==================================================================== */
+const I18N = {
+  uk:{
+    nav_problems:"Проблеми",nav_services:"Послуги",nav_process:"Як працюю",nav_case:"Портфоліо",nav_faq:"FAQ",nav_contact:"Контакти",nav_cta:"Консультація",
+    hero_eyebrow:"NUVO — салон на автопілоті",
+    hero_h1_a:"Ваш салон не повинен",hero_h1_b:"втрачати клієнтів",
+    hero_sub:"Поки адміністратор зайнятий, AI вже відповідає клієнту за 3–5 секунд, записує його в Instagram чи Telegram і синхронізує запис із календарем — цілодобово.",
+    chip_1:"Відповідає за 3–5 сек",chip_2:"Інтеграція з календарем",chip_3:"Instagram + Telegram",chip_4:"Працює 24/7",chip_5:"Перші 14 днів — безкоштовно",ctaband_badge:"Перші 14 днів — безкоштовно",
+    plat_label:"Працює там, де вже є ваші клієнти",
+    hero_cta1:"Отримати консультацію",hero_cta2:"Написати в Telegram",
+    hero_meta:"Працює 24/7 — навіть коли салон зачинено",
+    mock_1t:"Нове повідомлення в Direct",mock_1s:"«Скільки коштує манікюр?»",mock_1b:"AI відповів",
+    mock_2t:"Запис підтверджено",mock_2s:"Завтра, 14:00 — стрижка",mock_2b:"Авто",
+    mock_3t:"Клієнта повернуто",mock_3s:"Не був 3 місяці → записався",
+    mock_4t:"Нагадування надіслано",mock_4s:"12 клієнтам про візит",mock_4b:"+3 записи",
+    prob_eyebrow:"Проблема",prob_h2:"Що забирає гроші у вашого салону",prob_sub:"Найчастіше клієнти втрачаються не через ціни, а через дрібниці, які легко автоматизувати.",
+    prob_1t:"Повільні відповіді в Direct",prob_1p:"Поки ви зайняті клієнтом, повідомлення лишаються без відповіді — і людина йде до конкурента.",
+    prob_2t:"Пропущені повідомлення",prob_2p:"Запити вночі та у вихідні залишаються непоміченими, а це втрачені записи й дохід.",
+    prob_3t:"Хаос із записами",prob_3p:"Подвійні бронювання, плутанина в часі та забуті візити псують репутацію салону.",
+    prob_4t:"Все тримається на людях",prob_4p:"Записи, відповіді й нагадування залежать від того, чи встиг адміністратор — а він не робот.",
+    prob_5t:"Клієнти не повертаються",prob_5p:"Без нагадувань про повторний візит люди просто забувають записатися знову.",
+    prob_foot:"Хороша новина — це все можна автоматизувати.",prob_cta:"Подивитись рішення",
+    res_eyebrow:"Результат",res_h2:"Що зміниться після автоматизації",res_sub:"Ви купуєте не «технології» — ви купуєте більше записів, менше рутини та вільний час.",
+    res_1t:"Швидші відповіді",res_1s:"Клієнт отримує відповідь за секунди, у будь-який час.",
+    res_2t:"Менше ручної роботи",res_2s:"Рутину бере на себе автоматизація, а ви — клієнтів.",
+    res_3t:"Більше записів",res_3s:"Жоден запит не губиться — навіть уночі та у вихідні.",
+    res_4t:"Порядок у записах",res_4s:"Жодних подвійних бронювань і забутих клієнтів.",
+    res_5t:"Менше втрачених лідів",res_5s:"Нагадування повертають клієнтів на повторний візит.",
+    res_6t:"Більше вільного часу",res_6s:"Ви займаєтесь салоном, а не листуванням і постами.",
+    serv_eyebrow:"Рішення",serv_h2:"Що я автоматизую для вашого салону",serv_sub:"Кожна послуга вирішує конкретну проблему — і працює без вашої участі.",
+    serv_1t:"AI-відповіді в Instagram",serv_1p:"Бот миттєво відповідає на питання про ціни, послуги й вільні години — 24/7.",
+    serv_2t:"Автоматичний запис клієнтів",serv_2p:"Клієнт сам обирає час, а система записує його без дзвінків і плутанини.",
+    serv_3t:"Реактивація клієнтів",serv_3p:"Автоматичні повідомлення повертають клієнтів, які давно не приходили.",
+    serv_4t:"Нагадування про візит",serv_4p:"Автоматичні нагадування зменшують неявки й повертають клієнтів.",
+    serv_5t:"AI-консультант для клієнтів",serv_5p:"Розумний помічник підбирає послугу та веде клієнта до запису.",
+    serv_6t:"Налаштування під ваш салон",serv_6p:"Усе підлаштовується під ваші послуги, ціни й стиль спілкування.",
+    cap_1t:"AI-відповіді в Direct",cap_1s:"Миттєві відповіді на питання клієнтів 24/7.",
+    cap_2t:"Онлайн-запис",cap_2s:"Клієнт сам обирає вільний час без дзвінків.",
+    cap_3t:"Реактивація клієнтів",cap_3s:"Повертаємо тих, хто давно не приходив.",
+    cap_4t:"Нагадування про візит",cap_4s:"Менше неявок і забутих записів.",
+    cap_5t:"AI-консультант",cap_5s:"Підбирає послугу й веде клієнта до запису.",
+    cap_6t:"Інтеграції під салон",cap_6s:"Підключення під ваші інструменти й процеси.",
+    cap_7t:"Збір та продаж послуг",cap_7s:"Бот пропонує додаткові послуги й акції.",
+    cap_8t:"Прийом передоплат",cap_8s:"Бронювання з передоплатою проти неявок.",
+    cap_9t:"Голосові та аудіо",cap_9s:"Обробка голосових повідомлень клієнтів.",
+    cap_10t:"Звіти й аналітика",cap_10s:"Бачите, скільки записів і звідки клієнти.",
+    cap_11t:"Чат на кількох платформах",cap_11s:"Instagram, Telegram, WhatsApp — в одному місці.",
+    cap_12t:"Збір відгуків",cap_12s:"Автоматичний запит відгуку після візиту.",
+    cap_13t:"Програма лояльності",cap_13s:"Бонуси й знижки для постійних клієнтів.",
+    cap_14t:"Безпечне зберігання даних",cap_14s:"База клієнтів під вашим контролем.",
+    caps_btn_more:"Показати всі можливості",caps_btn_less:"Згорнути",
+    foot_about:"AI та автоматизація для салонів краси. Менше рутини, більше клієнтів і вільного часу.",foot_phone_l:"Телефон",
+    proc_eyebrow:"Процес",proc_h2:"Як проходить робота",proc_sub:"Прозоро й покроково — ви завжди розумієте, що відбувається і навіщо.",
+    proc_intro:"Мене звати Олександр — я закладаю AI-автоматизацію для б'юті-бізнесів. Не продаю «технології заради технологій»: спершу розбираюся, де ваш салон втрачає клієнтів і час, а тоді будую рішення саме під нього. Ви завжди на зв'язку особисто зі мною, а не з підтримкою.",
+    proc_1t:"Аналіз бізнесу",proc_1p:"Вивчаю ваш салон, послуги та як зараз ведеться комунікація.",
+    proc_2t:"Пошук слабких місць",proc_2p:"Знаходжу, де саме губляться клієнти та час.",
+    proc_3t:"Налаштування",proc_3p:"Підключаю та налаштовую автоматизацію під ваші задачі.",
+    proc_4t:"Тестування",proc_4p:"Перевіряю, що все працює коректно на реальних сценаріях.",
+    proc_5t:"Підтримка",proc_5p:"Залишаюсь на зв'язку й допомагаю, коли щось потрібно.",
+    flow_eyebrow:"Зсередини",flow_h2:"Як це працює технічно",flow_sub:"Просто й прозоро — від повідомлення клієнта до готового запису у вашому календарі.",
+    flow_1:"Клієнт пише",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Календар",flow_5:"Запис створено",
+    fw_eyebrow:"Для кого",fw_h2:"Підходить будь-якому бьюті-бізнесу",
+    fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Cosmetology",fw_6:"Spa",fw_7:"Massage",fw_8:"Makeup",fw_9:"Brows & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Epilation",
+    
+    
+    stat_eyebrow:"Чому це працює",stat_h2:"Дані по галузі говорять самі за себе",stat_sub:"Це загальна статистика по бізнесу й автоматизації — не результати конкретного салону, а підтвердження тренду.",
+    stat_1p:"фахівців відзначили зростання продуктивності після впровадження автоматизації процесів.",
+    stat_2p:"часу на рутинних завданнях можуть зекономити керівники завдяки автоматизації.",
+    stat_3p:"робочого навантаження бізнес-лідери вважають можливим автоматизувати.",
+    stat_note:"Джерела: дослідження McKinsey та галузеві опитування. Наведені цифри відображають загальні тенденції автоматизації бізнесу, а не гарантований результат для конкретного салону.",
+    faq_eyebrow:"FAQ",faq_h2:"Часті запитання",
+    faq_1q:"Скільки це коштує?",faq_1a:"Залежить від вашого бізнесу — обсягу задач і того, що саме автоматизуємо. Точну вартість розрахую особисто в чаті після короткої розмови про ваш салон. А перші 14 днів — безкоштовно, тож ви нічого не ризикуєте.",
+    faq_2q:"Скільки займає налаштування?",faq_2a:"Залежить від складності. Прості сценарії — кілька днів, складніші — трохи довше. Точні терміни назву після аналізу вашого випадку.",
+    faq_3q:"Чи потрібні мої паролі?",faq_3a:"Здебільшого підключення робиться через офіційні безпечні інтеграції, без передачі паролів напряму. Усі деталі безпеки обговорюємо до старту.",
+    faq_4q:"Чи це безпечно?",faq_4a:"Так. Використовую офіційні інструменти та інтеграції. Ваші дані й доступи лишаються під вашим контролем.",
+    faq_5q:"Чи працює це для маленьких салонів?",faq_5a:"Так. Автоматизація особливо корисна, коли руки не доходять до всього — а саме так і буває в невеликих салонах.",
+    faq_6q:"А якщо AI помилиться?",faq_6a:"Складні або нетипові запити передаються вам особисто, а не губляться. AI бере на себе рутину, а не рішення в незрозумілих ситуаціях.",
+    faq_7q:"Це заміна адміністратора?",faq_7a:"Ні. Це помічник, який бере на себе рутинні відповіді й записи, щоб адміністратор або ви самі витрачали час на важливіше.",
+    faq_8q:"Чи можна вимкнути AI, коли потрібно?",faq_8a:"Так, у будь-який момент. Контроль завжди лишається у вас.",
+    faq_9q:"Що потрібно від мене для старту?",faq_9a:"Коротка розмова про ваш салон (15 хвилин) і доступи через офіційні інтеграції. Решту налаштувань беру на себе — вам не треба нічого вивчати.",
+    ctaband_h2:"Безкоштовний аудит автоматизації вашого салону",ctaband_p:"За 15 хвилин розберемо, де ваш салон втрачає клієнтів і що можна автоматизувати першим. Без оплати та зобов'язань.",ctaband_btn:"Отримати безкоштовний аудит",
+    port_eyebrow:"Портфоліо",port_h2:"Мої роботи",port_sub:"Реальні автоматизації, які я вже побудував.",
+    proj1_t:"AI-ресепшн для салону краси",proj1_d:"24/7 AI відповідає в Instagram Direct, перевіряє вільні години та сам записує клієнта в календар.",
+    proj2_t:"Автозбір лідів для салонів",proj2_d:"Автоматика знаходить салони краси на картах, збирає дані й формує готову базу лідів у таблиці.",
+    proj3_t:"AI-система для бізнесу",proj3_d:"AI-агент у Telegram: обробляє повідомлення, працює з API та відповідає клієнтам автоматично.",
+    modal_problem:"Проблема",modal_solution:"Рішення",modal_result:"Результат",modal_cta:"Хочу таке для свого салону",proj_hint:"Деталі",
+    proj1_prob:"Клієнти пишуть у Direct коли завгодно — вночі, у вихідні, коли адміністратор стоїть біля крісла. Відповідь через годину — і людина вже записалася до конкурента.",
+    proj1_sol:"Я побудував AI-ресепшн: він читає повідомлення в Instagram, відповідає за секунди, перевіряє вільні години в календарі, звіряє клієнта з базою і сам створює запис у Google Calendar.",
+    proj1_res:"Салон відповідає миттєво 24/7, жоден запит не губиться, а адміністратор більше не розривається між кріслом і телефоном.",
+    proj2_prob:"Шукати нових клієнтів вручну — це години на картах і в таблицях: відкрити, скопіювати, вставити, не загубити.",
+    proj2_sol:"Автоматизація сама знаходить салони краси за локацією через Google Maps, збирає контакти й дані, відсіює дублікати та складає готову базу в Google Sheets.",
+    proj2_res:"Готовий список лідів для розсилки чи CRM — без жодної години ручної роботи.",
+    proj3_prob:"Рутинні повідомлення, заявки та оновлення даних з'їдають години щодня — і все тримається на тому, чи встигла людина.",
+    proj3_sol:"AI-агент у Telegram приймає повідомлення, розуміє запит, звертається до потрібних API і відповідає клієнту автоматично — від заявки до нагадування.",
+    proj3_res:"Рутина йде на автопілот: бізнес відповідає швидше, а команда займається клієнтами, а не переписками.",
+    cont_eyebrow:"Контакти",cont_h2:"Готові отримати більше клієнтів?",cont_sub:"Напишіть мені — обговоримо ваш салон і я підкажу, що варто автоматизувати в першу чергу.",
+    form_name:"Ваше ім'я",form_name_ph:"Як до вас звертатися",form_contact:"Instagram, Telegram або Email",form_contact_ph:"@нік в Instagram, Telegram або пошта",form_msg:"Повідомлення",form_msg_ph:"Розкажіть коротко про ваш салон і що хочете покращити",form_btn:"Надіслати заявку",form_note:"Відповім особисто й без спаму. Зазвичай протягом доби.",
+    foot_rights:"усі права захищені",
+    },
+  en:{
+    nav_problems:"Problems",nav_services:"Services",nav_process:"Process",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"Consultation",
+    hero_eyebrow:"NUVO — your salon on autopilot",
+    hero_h1_a:"Your salon shouldn't",hero_h1_b:"lose clients like this",
+    hero_sub:"While your front desk is busy, AI already replies to the client in 3–5 seconds, books them via Instagram or Telegram, and syncs it with your calendar — around the clock.",
+    chip_1:"Replies in 3–5 sec",chip_2:"Calendar integration",chip_3:"Instagram + Telegram",chip_4:"Works 24/7",chip_5:"First 14 days — free",ctaband_badge:"First 14 days — free",
+    plat_label:"Works where your clients already are",
+    hero_cta1:"Get a consultation",hero_cta2:"Message on Telegram",
+    hero_meta:"Works 24/7 — even when the salon is closed",
+    mock_1t:"New Direct message",mock_1s:"\"How much is a manicure?\"",mock_1b:"AI replied",
+    mock_2t:"Booking confirmed",mock_2s:"Tomorrow, 2:00 PM — haircut",mock_2b:"Auto",
+    mock_3t:"Client reactivated",mock_3s:"Inactive 3 months → booked",
+    mock_4t:"Reminders sent",mock_4s:"to 12 clients about visits",mock_4b:"+3 bookings",
+    prob_eyebrow:"The problem",prob_h2:"What's costing your salon money",prob_sub:"Most often clients are lost not because of prices, but because of small things that are easy to automate.",
+    prob_1t:"Slow replies in Direct",prob_1p:"While you're busy with a client, messages go unanswered — and the person goes to a competitor.",
+    prob_2t:"Missed messages",prob_2p:"Requests at night and on weekends go unnoticed — that's lost bookings and revenue.",
+    prob_3t:"Booking chaos",prob_3p:"Double bookings, time confusion and forgotten visits hurt your salon's reputation.",
+    prob_4t:"Everything depends on people",prob_4p:"Bookings, replies and reminders rely on whether the receptionist got to them — and they're not a robot.",
+    prob_5t:"Clients don't return",prob_5p:"Without reminders about a repeat visit, people simply forget to book again.",
+    prob_foot:"Good news — all of this can be automated.",prob_cta:"See the solutions",
+    res_eyebrow:"The result",res_h2:"What changes after automation",res_sub:"You're not buying \"technology\" — you're buying more bookings, less routine and free time.",
+    res_1t:"Faster replies",res_1s:"Clients get an answer in seconds, any time.",
+    res_2t:"Less manual work",res_2s:"Automation handles the routine, you handle the clients.",
+    res_3t:"More bookings",res_3s:"No request is lost — even at night or on weekends.",
+    res_4t:"Order in bookings",res_4s:"No double bookings and no forgotten clients.",
+    res_5t:"Fewer lost leads",res_5s:"Reminders bring clients back for a repeat visit.",
+    res_6t:"More free time",res_6s:"You run the salon, not the messaging and posting.",
+    serv_eyebrow:"The solution",serv_h2:"What I automate for your salon",serv_sub:"Each service solves a specific problem — and works without your involvement.",
+    serv_1t:"AI replies on Instagram",serv_1p:"The bot instantly answers questions about prices, services and open slots — 24/7.",
+    serv_2t:"Automatic client booking",serv_2p:"Clients pick a time themselves and the system books them without calls or confusion.",
+    serv_3t:"Client reactivation",serv_3p:"Automatic messages bring back clients who haven't visited in a while.",
+    serv_4t:"Visit reminders",serv_4p:"Automatic reminders reduce no-shows and bring clients back.",
+    serv_5t:"AI consultant for clients",serv_5p:"A smart assistant suggests a service and guides the client to a booking.",
+    serv_6t:"Tailored to your salon",serv_6p:"Everything is adjusted to your services, prices and communication style.",
+    cap_1t:"AI replies in Direct",cap_1s:"Instant answers to client questions, 24/7.",
+    cap_2t:"Online booking",cap_2s:"Clients pick a free slot themselves, no calls.",
+    cap_3t:"Client reactivation",cap_3s:"We bring back those who haven't visited in a while.",
+    cap_4t:"Visit reminders",cap_4s:"Fewer no-shows and forgotten bookings.",
+    cap_5t:"AI consultant",cap_5s:"Suggests a service and guides the client to booking.",
+    cap_6t:"Salon integrations",cap_6s:"Connection to your tools and processes.",
+    cap_7t:"Upselling services",cap_7s:"The bot offers extra services and promos.",
+    cap_8t:"Prepayment collection",cap_8s:"Bookings with prepayment against no-shows.",
+    cap_9t:"Voice & audio",cap_9s:"Processing clients' voice messages.",
+    cap_10t:"Reports & analytics",cap_10s:"See how many bookings and where clients come from.",
+    cap_11t:"Multi-platform chat",cap_11s:"Instagram, Telegram, WhatsApp — in one place.",
+    cap_12t:"Review collection",cap_12s:"Automatic review request after a visit.",
+    cap_13t:"Loyalty program",cap_13s:"Bonuses and discounts for regular clients.",
+    cap_14t:"Secure data storage",cap_14s:"Your client base stays under your control.",
+    caps_btn_more:"Show all capabilities",caps_btn_less:"Collapse",
+    foot_about:"AI and automation for beauty salons. Less routine, more clients and free time.",foot_phone_l:"Phone",
+    proc_eyebrow:"Process",proc_h2:"How the work goes",proc_sub:"Transparent and step by step — you always understand what's happening and why.",
+    proc_intro:"My name is Oleksandr — I build AI automation for beauty businesses. I don't sell \"tech for the sake of tech\": first I figure out where your salon loses clients and time, then I build a solution made for it. You always stay in touch with me personally, not with support.",
+    proc_1t:"Business analysis",proc_1p:"I study your salon, services and how communication works now.",
+    proc_2t:"Finding weak spots",proc_2p:"I find exactly where clients and time are being lost.",
+    proc_3t:"Setup",proc_3p:"I connect and configure the automation for your tasks.",
+    proc_4t:"Testing",proc_4p:"I verify everything works correctly on real scenarios.",
+    proc_5t:"Support",proc_5p:"I stay in touch and help whenever something is needed.",
+    flow_eyebrow:"Under the hood",flow_h2:"How it works technically",flow_sub:"Simple and transparent — from a client's message to a finished booking in your calendar.",
+    flow_1:"Client writes in",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Calendar",flow_5:"Booking created",
+    fw_eyebrow:"Who it's for",fw_h2:"Fits any beauty business",
+    fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Cosmetology",fw_6:"Spa",fw_7:"Massage",fw_8:"Makeup",fw_9:"Brows & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Epilation",
+    
+    
+    stat_eyebrow:"Why it works",stat_h2:"Industry data speaks for itself",stat_sub:"This is general business and automation statistics — not results of a specific salon, but confirmation of the trend.",
+    stat_1p:"of professionals reported a productivity increase after implementing process automation.",
+    stat_2p:"of time on routine tasks can be saved by managers through automation.",
+    stat_3p:"of their workload is what business leaders believe can be automated.",
+    stat_note:"Sources: McKinsey research and industry surveys. The figures reflect general business automation trends, not a guaranteed result for a specific salon.",
+    faq_eyebrow:"FAQ",faq_h2:"Frequently asked questions",
+    faq_1q:"How much does it cost?",faq_1a:"It depends on your business — the scope of tasks and what exactly we automate. I'll calculate the exact cost personally in chat after a short conversation about your salon. And the first 14 days are free — you risk nothing.",
+    faq_2q:"How long does setup take?",faq_2a:"It depends on complexity. Simple scenarios — a few days, more complex ones — a bit longer. I'll give exact timelines after analyzing your case.",
+    faq_3q:"Do you need my passwords?",faq_3a:"In most cases the connection is done via official secure integrations, without sharing passwords directly. All security details are discussed before we start.",
+    faq_4q:"Is it safe?",faq_4a:"Yes. I use official tools and integrations. Your data and access remain under your control.",
+    faq_5q:"Does it work for small salons?",faq_5a:"Yes. Automation is especially useful when you can't get to everything — which is exactly the case in small salons.",
+    faq_6q:"What if the AI makes a mistake?",faq_6a:"Complex or unusual requests get passed to you personally, not lost. AI handles the routine, not the judgment calls in unclear situations.",
+    faq_7q:"Is this a replacement for a receptionist?",faq_7a:"No. It's an assistant that takes over routine replies and bookings, so your receptionist — or you — can spend time on what matters more.",
+    faq_8q:"Can I turn the AI off when needed?",faq_8a:"Yes, at any moment. Control always stays with you.",
+    faq_9q:"What do you need from me to start?",faq_9a:"A short 15-minute conversation about your salon and access via official integrations. I handle the rest of the setup — you don't need to learn anything.",
+    ctaband_h2:"A free automation audit for your salon",ctaband_p:"In 15 minutes we'll find where your salon loses clients and what to automate first. No payment, no commitment.",ctaband_btn:"Get a free audit",
+    port_eyebrow:"Portfolio",port_h2:"My work",port_sub:"Real automations I have already built.",
+    proj1_t:"AI Receptionist for a beauty salon",proj1_d:"24/7 AI replies in Instagram Direct, checks open slots and books the client into the calendar itself.",
+    proj2_t:"Lead generation for salons",proj2_d:"Automation finds beauty salons on maps, collects data and builds a ready lead base in a spreadsheet.",
+    proj3_t:"Business AI system",proj3_d:"AI agent in Telegram: processes messages, works with APIs and replies to clients automatically.",
+    modal_problem:"The problem",modal_solution:"The solution",modal_result:"The result",modal_cta:"I want this for my salon",proj_hint:"Details",
+    proj1_prob:"Clients write in Direct at any hour — at night, on weekends, while the receptionist is busy at the chair. Reply an hour later and the person has already booked with a competitor.",
+    proj1_sol:"I built an AI receptionist: it reads Instagram messages, replies in seconds, checks open slots in the calendar, matches the client against the base and creates the booking in Google Calendar itself.",
+    proj1_res:"The salon replies instantly 24/7, no request gets lost, and the receptionist no longer juggles the chair and the phone.",
+    proj2_prob:"Finding new clients manually means hours in maps and spreadsheets: open, copy, paste, don't lose anything.",
+    proj2_sol:"The automation finds beauty salons by location via Google Maps, collects contacts and data, filters duplicates and builds a ready base in Google Sheets.",
+    proj2_res:"A ready lead list for outreach or CRM — without a single hour of manual work.",
+    proj3_prob:"Routine messages, requests and data updates eat hours every day — and everything depends on whether a person got to it.",
+    proj3_sol:"An AI agent in Telegram receives messages, understands the request, calls the right APIs and replies to the client automatically — from request to reminder.",
+    proj3_res:"Routine goes on autopilot: the business replies faster, and the team works with clients, not chats.",
+    cont_eyebrow:"Contact",cont_h2:"Ready to get more clients?",cont_sub:"Message me — we'll discuss your salon and I'll suggest what's worth automating first.",
+    form_name:"Your name",form_name_ph:"How to address you",form_contact:"Instagram, Telegram or Email",form_contact_ph:"@handle on Instagram, Telegram or email",form_msg:"Message",form_msg_ph:"Tell me briefly about your salon and what you want to improve",form_btn:"Send request",form_note:"I'll reply personally and without spam. Usually within a day.",
+    foot_rights:"all rights reserved",
+    },
+  de:{
+    nav_problems:"Probleme",nav_services:"Leistungen",nav_process:"Ablauf",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Beratung",
+    hero_eyebrow:"NUVO — Ihr Salon auf Autopilot",
+    hero_h1_a:"Ihr Salon sollte keine",hero_h1_b:"Kunden verlieren",
+    hero_sub:"Während Ihre Rezeption beschäftigt ist, antwortet die KI dem Kunden bereits in 3–5 Sekunden, bucht ihn über Instagram oder Telegram und synchronisiert alles mit Ihrem Kalender — rund um die Uhr.",
+    chip_1:"Antwortet in 3–5 Sek",chip_2:"Kalender-Integration",chip_3:"Instagram + Telegram",chip_4:"Läuft rund um die Uhr",chip_5:"Die ersten 14 Tage — kostenlos",ctaband_badge:"Die ersten 14 Tage — kostenlos",
+    plat_label:"Läuft dort, wo Ihre Kunden bereits sind",
+    hero_cta1:"Beratung erhalten",hero_cta2:"Auf Telegram schreiben",
+    hero_meta:"Läuft rund um die Uhr — auch wenn der Salon geschlossen ist",
+    mock_1t:"Neue Direct-Nachricht",mock_1s:"„Was kostet eine Maniküre?\"",mock_1b:"KI antwortete",
+    mock_2t:"Termin bestätigt",mock_2s:"Morgen, 14:00 — Haarschnitt",mock_2b:"Auto",
+    mock_3t:"Kunde reaktiviert",mock_3s:"3 Monate inaktiv → gebucht",
+    mock_4t:"Erinnerungen gesendet",mock_4s:"an 12 Kunden zum Termin",mock_4b:"+3 Termine",
+    prob_eyebrow:"Das Problem",prob_h2:"Was Ihren Salon Geld kostet",prob_sub:"Kunden gehen meist nicht wegen der Preise verloren, sondern wegen Kleinigkeiten, die sich leicht automatisieren lassen.",
+    prob_1t:"Langsame Antworten im Direct",prob_1p:"Während Sie mit einem Kunden beschäftigt sind, bleiben Nachrichten unbeantwortet — und die Person geht zur Konkurrenz.",
+    prob_2t:"Verpasste Nachrichten",prob_2p:"Anfragen nachts und am Wochenende bleiben unbemerkt — das sind verlorene Termine und Umsatz.",
+    prob_3t:"Chaos bei Terminen",prob_3p:"Doppelbuchungen, Zeitverwirrung und vergessene Besuche schaden dem Ruf des Salons.",
+    prob_4t:"Alles hängt an Menschen",prob_4p:"Buchungen, Antworten und Erinnerungen hängen davon ab, ob die Rezeption dazu kam — und sie ist kein Roboter.",
+    prob_5t:"Kunden kommen nicht zurück",prob_5p:"Ohne Erinnerung an einen Folgetermin vergessen die Leute einfach, erneut zu buchen.",
+    prob_foot:"Gute Nachricht — all das lässt sich automatisieren.",prob_cta:"Lösungen ansehen",
+    res_eyebrow:"Das Ergebnis",res_h2:"Was sich nach der Automatisierung ändert",res_sub:"Sie kaufen keine „Technologie\" — Sie kaufen mehr Termine, weniger Routine und freie Zeit.",
+    res_1t:"Schnellere Antworten",res_1s:"Kunden erhalten in Sekunden eine Antwort, jederzeit.",
+    res_2t:"Weniger manuelle Arbeit",res_2s:"Die Automatisierung übernimmt die Routine, Sie die Kunden.",
+    res_3t:"Mehr Termine",res_3s:"Keine Anfrage geht verloren — auch nachts oder am Wochenende.",
+    res_4t:"Ordnung bei Terminen",res_4s:"Keine Doppelbuchungen und keine vergessenen Kunden.",
+    res_5t:"Weniger verlorene Leads",res_5s:"Erinnerungen holen Kunden für einen Folgetermin zurück.",
+    res_6t:"Mehr freie Zeit",res_6s:"Sie führen den Salon, nicht das Schreiben und Posten.",
+    serv_eyebrow:"Die Lösung",serv_h2:"Was ich für Ihren Salon automatisiere",serv_sub:"Jede Leistung löst ein konkretes Problem — und läuft ohne Ihr Zutun.",
+    serv_1t:"KI-Antworten auf Instagram",serv_1p:"Der Bot beantwortet sofort Fragen zu Preisen, Leistungen und freien Zeiten — rund um die Uhr.",
+    serv_2t:"Automatische Terminbuchung",serv_2p:"Kunden wählen selbst eine Zeit, und das System bucht sie ohne Anrufe und Verwirrung.",
+    serv_3t:"Kunden-Reaktivierung",serv_3p:"Automatische Nachrichten holen Kunden zurück, die länger nicht da waren.",
+    serv_4t:"Termin-Erinnerungen",serv_4p:"Automatische Erinnerungen senken No-Shows und holen Kunden zurück.",
+    serv_5t:"KI-Berater für Kunden",serv_5p:"Ein smarter Assistent schlägt eine Leistung vor und führt den Kunden zur Buchung.",
+    serv_6t:"Angepasst an Ihren Salon",serv_6p:"Alles wird an Ihre Leistungen, Preise und Ihren Kommunikationsstil angepasst.",
+    cap_1t:"KI-Antworten im Direct",cap_1s:"Sofortige Antworten auf Kundenfragen, rund um die Uhr.",
+    cap_2t:"Online-Buchung",cap_2s:"Kunden wählen selbst einen freien Termin, ohne Anrufe.",
+    cap_3t:"Kunden-Reaktivierung",cap_3s:"Wir holen jene zurück, die länger nicht da waren.",
+    cap_4t:"Termin-Erinnerungen",cap_4s:"Weniger No-Shows und vergessene Buchungen.",
+    cap_5t:"KI-Berater",cap_5s:"Schlägt eine Leistung vor und führt zur Buchung.",
+    cap_6t:"Salon-Integrationen",cap_6s:"Anbindung an Ihre Tools und Prozesse.",
+    cap_7t:"Zusatzverkäufe",cap_7s:"Der Bot bietet zusätzliche Leistungen und Aktionen.",
+    cap_8t:"Anzahlungen",cap_8s:"Buchungen mit Anzahlung gegen No-Shows.",
+    cap_9t:"Sprache & Audio",cap_9s:"Verarbeitung von Sprachnachrichten der Kunden.",
+    cap_10t:"Berichte & Analysen",cap_10s:"Sehen Sie, wie viele Buchungen und woher Kunden kommen.",
+    cap_11t:"Multi-Plattform-Chat",cap_11s:"Instagram, Telegram, WhatsApp — an einem Ort.",
+    cap_12t:"Bewertungen sammeln",cap_12s:"Automatische Bewertungsanfrage nach dem Besuch.",
+    cap_13t:"Treueprogramm",cap_13s:"Boni und Rabatte für Stammkunden.",
+    cap_14t:"Sichere Datenspeicherung",cap_14s:"Ihre Kundenbasis bleibt unter Ihrer Kontrolle.",
+    caps_btn_more:"Alle Möglichkeiten zeigen",caps_btn_less:"Einklappen",
+    foot_about:"KI und Automatisierung für Beauty-Salons. Weniger Routine, mehr Kunden und freie Zeit.",foot_phone_l:"Telefon",
+    proc_eyebrow:"Ablauf",proc_h2:"Wie die Arbeit abläuft",proc_sub:"Transparent und Schritt für Schritt — Sie verstehen immer, was passiert und warum.",
+    proc_intro:"Mein Name ist Oleksandr — ich entwickle KI-Automatisierung für Beauty-Unternehmen. Ich verkaufe keine „Technik um der Technik willen\": Zuerst finde ich heraus, wo Ihr Salon Kunden und Zeit verliert, dann baue ich eine Lösung genau dafür. Sie stehen immer persönlich mit mir in Kontakt, nicht mit einem Support.",
+    proc_1t:"Geschäftsanalyse",proc_1p:"Ich analysiere Ihren Salon, Ihre Leistungen und die aktuelle Kommunikation.",
+    proc_2t:"Schwachstellen finden",proc_2p:"Ich finde genau, wo Kunden und Zeit verloren gehen.",
+    proc_3t:"Einrichtung",proc_3p:"Ich verbinde und konfiguriere die Automatisierung für Ihre Aufgaben.",
+    proc_4t:"Test",proc_4p:"Ich prüfe, dass alles in realen Szenarien korrekt funktioniert.",
+    proc_5t:"Support",proc_5p:"Ich bleibe in Kontakt und helfe, wann immer etwas gebraucht wird.",
+    flow_eyebrow:"Unter der Haube",flow_h2:"Wie es technisch funktioniert",flow_sub:"Einfach und transparent — von der Nachricht des Kunden bis zur fertigen Buchung in Ihrem Kalender.",
+    flow_1:"Kunde schreibt",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Kalender",flow_5:"Buchung erstellt",
+    fw_eyebrow:"Für wen",fw_h2:"Passt zu jedem Beauty-Business",
+    fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Kosmetik",fw_6:"Spa",fw_7:"Massage",fw_8:"Make-up",fw_9:"Brauen & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Haarentfernung",
+    
+    
+    stat_eyebrow:"Warum es funktioniert",stat_h2:"Die Branchendaten sprechen für sich",stat_sub:"Dies sind allgemeine Statistiken zu Geschäft und Automatisierung — keine Ergebnisse eines bestimmten Salons, sondern eine Bestätigung des Trends.",
+    stat_1p:"der Fachkräfte verzeichneten eine Produktivitätssteigerung nach Einführung der Prozessautomatisierung.",
+    stat_2p:"der Zeit für Routineaufgaben können Führungskräfte durch Automatisierung sparen.",
+    stat_3p:"ihrer Arbeitslast halten Führungskräfte für automatisierbar.",
+    stat_note:"Quellen: McKinsey-Studien und Branchenumfragen. Die Zahlen spiegeln allgemeine Trends der Geschäftsautomatisierung wider, kein garantiertes Ergebnis für einen bestimmten Salon.",
+    faq_eyebrow:"FAQ",faq_h2:"Häufige Fragen",
+    faq_1q:"Was kostet das?",faq_1a:"Das hängt von Ihrem Geschäft ab — vom Umfang der Aufgaben und davon, was genau wir automatisieren. Den genauen Preis berechne ich persönlich im Chat nach einem kurzen Gespräch über Ihren Salon. Und die ersten 14 Tage sind kostenlos — Sie riskieren nichts.",
+    faq_2q:"Wie lange dauert die Einrichtung?",faq_2a:"Das hängt von der Komplexität ab. Einfache Szenarien — ein paar Tage, komplexere — etwas länger. Genaue Zeiten nenne ich nach Analyse Ihres Falls.",
+    faq_3q:"Brauchen Sie meine Passwörter?",faq_3a:"Meist erfolgt die Verbindung über offizielle sichere Integrationen, ohne Passwörter direkt weiterzugeben. Alle Sicherheitsdetails besprechen wir vor dem Start.",
+    faq_4q:"Ist das sicher?",faq_4a:"Ja. Ich nutze offizielle Tools und Integrationen. Ihre Daten und Zugänge bleiben unter Ihrer Kontrolle.",
+    faq_5q:"Funktioniert das für kleine Salons?",faq_5a:"Ja. Automatisierung ist besonders nützlich, wenn man nicht zu allem kommt — und genau so ist es in kleinen Salons.",
+    faq_6q:"Was, wenn die KI einen Fehler macht?",faq_6a:"Komplexe oder untypische Anfragen werden persönlich an Sie weitergeleitet, statt verloren zu gehen. Die KI übernimmt die Routine, nicht die Entscheidung in unklaren Situationen.",
+    faq_7q:"Ersetzt das die Rezeption?",faq_7a:"Nein. Es ist ein Assistent, der Routineantworten und Buchungen übernimmt, damit die Rezeption — oder Sie selbst — Zeit für Wichtigeres haben.",
+    faq_8q:"Kann ich die KI bei Bedarf abschalten?",faq_8a:"Ja, jederzeit. Die Kontrolle bleibt immer bei Ihnen.",
+    faq_9q:"Was brauchen Sie von mir für den Start?",faq_9a:"Ein kurzes 15-minütiges Gespräch über Ihren Salon und Zugänge über offizielle Integrationen. Den Rest der Einrichtung übernehme ich — Sie müssen nichts lernen.",
+    ctaband_h2:"Kostenloses Automatisierungs-Audit für Ihren Salon",ctaband_p:"In 15 Minuten finden wir heraus, wo Ihr Salon Kunden verliert und was zuerst automatisiert werden sollte. Ohne Kosten, ohne Verpflichtung.",ctaband_btn:"Kostenloses Audit erhalten",
+    port_eyebrow:"Portfolio",port_h2:"Meine Arbeiten",port_sub:"Echte Automatisierungen, die ich bereits gebaut habe.",
+    proj1_t:"KI-Rezeption für einen Beauty-Salon",proj1_d:"24/7 antwortet die KI im Instagram Direct, prüft freie Zeiten und bucht den Kunden selbst in den Kalender.",
+    proj2_t:"Lead-Generierung für Salons",proj2_d:"Die Automatisierung findet Beauty-Salons auf Karten, sammelt Daten und erstellt eine fertige Lead-Basis in einer Tabelle.",
+    proj3_t:"KI-System für Unternehmen",proj3_d:"KI-Agent in Telegram: verarbeitet Nachrichten, arbeitet mit APIs und antwortet Kunden automatisch.",
+    modal_problem:"Das Problem",modal_solution:"Die Lösung",modal_result:"Das Ergebnis",modal_cta:"Ich möchte das für meinen Salon",proj_hint:"Details",
+    proj1_prob:"Kunden schreiben im Direct zu jeder Zeit — nachts, am Wochenende, während die Rezeption am Stuhl beschäftigt ist. Eine Antwort eine Stunde später — und die Person hat bereits beim Wettbewerber gebucht.",
+    proj1_sol:"Ich habe eine KI-Rezeption gebaut: Sie liest Instagram-Nachrichten, antwortet in Sekunden, prüft freie Zeiten im Kalender, gleicht den Kunden mit der Basis ab und erstellt die Buchung selbst im Google Calendar.",
+    proj1_res:"Der Salon antwortet sofort, rund um die Uhr, keine Anfrage geht verloren — und die Rezeption pendelt nicht mehr zwischen Stuhl und Telefon.",
+    proj2_prob:"Neue Kunden manuell zu finden bedeutet Stunden in Karten und Tabellen: öffnen, kopieren, einfügen, nichts verlieren.",
+    proj2_sol:"Die Automatisierung findet Beauty-Salons nach Standort über Google Maps, sammelt Kontakte und Daten, filtert Duplikate und erstellt eine fertige Basis in Google Sheets.",
+    proj2_res:"Eine fertige Lead-Liste für Outreach oder CRM — ohne eine einzige Stunde Handarbeit.",
+    proj3_prob:"Routinenachrichten, Anfragen und Datenpflege fressen täglich Stunden — und alles hängt daran, ob jemand dazu kam.",
+    proj3_sol:"Ein KI-Agent in Telegram empfängt Nachrichten, versteht die Anfrage, ruft die richtigen APIs auf und antwortet dem Kunden automatisch — von der Anfrage bis zur Erinnerung.",
+    proj3_res:"Die Routine läuft auf Autopilot: Das Unternehmen antwortet schneller, und das Team kümmert sich um Kunden statt um Chats.",
+    cont_eyebrow:"Kontakt",cont_h2:"Bereit für mehr Kunden?",cont_sub:"Schreiben Sie mir — wir besprechen Ihren Salon und ich sage Ihnen, was zuerst automatisiert werden sollte.",
+    form_name:"Ihr Name",form_name_ph:"Wie soll ich Sie ansprechen",form_contact:"Instagram, Telegram oder E-Mail",form_contact_ph:"@Name auf Instagram, Telegram oder E-Mail",form_msg:"Nachricht",form_msg_ph:"Erzählen Sie kurz von Ihrem Salon und was Sie verbessern möchten",form_btn:"Anfrage senden",form_note:"Ich antworte persönlich und ohne Spam. Meist innerhalb eines Tages.",
+    foot_rights:"alle Rechte vorbehalten",
+    }
+};
+
+/* ====================================================================
+   ПЕРЕМИКАЧ МОВ
+   ==================================================================== */
+let currentLang = 'uk';
+function applyLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-ph');
+    if(dict[k]!==undefined) el.setAttribute('placeholder', dict[k]);
+  });
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  const cl=document.getElementById('capsLabel');
+  if(cl) cl.textContent = (typeof capsOpen!=='undefined' && capsOpen)?dict.caps_btn_less:dict.caps_btn_more;
+  if(typeof pmodal!=='undefined' && pmodal.classList.contains('open') && lastProj) fillProj(lastProj);
+}
+document.querySelectorAll('#lang button').forEach(b=>{
+  b.addEventListener('click',()=>applyLang(b.dataset.lang));
+});
+
+/* ====================================================================
+   HEADER scroll + mobile menu
+   ==================================================================== */
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled', window.scrollY>20);
+});
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('active');mm.classList.toggle('open');});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');burger.classList.remove('active');}));
+
+/* ====================================================================
+   REVEAL on scroll
+   ==================================================================== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ====================================================================
+   FAQ accordion
+   ==================================================================== */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+/* ====================================================================
+   N8N CONFIG — коли матимеш webhook, встав URL і зміни на true.
+   Заявки з форми підуть у твій n8n.
+   ==================================================================== */
+const USE_N8N = false;                       // <-- зміни на true, коли підключиш n8n
+const N8N_WEBHOOK_URL = "";                  // <-- встав сюди URL свого n8n webhook
+
+/* ====================================================================
+   CONTACT form
+   Якщо n8n підключений (USE_N8N=true) — заявка йде у webhook.
+   Інакше — відкривається поштовий застосунок з готовим листом
+   на пошту NUVO. Це працює без сервера.
+   ==================================================================== */
+const CONTACT_EMAIL="nuvo.automation.studio@gmail.com";
+document.getElementById('formBtn').addEventListener('click',async ()=>{
+  const btn=document.getElementById('formBtn');
+  const name=(document.getElementById('fName')||{}).value||'';
+  const contact=(document.getElementById('fContact')||{}).value||'';
+  const message=(document.getElementById('fMsg')||{}).value||'';
+  const okMsg={uk:'Дякую! Заявку надіслано ✓',en:'Thanks! Request sent ✓',de:'Danke! Anfrage gesendet ✓'};
+  const mailMsg={uk:'Відкриваю пошту… ✉',en:'Opening email… ✉',de:'E-Mail wird geöffnet… ✉'};
+  const errMsg={uk:'Помилка. Напишіть в Instagram 🙏',en:'Error. Message me on Instagram 🙏',de:'Fehler. Schreiben Sie auf Instagram 🙏'};
+  const empty={uk:'Заповніть, будь ласка, поля 🙏',en:'Please fill in the fields 🙏',de:'Bitte füllen Sie die Felder aus 🙏'};
+  if(!name.trim() && !contact.trim() && !message.trim()){
+    btn.textContent=empty[currentLang];btn.style.background='#c0392b';
+    setTimeout(()=>applyLang(currentLang),2200);return;
+  }
+  if(USE_N8N && N8N_WEBHOOK_URL){
+    try{
+      await fetch(N8N_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({type:'contact_form',name,contact,message,lang:currentLang})});
+      btn.textContent=okMsg[currentLang];btn.style.background='#3aa655';
+      ['fName','fContact','fMsg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    }catch(e){btn.textContent=errMsg[currentLang];btn.style.background='#c0392b';}
+  }else{
+    const subjMap={uk:'Заявка з сайту NUVO',en:'Request from NUVO website',de:'Anfrage von der NUVO-Website'};
+    const body=`${{uk:'Імʼя',en:'Name',de:'Name'}[currentLang]}: ${name}\n`+
+               `${{uk:'Контакт',en:'Contact',de:'Kontakt'}[currentLang]}: ${contact}\n\n`+
+               `${{uk:'Повідомлення',en:'Message',de:'Nachricht'}[currentLang]}:\n${message}`;
+    window.location.href=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subjMap[currentLang])}&body=${encodeURIComponent(body)}`;
+    btn.textContent=mailMsg[currentLang];btn.style.background='#3aa655';
+  }
+  setTimeout(()=>applyLang(currentLang),2600);
+});
+
+/* ====================================================================
+   ALL CAPABILITIES toggle
+   ==================================================================== */
+const capsToggle=document.getElementById('capsToggle');
+const capsArrow=document.getElementById('capsArrow');
+const capsLabel=document.getElementById('capsLabel');
+let capsOpen=false;
+capsToggle.addEventListener('click',()=>{
+  capsOpen=!capsOpen;
+  document.querySelectorAll('.hidden-cap').forEach(c=>c.classList.toggle('shown',capsOpen));
+  capsLabel.textContent=capsOpen?I18N[currentLang].caps_btn_less:I18N[currentLang].caps_btn_more;
+  capsArrow.style.transform=capsOpen?'rotate(180deg)':'';
+  capsArrow.style.transition='transform .3s';
+});
+
+/* ====================================================================
+   PROJECT MODAL
+   ==================================================================== */
+const pmodal=document.getElementById('pmodal');
+let lastProj=0;
+function fillProj(n){
+  const d=I18N[currentLang];
+  document.getElementById('pmTitle').textContent=d['proj'+n+'_t'];
+  document.getElementById('pmProb').textContent=d['proj'+n+'_prob'];
+  document.getElementById('pmSol').textContent=d['proj'+n+'_sol'];
+  document.getElementById('pmRes').textContent=d['proj'+n+'_res'];
+  const card=document.querySelector('.proj[data-proj="'+n+'"]');
+  document.getElementById('pmImg').src=card.querySelector('img').src;
+  document.getElementById('pmTags').innerHTML=card.querySelector('.proj-tags').innerHTML;
+}
+function openProj(n){
+  lastProj=n;fillProj(n);
+  pmodal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeProj(){
+  pmodal.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.proj[data-proj]').forEach(c=>{
+  c.addEventListener('click',()=>openProj(c.dataset.proj));
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProj(c.dataset.proj);}});
+});
+document.getElementById('pmClose').addEventListener('click',closeProj);
+pmodal.addEventListener('click',e=>{if(e.target===pmodal)closeProj();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pmodal.classList.contains('open'))closeProj();});
+document.getElementById('pmCta').addEventListener('click',closeProj);
+
+/* init */
+/* Автовизначення мови браузера: de → німецька, uk/ru → українська, інші → англійська */
+const browserLang=(navigator.language||'uk').slice(0,2).toLowerCase();
+applyLang(browserLang==='de'?'de':(browserLang==='uk'||browserLang==='ru')?'uk':browserLang==='en'?'en':'en');
+</script>
+</body>
+</html>
