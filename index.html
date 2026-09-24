@@ -3,64 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-<title>NUVO — salon automation</title>
-<meta name="description" content="AI та автоматизація для салонів краси. Менше рутини, більше клієнтів.">
+<meta name="color-scheme" content="dark only">
+<meta name="supported-color-schemes" content="dark">
+<title>NUVO — AI + CRM автоматизація для салонів краси</title>
+<meta name="description" content="NUVO автоматизує Direct, онлайн-запис, нагадування та реактивацію клієнтів для beauty-бізнесу. Перші 14 днів — безкоштовно.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NUVO — автоматизація салонів краси">
-<meta property="og:description" content="AI відповідає клієнтам за 3–5 секунд, записує та повертає їх. Менше рутини — більше записів.">
-<meta property="og:site_name" content="NUVO">
+<meta property="og:description" content="Клієнт пише. NUVO допомагає автоматизувати роботу з клієнтами: Direct, запис, нагадування та реактивацію.">
+<meta property="og:site_name" content="NUVO Automation">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NUVO — автоматизація салонів краси">
-<meta name="twitter:description" content="AI відповідає клієнтам за 3–5 секунд, записує та повертає їх. Менше рутини — більше записів.">
-<meta name="theme-color" content="#f4f4f3">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1c1a'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<meta name="twitter:description" content="Клієнт пише. NUVO допомагає автоматизувати Direct, запис, нагадування та реактивацію клієнтів.">
+<meta name="theme-color" content="#090a0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090a0c'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='%23ffd400' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='900' fill='%23ffffff' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
-  color-scheme:light only;
-  --bg:#f4f4f3;
-  --bg-2:#ececeb;
-  --surface:#ffffff;
-  --ink:#1c1c1a;
-  --ink-2:#55554f;
-  --ink-3:#8a8a82;
-  --line:#e2e2df;
-  --line-2:#d4d4cf;
-  --accent:#1c1c1a;
-  --accent-soft:#2b2b28;
+  color-scheme:dark only;
+  --bg:#0d0d0c;
+  --bg-2:#131211;
+  --surface:#171614;
+  --ink:#ffffff;
+  --ink-2:#a5a29b;
+  --ink-3:#6b6862;
+  --line:#252422;
+  --line-2:#35332f;
+  --accent:#f5c842;
+  --accent-soft:#ffd75e;
+  --accent-dim:rgba(245,200,66,.12);
+  --on-accent:#0d0d0c;
   --radius:18px;
   --radius-sm:12px;
   --maxw:1180px;
-  --shadow-sm:0 1px 2px rgba(28,28,26,.04),0 2px 8px rgba(28,28,26,.04);
-  --shadow:0 8px 30px rgba(28,28,26,.07);
-  --shadow-lg:0 24px 60px rgba(28,28,26,.10);
-  --display:'Sora',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.35),0 2px 10px rgba(0,0,0,.3);
+  --shadow:0 8px 30px rgba(0,0,0,.45);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.55);
+  --display:'Archivo Black',sans-serif;
+  --heading:'Sora',sans-serif;
   --body:'Manrope',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;background:#f4f4f3 !important;color-scheme:light only}
+html{scroll-behavior:smooth;background:#1a1814 !important;color-scheme:dark only}
 section[id]{scroll-margin-top:88px}
 body{
   font-family:var(--body);
-  background:#f4f4f3 !important;
-  color:#1c1c1a !important;
+  background:
+    radial-gradient(900px 520px at 84% -4%, rgba(245,200,66,.07) 0%, transparent 58%),
+    radial-gradient(700px 460px at 4% 26%, rgba(245,200,66,.035) 0%, transparent 55%),
+    radial-gradient(800px 600px at 50% 104%, rgba(245,200,66,.03) 0%, transparent 60%),
+    linear-gradient(172deg,#151412 0%, #111110 32%, #0e0e0d 66%, #0b0b0a 100%) !important;
+  background-attachment:fixed !important;
+  color:var(--ink) !important;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-/* subtle grain + gradient atmosphere */
+/* soft warm atmosphere */
 body::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(1200px 600px at 80% -5%, rgba(255,255,255,.9), transparent 60%),
-    radial-gradient(900px 500px at -10% 30%, rgba(255,255,255,.55), transparent 55%);
+    radial-gradient(700px 360px at 88% 12%, rgba(201,169,97,.05), transparent 66%),
+    radial-gradient(520px 300px at 2% 52%, rgba(201,169,97,.03), transparent 62%);
 }
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
-h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.08}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.005em;line-height:1.04;text-transform:uppercase}
+h3{font-family:var(--heading);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+h1 i,h2 i{font-style:normal;color:var(--accent)}
 a{color:inherit;text-decoration:none}
 section{position:relative;z-index:1}
 .eyebrow{
@@ -75,23 +85,23 @@ section{position:relative;z-index:1}
   font-size:15px;padding:14px 24px;border-radius:999px;cursor:pointer;border:1px solid transparent;
   transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,box-shadow .25s,color .25s;white-space:nowrap;
 }
-.btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow),0 0 0 5px rgba(28,28,26,.07);background:var(--accent-soft)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
-.btn-ghost:hover{transform:translateY(-2px);background:#fff;border-color:var(--ink);box-shadow:var(--shadow-sm)}
+.btn-primary{background:var(--accent);color:var(--on-accent);font-weight:700;box-shadow:0 2px 16px rgba(245,200,66,.22)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 26px rgba(245,200,66,.32);background:var(--accent-soft)}
+.btn-ghost{background:rgba(255,252,245,.03);color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{transform:translateY(-2px);background:var(--surface);border-color:var(--accent);box-shadow:var(--shadow-sm)}
 .btn svg{width:17px;height:17px}
 
 /* ---------- header ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   backdrop-filter:saturate(140%) blur(14px);
-  background:rgba(244,244,243,.72);
+  background:rgba(13,13,12,.75);
   border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
 }
-header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
+header.scrolled{border-color:var(--line);background:rgba(10,10,9,.92)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.03em;display:flex;align-items:baseline;gap:9px}
-.logo .dotai{color:var(--ink)}
+.logo .dotai{color:var(--accent)}
 .logo .tag{font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.05em;color:var(--ink-3);text-transform:lowercase}
 .nav-links{display:flex;align-items:center;gap:34px}
 .nav-links a{font-size:15px;color:var(--ink-2);font-weight:500;transition:color .2s;position:relative}
@@ -105,19 +115,19 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
   font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.03em;color:var(--ink-3);
   background:transparent;border:none;cursor:pointer;padding:6px 11px;border-radius:999px;transition:all .2s;
 }
-.lang button.active{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+.lang button.active{background:rgba(255,252,245,.1);color:var(--ink);box-shadow:none}
 .lang button:hover:not(.active){color:var(--ink-2)}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 
 /* mobile menu */
 .mobile-menu{
-  position:fixed;inset:72px 0 auto 0;background:rgba(244,244,243,.98);backdrop-filter:blur(12px);
+  position:fixed;inset:72px 0 auto 0;background:rgba(11,11,10,.98);backdrop-filter:blur(12px);
   z-index:99;transform:translateY(-120%);transition:transform .4s cubic-bezier(.2,.8,.2,1);
   border-bottom:1px solid var(--line);padding:24px;
 }
 .mobile-menu.open{transform:translateY(0)}
-.mobile-menu a{display:block;padding:14px 4px;font-size:18px;font-family:var(--display);font-weight:500;border-bottom:1px solid var(--line)}
+.mobile-menu a{display:block;padding:14px 4px;font-size:18px;font-family:var(--heading);font-weight:600;border-bottom:1px solid var(--line)}
 .mobile-menu a:last-of-type{border-bottom:none}
 
 /* ---------- reveal animation ---------- */
@@ -130,19 +140,18 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* ---------- HERO ---------- */
-.hero{padding:128px 0 64px;position:relative;background:#f4f4f3 !important}
+.hero{padding:128px 0 64px;position:relative;background:transparent !important}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
 .hero h1{font-size:clamp(38px,5.4vw,66px);font-weight:700;margin-bottom:24px}
-.hero h1 .hl{position:relative;white-space:nowrap}
-.hero h1 .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;height:12px;background:var(--bg-2);z-index:-1;border-radius:3px}
+.hero h1 .hl{color:var(--accent);white-space:nowrap}
 .hero-sub{font-size:clamp(16px,2vw,19px);color:var(--ink-2);max-width:520px;margin-bottom:34px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
 .hero-meta{display:flex;align-items:center;gap:14px;color:var(--ink-3);font-size:14px}
 .hero-chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
-.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--line);padding:8px 13px 8px 10px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);padding:8px 13px 8px 10px;border-radius:999px;box-shadow:var(--shadow-sm)}
 .chip svg{width:15px;height:15px;color:var(--ink-3);flex-shrink:0}
-.chip-free{background:var(--ink);color:#fff;border-color:var(--ink)}
-.chip-free svg{color:#fff}
+.chip-free{background:var(--accent-dim);color:var(--accent);border-color:rgba(245,200,66,.35)}
+.chip-free svg{color:var(--accent)}
 .hero-meta .dots{display:flex;gap:6px}
 .hero-meta .dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2);display:block}
 .hero-meta .dots i:nth-child(1){background:var(--ink-3)}
@@ -150,20 +159,20 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 /* hero visual — stylized dashboard mock */
 .hero-visual{position:relative}
 .mock{
-  background:linear-gradient(160deg,#fff,#f7f7f6);border:1px solid var(--line);border-radius:24px;
+  background:linear-gradient(160deg,var(--surface),var(--bg-2));border:1px solid var(--line);border-radius:24px;
   padding:22px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
 }
 .mock::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 90% 0%,rgba(28,28,26,.04),transparent 70%)}
 .mock-top{display:flex;align-items:center;gap:7px;margin-bottom:18px}
 .mock-top i{width:10px;height:10px;border-radius:50%;background:var(--line-2)}
-.mock-row{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;background:#fff;border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow-sm)}
+.mock-row{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:10px;box-shadow:var(--shadow-sm)}
 .mock-row .ic{width:34px;height:34px;border-radius:9px;background:var(--bg-2);display:grid;place-items:center;flex-shrink:0}
 .mock-row .ic svg{width:18px;height:18px;color:var(--ink)}
 .mock-row .tx{flex:1}
-.mock-row .tx b{font-family:var(--display);font-size:13.5px;font-weight:600;display:block}
+.mock-row .tx b{font-family:var(--heading);font-size:13.5px;font-weight:700;display:block}
 .mock-row .tx span{font-size:12px;color:var(--ink-3)}
-.mock-row .badge{font-size:11px;font-weight:600;color:#fff;background:var(--ink);padding:4px 9px;border-radius:999px;font-family:var(--body)}
-.mock-row .badge.g{background:#e7e7e4;color:var(--ink-2)}
+.mock-row .badge{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(245,200,66,.26);padding:4px 9px;border-radius:999px;font-family:var(--body)}
+.mock-row .badge.g{background:rgba(255,252,245,.06);border:1px solid var(--line);color:var(--ink-3)}
 .pulse{animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
 .float{animation:float 6s ease-in-out infinite}
@@ -174,7 +183,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .platforms-in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between}
 .platforms-label{font-size:13px;font-weight:600;color:var(--ink-3);white-space:nowrap}
 .platforms-row{display:flex;gap:10px;flex-wrap:wrap}
-.pchip{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+.pchip{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:999px}
 .pchip svg{width:16px;height:16px;color:var(--ink)}
 
 /* ---------- generic section ---------- */
@@ -183,7 +192,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .section-head h2{font-size:clamp(28px,3.8vw,46px);margin-bottom:16px}
 .section-head p{font-size:17px;color:var(--ink-2)}
-.alt{background:var(--bg-2)}
+.alt{background:rgba(255,252,245,.022)}
 
 /* problems */
 .prob-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
@@ -194,14 +203,14 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .prob h3{font-size:17px;margin-bottom:8px;font-weight:600}
 .prob p{font-size:14.5px;color:var(--ink-2)}
 .prob-foot{margin-top:34px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
-.prob-foot .line{font-family:var(--display);font-size:clamp(20px,2.6vw,28px);font-weight:600}
+.prob-foot .line{font-family:var(--heading);font-size:clamp(20px,2.6vw,28px);font-weight:700}
 
 /* results */
 .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .res{display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
-.res .chk{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.res .chk{width:30px;height:30px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(245,200,66,.28);color:var(--accent);display:grid;place-items:center;flex-shrink:0;margin-top:2px}
 .res .chk svg{width:16px;height:16px}
-.res b{font-family:var(--display);font-size:16px;font-weight:600;display:block;margin-bottom:4px}
+.res b{font-family:var(--heading);font-size:16px;font-weight:700;display:block;margin-bottom:4px}
 .res span{font-size:14px;color:var(--ink-2)}
 
 /* services */
@@ -209,7 +218,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .serv{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
 .serv:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--ink)}
 .serv .ic{width:48px;height:48px;border-radius:13px;background:var(--bg-2);display:grid;place-items:center;margin-bottom:20px;color:var(--ink);transition:background .3s,color .3s}
-.serv:hover .ic{background:var(--ink);color:#fff}
+.serv:hover .ic{background:var(--accent);color:var(--on-accent)}
 .serv .ic svg{width:24px;height:24px}
 .serv h3{font-size:18px;margin-bottom:10px;font-weight:600}
 .serv p{font-size:14.5px;color:var(--ink-2)}
@@ -221,7 +230,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .flow-step span{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.3}
 .fic{width:52px;height:52px;border-radius:15px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow-sm)}
 .fic svg{width:24px;height:24px}
-.fic.ok{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fic.ok{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .flow-arrow{color:var(--line-2);font-size:20px;font-weight:300;flex-shrink:0}
 @media (max-width:640px){
   .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 10px}
@@ -235,7 +244,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;counter-reset:step;position:relative}
 .proc-step{padding:28px 22px;position:relative;border-left:1px solid var(--line)}
 .proc-step:first-child{border-left:none}
-.proc-step .n{font-family:var(--display);font-size:14px;font-weight:700;color:#fff;background:var(--ink);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}
+.proc-step .n{font-family:var(--heading);font-size:14px;font-weight:700;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(245,200,66,.28);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}
 .proc-step h3{font-size:16.5px;margin-bottom:8px;font-weight:600}
 .proc-step p{font-size:14px;color:var(--ink-2)}
 
@@ -244,7 +253,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .fw{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
 .fw:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--ink)}
 .fw-emoji{font-size:28px}
-.fw span:last-child{font-family:var(--display);font-size:13.5px;font-weight:600}
+.fw span:last-child{font-family:var(--heading);font-size:13.5px;font-weight:700}
 
 /* about me */
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
@@ -262,7 +271,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .proj-img{aspect-ratio:16/9;background:#101012;overflow:hidden}
 .proj-img img{width:100%;height:100%;object-fit:cover;display:block}
 .proj-body{padding:20px 22px 22px}
-.proj-body b{font-family:var(--display);font-size:17px;font-weight:600;display:block;margin-bottom:8px}
+.proj-body b{font-family:var(--heading);font-size:17px;font-weight:700;display:block;margin-bottom:8px}
 .proj-body>span{font-size:14px;color:var(--ink-2);display:block;margin-bottom:14px}
 .proj-tags{display:flex;flex-wrap:wrap;gap:7px}
 .proj-tags i{font-style:normal;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--bg-2);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
@@ -273,12 +282,12 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 /* project modal */
 .pmodal{position:fixed;inset:0;z-index:120;background:rgba(28,28,26,.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .3s}
 .pmodal.open{opacity:1;pointer-events:auto}
-.pmodal-box{position:relative;background:#fff;border-radius:24px;max-width:720px;width:100%;max-height:calc(100dvh - 36px);overflow-y:auto;transform:translateY(18px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-lg)}
+.pmodal-box{position:relative;background:var(--surface);border-radius:24px;max-width:720px;width:100%;max-height:calc(100dvh - 36px);overflow-y:auto;transform:translateY(18px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-lg)}
 .pmodal.open .pmodal-box{transform:none}
 .pmodal-box::-webkit-scrollbar{width:6px}
 .pmodal-box::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
 .pmodal-close{position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);cursor:pointer;display:grid;place-items:center;color:var(--ink);transition:transform .2s,background .2s}
-.pmodal-close:hover{transform:scale(1.06);background:#fff}
+.pmodal-close:hover{transform:scale(1.06);background:var(--accent);color:var(--on-accent)}
 .pmodal-close svg{width:18px;height:18px}
 .pmodal-img{aspect-ratio:16/9;background:#101012}
 .pmodal-img img{width:100%;height:100%;object-fit:cover;display:block}
@@ -311,19 +320,19 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .ba-col{padding:18px;border-radius:14px;border:1px solid var(--line)}
 .ba-col.before{background:var(--bg)}
-.ba-col.after{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ba-col.after{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .ba-col h4{font-family:var(--body);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;opacity:.7;font-weight:600}
 .ba-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
 .ba-col li{font-size:13.5px;display:flex;gap:8px;align-items:flex-start}
 .ba-col li svg{width:14px;height:14px;flex-shrink:0;margin-top:3px}
 .case-right{background:linear-gradient(165deg,var(--bg-2),var(--bg));display:grid;place-items:center;padding:40px;position:relative}
 /* phone mock */
-.phone{width:200px;height:400px;background:#fff;border-radius:30px;border:8px solid var(--ink);box-shadow:var(--shadow-lg);overflow:hidden;position:relative}
+.phone{width:200px;height:400px;background:var(--surface);border-radius:30px;border:8px solid var(--line-2);box-shadow:var(--shadow-lg);overflow:hidden;position:relative}
 .phone .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2}
 .phone .pchat{padding:30px 12px 12px;display:flex;flex-direction:column;gap:8px}
 .phone .pb{font-size:10.5px;line-height:1.4;padding:8px 11px;border-radius:13px;max-width:85%;animation:msgin .5s ease both}
 .phone .pb.left{background:var(--bg-2);color:var(--ink);border-bottom-left-radius:4px;align-self:flex-start}
-.phone .pb.right{background:var(--ink);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.phone .pb.right{background:var(--accent);color:var(--on-accent);border-bottom-right-radius:4px;align-self:flex-end}
 .phone .pb:nth-child(2){animation-delay:.5s}
 .phone .pb:nth-child(3){animation-delay:1.1s}
 .phone .pb:nth-child(4){animation-delay:1.7s}
@@ -335,7 +344,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:28px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:transform .3s,box-shadow .3s}
 .stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.stat .big{font-family:var(--display);font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:14px}
+.stat .big{font-family:var(--display);font-size:46px;font-weight:400;letter-spacing:-.02em;line-height:1;margin-bottom:14px;color:var(--accent)}
 .stat .big small{font-size:18px;font-weight:600;color:var(--ink-3);margin-left:4px}
 .stat p{font-size:14px;color:var(--ink-2);margin-bottom:14px}
 .stat .src{font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:12px}
@@ -346,7 +355,7 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s}
 .faq-item.open{border-color:var(--line-2)}
-.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--display);font-size:16.5px;font-weight:500;color:var(--ink)}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--heading);font-size:16.5px;font-weight:600;color:var(--ink)}
 .faq-q .pm{flex-shrink:0;width:24px;height:24px;position:relative;transition:transform .3s}
 .faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--ink);border-radius:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
 .faq-q .pm::before{width:13px;height:2px}
@@ -362,19 +371,19 @@ header.scrolled{border-color:var(--line);background:rgba(244,244,243,.85)}
 .contact-cards{display:flex;flex-direction:column;gap:14px}
 .contact-social{display:flex;gap:12px;margin-top:4px}
 .csoc{width:52px;height:52px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow-sm);transition:background .25s,color .25s,transform .25s,border-color .25s}
-.csoc:hover{background:var(--ink);color:#fff;transform:translateY(-3px);border-color:var(--ink)}
+.csoc:hover{background:var(--accent);color:var(--on-accent);transform:translateY(-3px);border-color:var(--accent)}
 .csoc svg{width:23px;height:23px}
 .cc{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .3s,box-shadow .3s,border-color .3s}
 .cc:hover{transform:translateX(4px);box-shadow:var(--shadow-sm);border-color:var(--ink)}
 .cc .ic{width:44px;height:44px;border-radius:12px;background:var(--bg-2);display:grid;place-items:center;color:var(--ink);flex-shrink:0}
 .cc .ic svg{width:21px;height:21px}
 .cc .l{font-size:12.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
-.cc .v{font-family:var(--display);font-size:16px;font-weight:500}
+.cc .v{font-family:var(--heading);font-size:16px;font-weight:600}
 .cform{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:var(--shadow-sm)}
 .cform label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
 .cform .field{margin-bottom:18px}
 .cform input,.cform textarea{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-family:var(--body);font-size:15px;color:var(--ink);background:var(--bg);transition:border-color .2s,background .2s}
-.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);background:var(--surface)}
 .cform textarea{resize:vertical;min-height:110px}
 .cform .btn{width:100%;justify-content:center}
 .form-note{font-size:12.5px;color:var(--ink-3);margin-top:14px;text-align:center}
@@ -389,41 +398,41 @@ footer{padding:40px 0;border-top:1px solid var(--line)}
 .cap:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ink)}
 .cap .ic{width:42px;height:42px;border-radius:11px;background:var(--bg-2);display:grid;place-items:center;color:var(--ink);flex-shrink:0}
 .cap .ic svg{width:21px;height:21px}
-.cap b{font-family:var(--display);font-size:15.5px;font-weight:600;display:block;margin-bottom:5px}
+.cap b{font-family:var(--heading);font-size:15.5px;font-weight:700;display:block;margin-bottom:5px}
 .cap span{font-size:13.5px;color:var(--ink-2)}
 .serv.hidden-cap{display:none}
 .serv.hidden-cap.shown{display:block;animation:msgin .4s ease both}
 .caps-more{text-align:center;margin-top:30px}
 
 /* ---------- FINAL CTA BAND ---------- */
-.cta-band{background:#1c1c1a;padding:76px 0;text-align:center}
-.cta-badge{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1c1c1a;background:#fff;padding:9px 18px;border-radius:999px;margin-bottom:20px}
-.cta-band-in h2{color:#fff;font-size:clamp(26px,3.6vw,42px);margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
-.cta-band-in p{color:#9a9a92;font-size:16.5px;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-band{background:linear-gradient(180deg,rgba(22,21,19,.6),rgba(13,13,12,.85));padding:76px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cta-badge{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(245,200,66,.3);padding:9px 18px;border-radius:999px;margin-bottom:20px}
+.cta-band-in h2{color:var(--ink);font-size:clamp(26px,3.6vw,42px);margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+.cta-band-in p{color:var(--ink-2);font-size:16.5px;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
 .btn-lg{padding:16px 32px;font-size:16px}
 
 /* ---------- DARK FOOTER ---------- */
-footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;z-index:1}
+footer{background:linear-gradient(180deg,rgba(13,13,12,.7),rgba(9,9,8,.95));color:var(--ink-2);padding:0;border-top:1px solid var(--line);position:relative;z-index:1}
 .foot-top{padding:58px 0 44px;border-bottom:1px solid rgba(255,255,255,.1)}
 .foot-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
-.foot-brand .logo{font-size:24px;color:#fff;margin-bottom:14px}
-.foot-brand .logo .dotai{color:#fff}
-.foot-brand .logo .tag{color:#8a8a82}
-.foot-brand p{font-size:15px;color:#9a9a92;max-width:340px}
+.foot-brand .logo{font-size:24px;color:var(--ink);margin-bottom:14px}
+.foot-brand .logo .dotai{color:var(--accent)}
+.foot-brand .logo .tag{color:var(--ink-3)}
+.foot-brand p{font-size:15px;color:var(--ink-2);max-width:340px}
 .foot-contacts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .foot-social{grid-column:1/-1;display:flex;gap:12px;margin-top:2px}
-.foot-social .soc{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:#fff;transition:background .25s,transform .25s,border-color .25s}
-.foot-social .soc:hover{background:#fff;color:#1c1c1a;transform:translateY(-3px);border-color:#fff}
+.foot-social .soc{width:46px;height:46px;border-radius:50%;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.2);display:grid;place-items:center;color:var(--ink);transition:background .25s,transform .25s,border-color .25s}
+.foot-social .soc:hover{background:var(--accent);color:var(--on-accent);transform:translateY(-3px);border-color:var(--accent)}
 .foot-social .soc svg{width:21px;height:21px}
 .fcc{display:flex;align-items:center;gap:13px;padding:15px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;transition:background .25s,border-color .25s,transform .25s}
 .fcc:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
-.fcc .ic{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;flex-shrink:0}
+.fcc .ic{width:40px;height:40px;border-radius:11px;background:rgba(245,200,66,.1);display:grid;place-items:center;color:var(--accent);flex-shrink:0}
 .fcc .ic svg{width:19px;height:19px}
-.fcc .l{font-size:11.5px;color:#8a8a82;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
-.fcc .v{font-family:var(--display);font-size:14.5px;font-weight:500;color:#fff}
+.fcc .l{font-size:11.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:2px}
+.fcc .v{font-family:var(--heading);font-size:14.5px;font-weight:600;color:var(--ink)}
 .fcc.wide{grid-column:1/-1}
 .fcc .v.nowrap{white-space:nowrap}
-.foot-bot{padding:22px 0;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;color:#8a8a82;font-size:13.5px;text-align:center}
+.foot-bot{padding:22px 0;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;color:var(--ink-3);font-size:13.5px;text-align:center}
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
@@ -446,11 +455,6 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   .proc-step:first-child{border-top:none}
 }
 @media (max-width:760px){
-  body::before{display:none}
-  .hero,.hero-text,section{background:#f4f4f3}
-  .hero h1{color:#1c1c1a !important}
-  .hero-sub{color:#55554f !important}
-  .eyebrow{color:#8a8a82 !important}
   .hero-text{position:relative;z-index:2}
   .nav-links{display:none}
   .nav-right .btn-primary{display:none}
@@ -458,7 +462,6 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   .hero{padding:108px 0 50px}
   .hero h1{font-size:34px;line-height:1.12;margin-bottom:20px}
   .hero h1 .hl{white-space:normal}
-  .hero h1 .hl::after{display:none}
   .hero-sub{font-size:16px;margin-bottom:28px}
   .hero-cta{gap:12px;margin-bottom:32px}
   .hero-cta .btn{width:100%;justify-content:center}
@@ -473,6 +476,158 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   .ba{grid-template-columns:1fr}
   .foot-contacts{grid-template-columns:1fr}
 }
+
+
+/* ==================== NUVO REBRAND ==================== */
+:root{
+  --bg:#090a0c;
+  --bg-2:#0e1013;
+  --surface:#121419;
+  --ink:#f7f7f5;
+  --ink-2:#b9bbc0;
+  --ink-3:#777b83;
+  --line:#252830;
+  --line-2:#343842;
+  --accent:#ffd400;
+  --accent-soft:#ffe14d;
+  --accent-dim:rgba(255,212,0,.11);
+  --on-accent:#090a0c;
+  --radius:16px;
+  --shadow:0 16px 45px rgba(0,0,0,.48);
+  --shadow-lg:0 32px 90px rgba(0,0,0,.64),0 0 60px rgba(255,212,0,.05);
+}
+html{background:#090a0c!important}
+body{
+  background:
+    radial-gradient(850px 520px at 84% 4%,rgba(255,212,0,.085),transparent 60%),
+    radial-gradient(720px 480px at 5% 38%,rgba(255,212,0,.035),transparent 62%),
+    linear-gradient(180deg,#0b0d10 0%,#090a0c 48%,#07080a 100%)!important;
+}
+body::before{background:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 68%);position:fixed}
+header{background:rgba(9,10,12,.78)}
+header.scrolled{background:rgba(9,10,12,.94);border-color:rgba(255,212,0,.12)}
+.nuvo-logo{align-items:center;gap:11px}
+.nuvo-word{font-family:var(--display);font-size:22px;letter-spacing:.07em;color:#fff;text-shadow:0 0 24px rgba(255,212,0,.12)}
+.nuvo-logo .tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border-left:1px solid rgba(255,212,0,.35);padding-left:11px}
+.hero{min-height:760px;display:flex;align-items:center;overflow:hidden}
+.hero::before{content:"";position:absolute;width:560px;height:560px;right:-120px;top:70px;border:1px solid rgba(255,212,0,.12);border-radius:50%;box-shadow:0 0 90px rgba(255,212,0,.05),inset 0 0 80px rgba(255,212,0,.03);pointer-events:none}
+.hero::after{content:"NUVO";position:absolute;right:-34px;bottom:-30px;font-family:var(--display);font-size:clamp(120px,18vw,300px);line-height:.8;letter-spacing:-.06em;color:rgba(255,255,255,.018);pointer-events:none}
+.hero h1{letter-spacing:-.02em}
+.hero h1 .hl{color:var(--accent);text-shadow:0 0 36px rgba(255,212,0,.12)}
+.eyebrow{color:#9ca0a8}
+.eyebrow::before{background:var(--accent)}
+.btn-primary{background:var(--accent);color:#090a0c;box-shadow:0 8px 28px rgba(255,212,0,.16)}
+.btn-primary:hover{background:var(--accent-soft);box-shadow:0 12px 36px rgba(255,212,0,.26)}
+.btn-ghost:hover{border-color:rgba(255,212,0,.65);color:var(--accent)}
+.chip-free{box-shadow:inset 0 0 20px rgba(255,212,0,.03)}
+.mock{border-color:#2b2e35;background:linear-gradient(160deg,#15171c,#0c0e11);box-shadow:0 34px 90px rgba(0,0,0,.65),0 0 0 1px rgba(255,212,0,.025)}
+.mock::after{content:"NUVO / AUTOMATION";position:absolute;right:20px;top:18px;font:700 9px/1 var(--body);letter-spacing:.18em;color:rgba(255,212,0,.48)}
+.mock-row{background:#101217;border-color:#24272e}
+.mock-row:hover{border-color:rgba(255,212,0,.28)}
+.platforms{background:#0b0d10;border-color:#20232a}
+.prob,.res,.serv,.cap,.proc-step,.faq-item,.cform,.cc{background:linear-gradient(180deg,#121419,#0e1013);border-color:#252830}
+.serv:hover,.prob:hover{border-color:rgba(255,212,0,.42)}
+.cta-band{background:linear-gradient(120deg,#0d0f12,#14130d 55%,#0b0d10);border-top:1px solid rgba(255,212,0,.14);border-bottom:1px solid rgba(255,212,0,.14)}
+.cta-badge{border-color:rgba(255,212,0,.35);background:rgba(255,212,0,.08);color:var(--accent)}
+.nuvo-contact{border-color:rgba(255,212,0,.18)}
+.nuvo-contact:hover{border-color:rgba(255,212,0,.5)}
+footer{background:#07080a;border-top:1px solid rgba(255,212,0,.12)}
+/* Floating Instagram CTA uses a clear Instagram action label */
+.nuvo-float{position:fixed;right:22px;bottom:22px;z-index:95;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:var(--accent);color:#090a0c;font:800 13px/1 var(--body);box-shadow:0 14px 40px rgba(0,0,0,.48),0 0 28px rgba(255,212,0,.18);transition:transform .2s,box-shadow .2s}
+.nuvo-float:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 34px rgba(255,212,0,.28)}
+.nuvo-float svg{width:18px;height:18px}
+@media(max-width:760px){.hero{min-height:auto}.hero::before{width:360px;height:360px;right:-180px;top:100px}.nuvo-logo .tag{display:none}.nuvo-float{right:14px;bottom:14px;padding:12px}.nuvo-float span{display:none}}
+
+
+/* ==================== SALES + MOBILE OPTIMIZATION ==================== */
+/* tap targets and compact navigation */
+.logo{min-height:44px}
+.nav-links a{display:flex;align-items:center;min-height:44px}
+.lang button{min-width:44px;min-height:44px;padding:6px 10px}
+.pmodal-close{min-width:44px;min-height:44px}
+
+.hero-grid>*{min-width:0}
+.hero h1 .hl{white-space:normal}
+.hero-cta{margin:0 0 22px}
+.hero-chips{margin:0 0 24px}
+.hero-meta{font-weight:600}
+.direct-panel{background:linear-gradient(160deg,#17160f,#0d0f12 72%);border:1px solid rgba(255,212,0,.25);border-radius:24px;padding:30px;box-shadow:0 24px 70px rgba(0,0,0,.38)}
+.direct-kicker{display:block;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.13em;margin-bottom:10px}
+.direct-panel h3{font-family:var(--display);font-size:clamp(26px,3vw,38px);text-transform:uppercase;margin-bottom:12px}
+.direct-panel>p{color:var(--ink-2);margin-bottom:22px}
+.direct-steps{display:grid;gap:10px;margin-bottom:22px}
+.direct-steps>div{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--line);background:#0d0f12;border-radius:12px}
+.direct-steps b{color:var(--accent);font:800 12px/1 var(--body);letter-spacing:.08em}
+.direct-steps span{font-size:14px;font-weight:650}
+.direct-btn{width:100%;justify-content:center;margin-bottom:10px}
+.direct-panel small{display:block;text-align:center;color:var(--ink-3);font-size:12px}
+.float-mobile{display:none}
+.mobile-lang{display:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a,button{touch-action:manipulation}
+@media(max-width:1120px){
+  .nav-links{display:none}
+  .nav-right .btn-primary{display:none}
+  .burger{display:flex;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .hero-visual{max-width:520px;margin:0 auto;width:100%}
+}
+@media(max-width:760px){
+  body{padding-bottom:74px;background-attachment:scroll !important}
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav{height:68px}
+  .mobile-menu{inset:68px 0 auto 0}
+  .nav-right{gap:8px}
+  .nav-right>.lang{display:none}
+  .mobile-lang{display:flex;gap:8px;padding-top:18px}
+  .mobile-lang button{flex:1;min-height:44px;border:1px solid var(--line-2);border-radius:12px;background:#121419;color:var(--ink-2);font:700 13px/1 var(--body)}
+  .mobile-lang button.active{border-color:var(--accent);color:var(--accent);background:rgba(255,212,0,.08)}
+  .hero{padding:92px 0 38px}
+  .hero-grid{gap:24px}
+  .hero h1{font-size:clamp(34px,10vw,44px);line-height:1.03;margin-bottom:16px}
+  .hero-sub{font-size:16px;line-height:1.55;margin-bottom:22px}
+  .hero-cta{gap:10px;margin-bottom:18px}
+  .hero-cta .btn{min-height:54px}
+  .hero-chips{gap:7px;margin-bottom:18px}
+  .chip{font-size:12px;padding:7px 10px}
+  .hero-meta{font-size:12.5px;line-height:1.4}
+  .hero-visual{max-width:100%;margin-top:2px}
+  .mock{padding:15px;border-radius:18px}
+  .mock-row{padding:10px;margin-bottom:8px}
+  .mock-row .tx b{font-size:12.5px}
+  .mock-row .tx span{font-size:11.5px}
+  .mock-row .badge{font-size:10px;padding:4px 7px}
+  .section{padding:46px 0}
+  .section-head{margin-bottom:28px}
+  .section-head h2{font-size:clamp(30px,9vw,42px)}
+  .cta-band{padding:54px 0}
+  .cta-band .btn{width:100%;justify-content:center;min-height:54px}
+  .direct-panel{padding:22px 18px;border-radius:18px}
+  .cform{display:none}
+  .nuvo-float{left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));min-height:54px;justify-content:center;border-radius:16px;padding:0 16px;box-shadow:0 12px 40px rgba(0,0,0,.62),0 0 26px rgba(255,212,0,.18)}
+  .nuvo-float .float-desktop{display:none}
+  .nuvo-float .float-mobile{display:inline;font-size:12px;letter-spacing:.02em}
+  .nuvo-float svg{width:19px;height:19px}
+  .faq-q{min-height:58px}
+}
+@media(max-width:420px){
+  .eyebrow{font-size:11px;letter-spacing:.11em;margin-bottom:13px}
+  .hero h1{font-size:35px}
+  .hero-cta .btn{font-size:14px;padding-left:16px;padding-right:16px}
+  .hero-chips{display:grid;grid-template-columns:1fr 1fr}
+  .chip{width:100%;min-width:0;justify-content:flex-start}
+  .chip-free{grid-column:1/-1;justify-content:center}
+  .mock .mock-row:nth-child(n+4){display:none}
+  .platforms{padding:18px 0}
+  .platforms-row{gap:7px}
+  .pchip{font-size:12px;padding:7px 10px}
+  .fw-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:350px){
+  .hero h1{font-size:32px}
+  .wrap{padding-left:14px;padding-right:14px}
+}
+
 </style>
 </head>
 <body>
@@ -480,7 +635,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
 <!-- ============ HEADER ============ -->
 <header id="header">
   <div class="wrap nav">
-    <a href="#" class="logo">NUVO<span class="tag">salon automation</span></a>
+    <a href="#" class="logo nuvo-logo"><span class="nuvo-word">NUVO</span><span class="tag">AI AUTOMATION</span></a>
     <nav class="nav-links">
       <a href="#problems" data-i18n="nav_problems">Проблеми</a>
       <a href="#services" data-i18n="nav_services">Послуги</a>
@@ -495,7 +650,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
         <button data-lang="en">EN</button>
         <button data-lang="de">DE</button>
       </div>
-      <a href="#contact" class="btn btn-primary" data-i18n="nav_cta">Консультація</a>
+      <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="nav_cta">Консультація</a>
       <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -507,31 +662,36 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <a href="#portfolio" data-i18n="nav_case">Портфоліо</a>
   <a href="#faq" data-i18n="nav_faq">FAQ</a>
   <a href="#contact" data-i18n="nav_contact">Контакти</a>
+  <div class="mobile-lang" aria-label="Language">
+    <button type="button" data-mobile-lang="uk">UA</button>
+    <button type="button" data-mobile-lang="en">EN</button>
+    <button type="button" data-mobile-lang="de">DE</button>
+  </div>
 </div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="eyebrow reveal" data-i18n="hero_eyebrow">NUVO — салон на автопілоті</span>
-      <h1 class="reveal" data-d="1"><span data-i18n="hero_h1_a">Ваш салон не повинен</span><br><span class="hl" data-i18n="hero_h1_b">втрачати клієнтів</span></h1>
-      <p class="hero-sub reveal" data-d="2" data-i18n="hero_sub">Поки адміністратор зайнятий, AI вже відповідає клієнту за 3–5 секунд, записує його в Instagram чи Telegram і синхронізує запис із календарем — цілодобово.</p>
-      <div class="hero-chips reveal" data-d="2">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span data-i18n="chip_1">Відповідає за 3–5 сек</span></span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="chip_2">Інтеграція з календарем</span></span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="chip_3">Instagram + Telegram</span></span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="chip_4">Працює 24/7</span></span>
-        <span class="chip chip-free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg><span data-i18n="chip_5">Перші 14 днів — безкоштовно</span></span>
-      </div>
+      <span class="eyebrow reveal" data-i18n="hero_eyebrow">NUVO — AI + CRM ДЛЯ BEAUTY</span>
+      <h1 class="reveal" data-d="1"><span data-i18n="hero_h1_a">Клієнт пише.</span><br><span class="hl" data-i18n="hero_h1_b">NUVO веде до запису.</span></h1>
+      <p class="hero-sub reveal" data-d="2" data-i18n="hero_sub">AI відповідає в Direct, допомагає з онлайн-записом, нагадує про візит і повертає неактивних клієнтів — поки ви працюєте з гостем.</p>
       <div class="hero-cta reveal" data-d="3">
-        <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Отримати консультацію
+        <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="hero_cta1">Спробувати 14 днів безкоштовно
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero_cta2">Написати в Telegram
+        <a href="#techflow" class="btn btn-ghost" data-i18n="hero_cta2">Побачити, як це працює
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg></a>
+      </div>
+      <div class="hero-chips reveal" data-d="2">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span data-i18n="chip_1">AI-відповіді в Direct</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="chip_2">Онлайн-запис</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span data-i18n="chip_3">Нагадування</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="chip_4">Реактивація клієнтів</span></span>
+        <span class="chip chip-free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg><span data-i18n="chip_5">Перші 14 днів — безкоштовно</span></span>
       </div>
       <div class="hero-meta reveal" data-d="4">
         <span class="dots"><i></i><i></i><i></i></span>
-        <span data-i18n="hero_meta">Працює 24/7 — навіть коли салон зачинено</span>
+        <span data-i18n="hero_meta">Старт — з короткого розбору вашого салону</span>
       </div>
     </div>
     <div class="hero-visual reveal" data-d="2">
@@ -554,8 +714,8 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
         </div>
         <div class="mock-row">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <div class="tx"><b data-i18n="mock_4t">Нагадування надіслано</b><span data-i18n="mock_4s">12 клієнтам про візит</span></div>
-          <span class="badge pulse" data-i18n="mock_4b">+3 записи</span>
+          <div class="tx"><b data-i18n="mock_4t">Нагадування надіслано</b><span data-i18n="mock_4s">Клієнтам перед візитом</span></div>
+          <span class="badge pulse" data-i18n="mock_4b">Авто</span>
         </div>
       </div>
     </div>
@@ -565,7 +725,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
 <!-- ============ PLATFORMS STRIP ============ -->
 <section class="platforms">
   <div class="wrap platforms-in reveal">
-    <span class="platforms-label" data-i18n="plat_label">Працює там, де вже є ваші клієнти</span>
+    <span class="platforms-label" data-i18n="plat_label">Інтеграції під ваш процес</span>
     <div class="platforms-row">
       <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</span>
       <span class="pchip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>Telegram</span>
@@ -581,8 +741,8 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="prob_eyebrow">Проблема</span>
-      <h2 data-i18n="prob_h2">Що забирає гроші у вашого салону</h2>
-      <p data-i18n="prob_sub">Найчастіше клієнти втрачаються не через ціни, а через дрібниці, які легко автоматизувати.</p>
+      <h2 data-i18n-html="prob_h2">Де салон втрачає заявки й час</h2>
+      <p data-i18n="prob_sub">Коли команда зайнята роботою, Direct, записи й повторні візити легко випадають із процесу.</p>
     </div>
     <div class="prob-grid">
       <div class="prob reveal" data-d="1">
@@ -624,8 +784,8 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" data-i18n="res_eyebrow">Результат</span>
-      <h2 data-i18n="res_h2">Що зміниться після автоматизації</h2>
-      <p data-i18n="res_sub">Ви купуєте не «технології» — ви купуєте більше записів, менше рутини та вільний час.</p>
+      <h2 data-i18n-html="res_h2">Що зміниться після автоматизації</h2>
+      <p data-i18n="res_sub">Мета — прибрати повторювані дії з команди й зробити шлях клієнта до запису системним.</p>
     </div>
     <div class="res-grid">
       <div class="res reveal" data-d="1">
@@ -661,7 +821,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" data-i18n="serv_eyebrow">Рішення</span>
-      <h2 data-i18n="serv_h2">Що я автоматизую для вашого салону</h2>
+      <h2 data-i18n-html="serv_h2">Що я автоматизую для вашого салону</h2>
       <p data-i18n="serv_sub">Кожна послуга вирішує конкретну проблему — і працює без вашої участі.</p>
     </div>
     <div class="serv-grid">
@@ -678,7 +838,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
       <div class="serv reveal" data-d="3">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.7 9.7 0 0 0-6.7 2.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></div>
         <h3 data-i18n="serv_3t">Реактивація клієнтів</h3>
-        <p data-i18n="serv_3p">Пости й сторіс публікуються автоматично за вашим контент-планом.</p>
+        <p data-i18n="serv_3p">Автоматичні повідомлення допомагають повернути тих, хто давно не записувався.</p>
       </div>
       <div class="serv reveal" data-d="4">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
@@ -717,7 +877,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="flow_eyebrow">Зсередини</span>
-      <h2 data-i18n="flow_h2">Як це працює технічно</h2>
+      <h2 data-i18n-html="flow_h2">Як це працює технічно</h2>
       <p data-i18n="flow_sub">Просто й прозоро — від повідомлення клієнта до готового запису у вашому календарі.</p>
     </div>
     <div class="flow reveal">
@@ -741,11 +901,11 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="proc_eyebrow">Процес</span>
-      <h2 data-i18n="proc_h2">Як проходить робота</h2>
+      <h2 data-i18n-html="proc_h2">Як проходить робота</h2>
       <p data-i18n="proc_sub">Прозоро й покроково — ви завжди розумієте, що відбувається і навіщо.</p>
     </div>
     <div class="proc-intro reveal">
-      <p data-i18n="proc_intro">Мене звати Олександр — я закладаю AI-автоматизацію для б'юті-бізнесів. Не продаю «технології заради технологій»: спершу розбираюся, де ваш салон втрачає клієнтів і час, а тоді будую рішення саме під нього. Ви завжди на зв'язку особисто зі мною, а не з підтримкою.</p>
+      <p data-i18n="proc_intro">NUVO будує AI та CRM-автоматизацію для б'юті-бізнесів. Спочатку розбираємо процеси салону й точки втрати клієнтів, потім збираємо сценарій під ваші задачі, тестуємо його та залишаємо контроль у вас.</p>
     </div>
     <div class="proc reveal">
       <div class="proc-step"><div class="n">1</div><h3 data-i18n="proc_1t">Аналіз бізнесу</h3><p data-i18n="proc_1p">Вивчаю ваш салон, послуги та як зараз ведеться комунікація.</p></div>
@@ -762,7 +922,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="fw_eyebrow">Для кого</span>
-      <h2 data-i18n="fw_h2">Підходить будь-якому бьюті-бізнесу</h2>
+      <h2 data-i18n-html="fw_h2">Підходить будь-якому бьюті-бізнесу</h2>
     </div>
     <div class="fw-grid">
       <div class="fw reveal" data-d="1"><span class="fw-emoji">💅</span><span data-i18n="fw_1">Nail Studio</span></div>
@@ -786,7 +946,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="port_eyebrow">Портфоліо</span>
-      <h2 data-i18n="port_h2">Мої роботи</h2>
+      <h2 data-i18n-html="port_h2">Мої роботи</h2>
       <p data-i18n="port_sub">Реальні автоматизації, які я вже побудував.</p>
     </div>
     <div class="port-grid">
@@ -818,41 +978,13 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   </div>
 </section>
 
-<!-- ============ RESEARCH ============ -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow" style="margin:0 auto 18px" data-i18n="stat_eyebrow">Чому це працює</span>
-      <h2 data-i18n="stat_h2">Дані по галузі говорять самі за себе</h2>
-      <p data-i18n="stat_sub">Це загальна статистика по бізнесу й автоматизації — не результати конкретного салону, а підтвердження тренду.</p>
-    </div>
-    <div class="stat-grid">
-      <div class="stat reveal" data-d="1">
-        <div class="big">95<small>%</small></div>
-        <p data-i18n="stat_1p">фахівців відзначили зростання продуктивності після впровадження автоматизації процесів.</p>
-        <div class="src">Regina Corso Consulting · <a href="https://ziphq.com/blog/business-process-automation-statistics" target="_blank" rel="noopener">джерело</a></div>
-      </div>
-      <div class="stat reveal" data-d="2">
-        <div class="big">20<small>%</small></div>
-        <p data-i18n="stat_2p">часу на рутинних завданнях можуть зекономити керівники завдяки автоматизації.</p>
-        <div class="src">McKinsey · <a href="https://www.cflowapps.com/workflow-automation-statistics/" target="_blank" rel="noopener">джерело</a></div>
-      </div>
-      <div class="stat reveal" data-d="3">
-        <div class="big">30<small>%</small></div>
-        <p data-i18n="stat_3p">робочого навантаження бізнес-лідери вважають можливим автоматизувати.</p>
-        <div class="src">McKinsey · <a href="https://www.cflowapps.com/business-process-automation-statistics/" target="_blank" rel="noopener">джерело</a></div>
-      </div>
-    </div>
-    <p class="research-note reveal" data-i18n="stat_note">Джерела: дослідження McKinsey та галузеві опитування. Наведені цифри відображають загальні тенденції автоматизації бізнесу, а не гарантований результат для конкретного салону.</p>
-  </div>
-</section>
 
 <!-- ============ FAQ ============ -->
 <section class="section alt" id="faq">
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow" style="margin:0 auto 18px" data-i18n="faq_eyebrow">FAQ</span>
-      <h2 data-i18n="faq_h2">Часті запитання</h2>
+      <h2 data-i18n-html="faq_h2">Часті запитання</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item reveal" data-d="1">
@@ -865,11 +997,11 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
       </div>
       <div class="faq-item reveal" data-d="1">
         <button class="faq-q"><span data-i18n="faq_3q">Чи потрібні мої паролі?</span><span class="pm"></span></button>
-        <div class="faq-a"><p data-i18n="faq_3a">Здебільшого підключення робиться через офіційні безпечні інтеграції, без передачі паролів напряму. Усі деталі безпеки обговорюємо до старту.</p></div>
+        <div class="faq-a"><p data-i18n="faq_3a">Спосіб підключення залежить від сервісів, якими ви користуєтесь. Де доступно, використовуємо офіційні інтеграції; необхідні доступи й правила безпеки узгоджуємо до старту.</p></div>
       </div>
       <div class="faq-item reveal" data-d="1">
         <button class="faq-q"><span data-i18n="faq_4q">Чи це безпечно?</span><span class="pm"></span></button>
-        <div class="faq-a"><p data-i18n="faq_4a">Так. Використовую офіційні інструменти та інтеграції. Ваші дані й доступи лишаються під вашим контролем.</p></div>
+        <div class="faq-a"><p data-i18n="faq_4a">Безпека залежить від конкретних сервісів та інтеграцій. Перед запуском узгоджуємо, які доступи потрібні, де зберігаються дані та як ви можете відкликати доступ.</p></div>
       </div>
       <div class="faq-item reveal" data-d="1">
         <button class="faq-q"><span data-i18n="faq_5q">Чи працює це для маленьких салонів?</span><span class="pm"></span></button>
@@ -900,9 +1032,9 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
 <section class="cta-band">
   <div class="wrap cta-band-in reveal">
     <span class="cta-badge" data-i18n="ctaband_badge">Перші 14 днів — безкоштовно</span>
-    <h2 data-i18n="ctaband_h2">Досить втрачати клієнтів через рутину</h2>
-    <p data-i18n="ctaband_p">Напишіть мені — і за один дзвінок ми знайдемо, що саме автоматизувати у вашому салоні.</p>
-    <a href="#contact" class="btn btn-primary btn-lg" data-i18n="ctaband_btn">Обговорити мій салон
+    <h2 data-i18n-html="ctaband_h2">Досить втрачати клієнтів через рутину</h2>
+    <p data-i18n="ctaband_p">Напишіть «БОТ» у Direct — коротко розберемо ваш процес і визначимо, що варто автоматизувати першим.</p>
+    <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-i18n="ctaband_btn">Спробувати 14 днів безкоштовно
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
@@ -911,26 +1043,31 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="wrap contact-grid">
     <div class="contact-info reveal">
       <span class="eyebrow" data-i18n="cont_eyebrow">Контакти</span>
-      <h2 data-i18n="cont_h2">Готові отримати більше клієнтів?</h2>
-      <p data-i18n="cont_sub">Напишіть мені — обговоримо ваш салон і я підкажу, що варто автоматизувати в першу чергу.</p>
+      <h2 data-i18n="cont_h2">Хочете перевірити NUVO на своєму салоні?</h2>
+      <p data-i18n="cont_sub">Напишіть «БОТ» у Direct NUVO — обговоримо ваш салон і визначимо, що варто автоматизувати в першу чергу.</p>
       <div class="contact-cards">
-        <a href="mailto:nuvo.automation.studio@gmail.com" class="cc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
-          <div><div class="l">Email</div><div class="v">nuvo.automation.studio@gmail.com</div></div>
+        <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="cc nuvo-contact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+          <div><div class="l">Instagram</div><div class="v">@nuvo_aiautomation.ua</div></div>
         </a>
-        <a href="tel:+380981521050" class="cc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div><div class="l" data-i18n="foot_phone_l">Телефон</div><div class="v">+380 98 152 1050</div></div>
+        <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="cc nuvo-contact">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
+          <div><div class="l">Direct</div><div class="v">Напишіть «БОТ»</div></div>
         </a>
-        <div class="contact-social">
-          <a href="https://instagram.com/nuvo.automation" target="_blank" rel="noopener" aria-label="Instagram" class="csoc">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-          </a>
-          <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" aria-label="Telegram" class="csoc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>
-          </a>
-        </div>
       </div>
+    </div>
+
+    <div class="direct-panel reveal" data-d="1" id="directPanel">
+      <span class="direct-kicker" data-i18n="direct_kicker">СТАРТ ЗАЙМАЄ 1 ПОВІДОМЛЕННЯ</span>
+      <h3 data-i18n="direct_title">Напишіть «БОТ» у Direct</h3>
+      <p data-i18n="direct_sub">Коротко розберемо ваш салон, визначимо перший сценарій і домовимось про тестовий запуск.</p>
+      <div class="direct-steps">
+        <div><b>01</b><span data-i18n="direct_s1">Пишете «БОТ»</span></div>
+        <div><b>02</b><span data-i18n="direct_s2">15 хвилин на розбір</span></div>
+        <div><b>03</b><span data-i18n="direct_s3">14 днів тесту безкоштовно</span></div>
+      </div>
+      <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="btn btn-primary direct-btn" data-i18n="direct_btn">Написати «БОТ» в Instagram</a>
+      <small data-i18n="direct_note">Без довгої анкети — одразу в Direct.</small>
     </div>
     <div class="cform reveal" data-d="1">
       <div class="field"><label data-i18n="form_name">Ваше ім'я</label><input type="text" id="fName" data-i18n-ph="form_name_ph" placeholder="Як до вас звертатися"></div>
@@ -938,7 +1075,7 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
       <div class="field"><label data-i18n="form_msg">Повідомлення</label><textarea id="fMsg" data-i18n-ph="form_msg_ph" placeholder="Розкажіть коротко про ваш салон і що хочете покращити"></textarea></div>
       <button class="btn btn-primary" id="formBtn" data-i18n="form_btn">Надіслати заявку
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
-      <p class="form-note" data-i18n="form_note">Відповім особисто й без спаму. Зазвичай протягом доби.</p>
+      <p class="form-note" data-i18n="form_note">Найшвидший контакт — Instagram Direct @nuvo_aiautomation.ua.</p>
     </div>
   </div>
 </section>
@@ -948,31 +1085,23 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
   <div class="foot-top">
     <div class="wrap foot-grid">
       <div class="foot-brand">
-        <div class="logo">NUVO<span class="tag">salon automation</span></div>
+        <div class="logo nuvo-logo"><span class="nuvo-word">NUVO</span><span class="tag">AI AUTOMATION</span></div>
         <p data-i18n="foot_about">AI та автоматизація для салонів краси. Менше рутини, більше клієнтів і вільного часу.</p>
       </div>
       <div class="foot-contacts">
-        <a href="mailto:nuvo.automation.studio@gmail.com" class="fcc wide">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
-          <div><div class="l">Email</div><div class="v">nuvo.automation.studio@gmail.com</div></div>
+        <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="fcc wide">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+          <div><div class="l">Instagram</div><div class="v">@nuvo_aiautomation.ua</div></div>
         </a>
-        <a href="tel:+380981521050" class="fcc wide">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div><div class="l" data-i18n="foot_phone_l">Телефон</div><div class="v nowrap">+380 98 152 1050</div></div>
+        <a href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" class="fcc wide">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><div class="l">Direct</div><div class="v">«БОТ» → старт</div></div>
         </a>
-        <div class="foot-social">
-          <a href="https://instagram.com/nuvo.automation" target="_blank" rel="noopener" aria-label="Instagram" class="soc">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-          </a>
-          <a href="https://t.me/NUVOautomation" target="_blank" rel="noopener" aria-label="Telegram" class="soc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 9-8.1c.4-.3-.1-.5-.6-.2L6.1 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6z"/></svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
   <div class="wrap foot-bot">
-    <span>© 2026 NUVO — <span data-i18n="foot_rights">усі права захищені</span></span>
+    <span>© 2026 NUVO Automation — <span data-i18n="foot_rights">усі права захищені</span></span>
   </div>
 </footer>
 
@@ -1008,33 +1137,33 @@ footer{background:#1c1c1a;color:#e8e8e4;padding:0;border:none;position:relative;
    ==================================================================== */
 const I18N = {
   uk:{
-    nav_problems:"Проблеми",nav_services:"Послуги",nav_process:"Як працюю",nav_case:"Портфоліо",nav_faq:"FAQ",nav_contact:"Контакти",nav_cta:"Консультація",
-    hero_eyebrow:"NUVO — салон на автопілоті",
-    hero_h1_a:"Ваш салон не повинен",hero_h1_b:"втрачати клієнтів",
-    hero_sub:"Поки адміністратор зайнятий, AI вже відповідає клієнту за 3–5 секунд, записує його в Instagram чи Telegram і синхронізує запис із календарем — цілодобово.",
-    chip_1:"Відповідає за 3–5 сек",chip_2:"Інтеграція з календарем",chip_3:"Instagram + Telegram",chip_4:"Працює 24/7",chip_5:"Перші 14 днів — безкоштовно",ctaband_badge:"Перші 14 днів — безкоштовно",
-    plat_label:"Працює там, де вже є ваші клієнти",
-    hero_cta1:"Отримати консультацію",hero_cta2:"Написати в Telegram",
-    hero_meta:"Працює 24/7 — навіть коли салон зачинено",
+    nav_problems:"Проблеми",nav_services:"Послуги",nav_process:"Як працюємо",nav_case:"Портфоліо",nav_faq:"FAQ",nav_contact:"Контакти",nav_cta:"Консультація",
+    hero_eyebrow:"NUVO — AI + CRM ДЛЯ BEAUTY",
+    hero_h1_a:"Клієнт пише.",hero_h1_b:"NUVO веде до запису.",
+    hero_sub:"AI відповідає в Direct, допомагає з онлайн-записом, нагадує про візит і повертає неактивних клієнтів — поки ви працюєте з гостем.",
+    chip_1:"AI-відповіді в Direct",chip_2:"Онлайн-запис",chip_3:"Нагадування",chip_4:"Реактивація клієнтів",chip_5:"Перші 14 днів — безкоштовно",ctaband_badge:"Перші 14 днів — безкоштовно",
+    plat_label:"Інтеграції під ваш процес",
+    hero_cta1:"Спробувати 14 днів безкоштовно",hero_cta2:"Побачити, як це працює",
+    hero_meta:"Старт — з короткого розбору вашого салону",
     mock_1t:"Нове повідомлення в Direct",mock_1s:"«Скільки коштує манікюр?»",mock_1b:"AI відповів",
     mock_2t:"Запис підтверджено",mock_2s:"Завтра, 14:00 — стрижка",mock_2b:"Авто",
     mock_3t:"Клієнта повернуто",mock_3s:"Не був 3 місяці → записався",
-    mock_4t:"Нагадування надіслано",mock_4s:"12 клієнтам про візит",mock_4b:"+3 записи",
-    prob_eyebrow:"Проблема",prob_h2:"Що забирає гроші у вашого салону",prob_sub:"Найчастіше клієнти втрачаються не через ціни, а через дрібниці, які легко автоматизувати.",
+    mock_4t:"Нагадування надіслано",mock_4s:"Клієнтам перед візитом",mock_4b:"Авто",
+    prob_eyebrow:"Проблема",prob_h2:"Де салон втрачає заявки й час",prob_sub:"Коли команда зайнята роботою, Direct, записи й повторні візити легко випадають із процесу.",
     prob_1t:"Повільні відповіді в Direct",prob_1p:"Поки ви зайняті клієнтом, повідомлення лишаються без відповіді — і людина йде до конкурента.",
     prob_2t:"Пропущені повідомлення",prob_2p:"Запити вночі та у вихідні залишаються непоміченими, а це втрачені записи й дохід.",
     prob_3t:"Хаос із записами",prob_3p:"Подвійні бронювання, плутанина в часі та забуті візити псують репутацію салону.",
     prob_4t:"Все тримається на людях",prob_4p:"Записи, відповіді й нагадування залежать від того, чи встиг адміністратор — а він не робот.",
     prob_5t:"Клієнти не повертаються",prob_5p:"Без нагадувань про повторний візит люди просто забувають записатися знову.",
     prob_foot:"Хороша новина — це все можна автоматизувати.",prob_cta:"Подивитись рішення",
-    res_eyebrow:"Результат",res_h2:"Що зміниться після автоматизації",res_sub:"Ви купуєте не «технології» — ви купуєте більше записів, менше рутини та вільний час.",
+    res_eyebrow:"Результат",res_h2:"Що зміниться після <i>автоматизації</i>",res_sub:"Мета — прибрати повторювані дії з команди й зробити шлях клієнта до запису системним.",
     res_1t:"Швидші відповіді",res_1s:"Клієнт отримує відповідь за секунди, у будь-який час.",
     res_2t:"Менше ручної роботи",res_2s:"Рутину бере на себе автоматизація, а ви — клієнтів.",
     res_3t:"Більше записів",res_3s:"Жоден запит не губиться — навіть уночі та у вихідні.",
     res_4t:"Порядок у записах",res_4s:"Жодних подвійних бронювань і забутих клієнтів.",
     res_5t:"Менше втрачених лідів",res_5s:"Нагадування повертають клієнтів на повторний візит.",
     res_6t:"Більше вільного часу",res_6s:"Ви займаєтесь салоном, а не листуванням і постами.",
-    serv_eyebrow:"Рішення",serv_h2:"Що я автоматизую для вашого салону",serv_sub:"Кожна послуга вирішує конкретну проблему — і працює без вашої участі.",
+    serv_eyebrow:"Рішення NUVO",serv_h2:"Що NUVO <i>автоматизує</i> для вашого салону",serv_sub:"Кожна послуга вирішує конкретну проблему — і працює без вашої участі.",
     serv_1t:"AI-відповіді в Instagram",serv_1p:"Бот миттєво відповідає на питання про ціни, послуги й вільні години — 24/7.",
     serv_2t:"Автоматичний запис клієнтів",serv_2p:"Клієнт сам обирає час, а система записує його без дзвінків і плутанини.",
     serv_3t:"Реактивація клієнтів",serv_3p:"Автоматичні повідомлення повертають клієнтів, які давно не приходили.",
@@ -1056,37 +1185,37 @@ const I18N = {
     cap_13t:"Програма лояльності",cap_13s:"Бонуси й знижки для постійних клієнтів.",
     cap_14t:"Безпечне зберігання даних",cap_14s:"База клієнтів під вашим контролем.",
     caps_btn_more:"Показати всі можливості",caps_btn_less:"Згорнути",
-    foot_about:"AI та автоматизація для салонів краси. Менше рутини, більше клієнтів і вільного часу.",foot_phone_l:"Телефон",
-    proc_eyebrow:"Процес",proc_h2:"Як проходить робота",proc_sub:"Прозоро й покроково — ви завжди розумієте, що відбувається і навіщо.",
-    proc_intro:"Мене звати Олександр — я закладаю AI-автоматизацію для б'юті-бізнесів. Не продаю «технології заради технологій»: спершу розбираюся, де ваш салон втрачає клієнтів і час, а тоді будую рішення саме під нього. Ви завжди на зв'язку особисто зі мною, а не з підтримкою.",
+    foot_about:"NUVO — AI та CRM-автоматизація для салонів краси. CRM веде записи, ми допомагаємо автоматизувати шлях клієнта до візиту.",foot_phone_l:"Телефон",
+    proc_eyebrow:"Процес",proc_h2:"Як проходить <i>робота</i>",proc_sub:"Прозоро й покроково — ви завжди розумієте, що відбувається і навіщо.",
+    proc_intro:"NUVO будує AI та CRM-автоматизацію для б'юті-бізнесів. Спочатку розбираємо процеси салону й точки втрати клієнтів, потім збираємо сценарій під ваші задачі, тестуємо його та залишаємо контроль у вас.",
     proc_1t:"Аналіз бізнесу",proc_1p:"Вивчаю ваш салон, послуги та як зараз ведеться комунікація.",
     proc_2t:"Пошук слабких місць",proc_2p:"Знаходжу, де саме губляться клієнти та час.",
     proc_3t:"Налаштування",proc_3p:"Підключаю та налаштовую автоматизацію під ваші задачі.",
     proc_4t:"Тестування",proc_4p:"Перевіряю, що все працює коректно на реальних сценаріях.",
     proc_5t:"Підтримка",proc_5p:"Залишаюсь на зв'язку й допомагаю, коли щось потрібно.",
-    flow_eyebrow:"Зсередини",flow_h2:"Як це працює технічно",flow_sub:"Просто й прозоро — від повідомлення клієнта до готового запису у вашому календарі.",
+    flow_eyebrow:"Зсередини",flow_h2:"Як це <i>працює</i> технічно",flow_sub:"Просто й прозоро — від повідомлення клієнта до готового запису у вашому календарі.",
     flow_1:"Клієнт пише",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Календар",flow_5:"Запис створено",
-    fw_eyebrow:"Для кого",fw_h2:"Підходить будь-якому бьюті-бізнесу",
+    fw_eyebrow:"Для кого",fw_h2:"Підходить будь-якому <i>бьюті-бізнесу</i>",
     fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Cosmetology",fw_6:"Spa",fw_7:"Massage",fw_8:"Makeup",fw_9:"Brows & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Epilation",
     
     
-    stat_eyebrow:"Чому це працює",stat_h2:"Дані по галузі говорять самі за себе",stat_sub:"Це загальна статистика по бізнесу й автоматизації — не результати конкретного салону, а підтвердження тренду.",
+    stat_eyebrow:"Чому це працює",stat_h2:"Дані по галузі <i>говорять самі за себе</i>",stat_sub:"Це загальна статистика по бізнесу й автоматизації — не результати конкретного салону, а підтвердження тренду.",
     stat_1p:"фахівців відзначили зростання продуктивності після впровадження автоматизації процесів.",
     stat_2p:"часу на рутинних завданнях можуть зекономити керівники завдяки автоматизації.",
     stat_3p:"робочого навантаження бізнес-лідери вважають можливим автоматизувати.",
     stat_note:"Джерела: дослідження McKinsey та галузеві опитування. Наведені цифри відображають загальні тенденції автоматизації бізнесу, а не гарантований результат для конкретного салону.",
-    faq_eyebrow:"FAQ",faq_h2:"Часті запитання",
+    faq_eyebrow:"FAQ",faq_h2:"Часті <i>запитання</i>",
     faq_1q:"Скільки це коштує?",faq_1a:"Залежить від вашого бізнесу — обсягу задач і того, що саме автоматизуємо. Точну вартість розрахую особисто в чаті після короткої розмови про ваш салон. А перші 14 днів — безкоштовно, тож ви нічого не ризикуєте.",
     faq_2q:"Скільки займає налаштування?",faq_2a:"Залежить від складності. Прості сценарії — кілька днів, складніші — трохи довше. Точні терміни назву після аналізу вашого випадку.",
-    faq_3q:"Чи потрібні мої паролі?",faq_3a:"Здебільшого підключення робиться через офіційні безпечні інтеграції, без передачі паролів напряму. Усі деталі безпеки обговорюємо до старту.",
-    faq_4q:"Чи це безпечно?",faq_4a:"Так. Використовую офіційні інструменти та інтеграції. Ваші дані й доступи лишаються під вашим контролем.",
+    faq_3q:"Чи потрібні мої паролі?",faq_3a:"Спосіб підключення залежить від сервісів, якими ви користуєтесь. Де доступно, використовуємо офіційні інтеграції; необхідні доступи й правила безпеки узгоджуємо до старту.",
+    faq_4q:"Чи це безпечно?",faq_4a:"Безпека залежить від конкретних сервісів та інтеграцій. Перед запуском узгоджуємо, які доступи потрібні, де зберігаються дані та як ви можете відкликати доступ.",
     faq_5q:"Чи працює це для маленьких салонів?",faq_5a:"Так. Автоматизація особливо корисна, коли руки не доходять до всього — а саме так і буває в невеликих салонах.",
     faq_6q:"А якщо AI помилиться?",faq_6a:"Складні або нетипові запити передаються вам особисто, а не губляться. AI бере на себе рутину, а не рішення в незрозумілих ситуаціях.",
     faq_7q:"Це заміна адміністратора?",faq_7a:"Ні. Це помічник, який бере на себе рутинні відповіді й записи, щоб адміністратор або ви самі витрачали час на важливіше.",
     faq_8q:"Чи можна вимкнути AI, коли потрібно?",faq_8a:"Так, у будь-який момент. Контроль завжди лишається у вас.",
     faq_9q:"Що потрібно від мене для старту?",faq_9a:"Коротка розмова про ваш салон (15 хвилин) і доступи через офіційні інтеграції. Решту налаштувань беру на себе — вам не треба нічого вивчати.",
-    ctaband_h2:"Безкоштовний аудит автоматизації вашого салону",ctaband_p:"За 15 хвилин розберемо, де ваш салон втрачає клієнтів і що можна автоматизувати першим. Без оплати та зобов'язань.",ctaband_btn:"Отримати безкоштовний аудит",
-    port_eyebrow:"Портфоліо",port_h2:"Мої роботи",port_sub:"Реальні автоматизації, які я вже побудував.",
+    ctaband_h2:"Перевірте автоматизацію на своєму салоні",ctaband_p:"Напишіть «БОТ» у Direct — коротко розберемо ваш процес і визначимо, що варто автоматизувати першим.",ctaband_btn:"Спробувати 14 днів безкоштовно",
+    port_eyebrow:"Портфоліо",port_h2:"Мої <i>роботи</i>",port_sub:"Реальні автоматизації, які я вже побудував.",
     proj1_t:"AI-ресепшн для салону краси",proj1_d:"24/7 AI відповідає в Instagram Direct, перевіряє вільні години та сам записує клієнта в календар.",
     proj2_t:"Автозбір лідів для салонів",proj2_d:"Автоматика знаходить салони краси на картах, збирає дані й формує готову базу лідів у таблиці.",
     proj3_t:"AI-система для бізнесу",proj3_d:"AI-агент у Telegram: обробляє повідомлення, працює з API та відповідає клієнтам автоматично.",
@@ -1100,38 +1229,39 @@ const I18N = {
     proj3_prob:"Рутинні повідомлення, заявки та оновлення даних з'їдають години щодня — і все тримається на тому, чи встигла людина.",
     proj3_sol:"AI-агент у Telegram приймає повідомлення, розуміє запит, звертається до потрібних API і відповідає клієнту автоматично — від заявки до нагадування.",
     proj3_res:"Рутина йде на автопілот: бізнес відповідає швидше, а команда займається клієнтами, а не переписками.",
-    cont_eyebrow:"Контакти",cont_h2:"Готові отримати більше клієнтів?",cont_sub:"Напишіть мені — обговоримо ваш салон і я підкажу, що варто автоматизувати в першу чергу.",
-    form_name:"Ваше ім'я",form_name_ph:"Як до вас звертатися",form_contact:"Instagram, Telegram або Email",form_contact_ph:"@нік в Instagram, Telegram або пошта",form_msg:"Повідомлення",form_msg_ph:"Розкажіть коротко про ваш салон і що хочете покращити",form_btn:"Надіслати заявку",form_note:"Відповім особисто й без спаму. Зазвичай протягом доби.",
+    cont_eyebrow:"Контакти",cont_h2:"Хочете перевірити NUVO на своєму салоні?",cont_sub:"Напишіть «БОТ» у Direct NUVO — обговоримо ваш салон і визначимо, що варто автоматизувати в першу чергу.",
+    form_name:"Ваше ім'я",form_name_ph:"Як до вас звертатися",form_contact:"Instagram, Telegram або Email",form_contact_ph:"@нік в Instagram, Telegram або пошта",form_msg:"Повідомлення",form_msg_ph:"Розкажіть коротко про ваш салон і що хочете покращити",form_btn:"Надіслати заявку",form_note:"Найшвидший контакт — Instagram Direct @nuvo_aiautomation.ua.",
+    direct_kicker:"СТАРТ ЗАЙМАЄ 1 ПОВІДОМЛЕННЯ",direct_title:"Напишіть «БОТ» у Direct",direct_sub:"Коротко розберемо ваш салон, визначимо перший сценарій і домовимось про тестовий запуск.",direct_s1:"Пишете «БОТ»",direct_s2:"15 хвилин на розбір",direct_s3:"14 днів тесту безкоштовно",direct_btn:"Написати «БОТ» в Instagram",direct_note:"Без довгої анкети — одразу в Direct.",float_desktop:"НАПИСАТИ В INSTAGRAM",float_mobile:"14 ДНІВ БЕЗКОШТОВНО → DIRECT",
     foot_rights:"усі права захищені",
     },
   en:{
-    nav_problems:"Problems",nav_services:"Services",nav_process:"Process",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"Consultation",
-    hero_eyebrow:"NUVO — your salon on autopilot",
-    hero_h1_a:"Your salon shouldn't",hero_h1_b:"lose clients like this",
-    hero_sub:"While your front desk is busy, AI already replies to the client in 3–5 seconds, books them via Instagram or Telegram, and syncs it with your calendar — around the clock.",
-    chip_1:"Replies in 3–5 sec",chip_2:"Calendar integration",chip_3:"Instagram + Telegram",chip_4:"Works 24/7",chip_5:"First 14 days — free",ctaband_badge:"First 14 days — free",
-    plat_label:"Works where your clients already are",
-    hero_cta1:"Get a consultation",hero_cta2:"Message on Telegram",
-    hero_meta:"Works 24/7 — even when the salon is closed",
+    nav_problems:"Problems",nav_services:"Services",nav_process:"How we work",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"Consultation",
+    hero_eyebrow:"NUVO — AI + CRM FOR BEAUTY",
+    hero_h1_a:"A client messages.",hero_h1_b:"NUVO guides them to booking.",
+    hero_sub:"AI handles Direct messages, supports online booking, sends visit reminders and reactivates inactive clients — while you work with your guest.",
+    chip_1:"AI replies in Direct",chip_2:"Online booking",chip_3:"Visit reminders",chip_4:"Client reactivation",chip_5:"First 14 days — free",ctaband_badge:"First 14 days — free",
+    plat_label:"Integrations for your workflow",
+    hero_cta1:"Try 14 days free",hero_cta2:"See how it works",
+    hero_meta:"Start with a short review of your salon",
     mock_1t:"New Direct message",mock_1s:"\"How much is a manicure?\"",mock_1b:"AI replied",
     mock_2t:"Booking confirmed",mock_2s:"Tomorrow, 2:00 PM — haircut",mock_2b:"Auto",
     mock_3t:"Client reactivated",mock_3s:"Inactive 3 months → booked",
-    mock_4t:"Reminders sent",mock_4s:"to 12 clients about visits",mock_4b:"+3 bookings",
-    prob_eyebrow:"The problem",prob_h2:"What's costing your salon money",prob_sub:"Most often clients are lost not because of prices, but because of small things that are easy to automate.",
+    mock_4t:"Reminders sent",mock_4s:"to clients before visits",mock_4b:"Auto",
+    prob_eyebrow:"The problem",prob_h2:"Where salons lose leads and time",prob_sub:"When the team is busy, Direct messages, bookings and repeat visits can easily fall through the cracks.",
     prob_1t:"Slow replies in Direct",prob_1p:"While you're busy with a client, messages go unanswered — and the person goes to a competitor.",
     prob_2t:"Missed messages",prob_2p:"Requests at night and on weekends go unnoticed — that's lost bookings and revenue.",
     prob_3t:"Booking chaos",prob_3p:"Double bookings, time confusion and forgotten visits hurt your salon's reputation.",
     prob_4t:"Everything depends on people",prob_4p:"Bookings, replies and reminders rely on whether the receptionist got to them — and they're not a robot.",
     prob_5t:"Clients don't return",prob_5p:"Without reminders about a repeat visit, people simply forget to book again.",
     prob_foot:"Good news — all of this can be automated.",prob_cta:"See the solutions",
-    res_eyebrow:"The result",res_h2:"What changes after automation",res_sub:"You're not buying \"technology\" — you're buying more bookings, less routine and free time.",
+    res_eyebrow:"The result",res_h2:"What changes after <i>automation</i>",res_sub:"The goal is to remove repetitive work from your team and make the path to booking systematic.",
     res_1t:"Faster replies",res_1s:"Clients get an answer in seconds, any time.",
     res_2t:"Less manual work",res_2s:"Automation handles the routine, you handle the clients.",
     res_3t:"More bookings",res_3s:"No request is lost — even at night or on weekends.",
     res_4t:"Order in bookings",res_4s:"No double bookings and no forgotten clients.",
     res_5t:"Fewer lost leads",res_5s:"Reminders bring clients back for a repeat visit.",
     res_6t:"More free time",res_6s:"You run the salon, not the messaging and posting.",
-    serv_eyebrow:"The solution",serv_h2:"What I automate for your salon",serv_sub:"Each service solves a specific problem — and works without your involvement.",
+    serv_eyebrow:"NUVO solution",serv_h2:"What NUVO <i>automates</i> for your salon",serv_sub:"Each service solves a specific problem — and works without your involvement.",
     serv_1t:"AI replies on Instagram",serv_1p:"The bot instantly answers questions about prices, services and open slots — 24/7.",
     serv_2t:"Automatic client booking",serv_2p:"Clients pick a time themselves and the system books them without calls or confusion.",
     serv_3t:"Client reactivation",serv_3p:"Automatic messages bring back clients who haven't visited in a while.",
@@ -1153,37 +1283,37 @@ const I18N = {
     cap_13t:"Loyalty program",cap_13s:"Bonuses and discounts for regular clients.",
     cap_14t:"Secure data storage",cap_14s:"Your client base stays under your control.",
     caps_btn_more:"Show all capabilities",caps_btn_less:"Collapse",
-    foot_about:"AI and automation for beauty salons. Less routine, more clients and free time.",foot_phone_l:"Phone",
-    proc_eyebrow:"Process",proc_h2:"How the work goes",proc_sub:"Transparent and step by step — you always understand what's happening and why.",
-    proc_intro:"My name is Oleksandr — I build AI automation for beauty businesses. I don't sell \"tech for the sake of tech\": first I figure out where your salon loses clients and time, then I build a solution made for it. You always stay in touch with me personally, not with support.",
+    foot_about:"NUVO — AI and CRM automation for beauty salons. CRM handles bookings; we automate the client journey to the visit.",foot_phone_l:"Phone",
+    proc_eyebrow:"Process",proc_h2:"How the <i>work</i> goes",proc_sub:"Transparent and step by step — you always understand what's happening and why.",
+    proc_intro:"NUVO builds AI and CRM automation for beauty businesses. We first map your salon processes and client drop-off points, then build and test a workflow around your actual tasks while keeping control on your side.",
     proc_1t:"Business analysis",proc_1p:"I study your salon, services and how communication works now.",
     proc_2t:"Finding weak spots",proc_2p:"I find exactly where clients and time are being lost.",
     proc_3t:"Setup",proc_3p:"I connect and configure the automation for your tasks.",
     proc_4t:"Testing",proc_4p:"I verify everything works correctly on real scenarios.",
     proc_5t:"Support",proc_5p:"I stay in touch and help whenever something is needed.",
-    flow_eyebrow:"Under the hood",flow_h2:"How it works technically",flow_sub:"Simple and transparent — from a client's message to a finished booking in your calendar.",
+    flow_eyebrow:"Under the hood",flow_h2:"How it <i>works</i> technically",flow_sub:"Simple and transparent — from a client's message to a finished booking in your calendar.",
     flow_1:"Client writes in",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Calendar",flow_5:"Booking created",
-    fw_eyebrow:"Who it's for",fw_h2:"Fits any beauty business",
+    fw_eyebrow:"Who it's for",fw_h2:"Fits any <i>beauty business</i>",
     fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Cosmetology",fw_6:"Spa",fw_7:"Massage",fw_8:"Makeup",fw_9:"Brows & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Epilation",
     
     
-    stat_eyebrow:"Why it works",stat_h2:"Industry data speaks for itself",stat_sub:"This is general business and automation statistics — not results of a specific salon, but confirmation of the trend.",
+    stat_eyebrow:"Why it works",stat_h2:"Industry data <i>speaks for itself</i>",stat_sub:"This is general business and automation statistics — not results of a specific salon, but confirmation of the trend.",
     stat_1p:"of professionals reported a productivity increase after implementing process automation.",
     stat_2p:"of time on routine tasks can be saved by managers through automation.",
     stat_3p:"of their workload is what business leaders believe can be automated.",
     stat_note:"Sources: McKinsey research and industry surveys. The figures reflect general business automation trends, not a guaranteed result for a specific salon.",
-    faq_eyebrow:"FAQ",faq_h2:"Frequently asked questions",
+    faq_eyebrow:"FAQ",faq_h2:"Frequently asked <i>questions</i>",
     faq_1q:"How much does it cost?",faq_1a:"It depends on your business — the scope of tasks and what exactly we automate. I'll calculate the exact cost personally in chat after a short conversation about your salon. And the first 14 days are free — you risk nothing.",
     faq_2q:"How long does setup take?",faq_2a:"It depends on complexity. Simple scenarios — a few days, more complex ones — a bit longer. I'll give exact timelines after analyzing your case.",
-    faq_3q:"Do you need my passwords?",faq_3a:"In most cases the connection is done via official secure integrations, without sharing passwords directly. All security details are discussed before we start.",
-    faq_4q:"Is it safe?",faq_4a:"Yes. I use official tools and integrations. Your data and access remain under your control.",
+    faq_3q:"Do you need my passwords?",faq_3a:"The connection method depends on the services you use. Where available, we use official integrations and agree on required access and security rules before launch.",
+    faq_4q:"Is it safe?",faq_4a:"Security depends on the specific services and integrations. Before launch, we agree on required access, where data is stored and how access can be revoked.",
     faq_5q:"Does it work for small salons?",faq_5a:"Yes. Automation is especially useful when you can't get to everything — which is exactly the case in small salons.",
     faq_6q:"What if the AI makes a mistake?",faq_6a:"Complex or unusual requests get passed to you personally, not lost. AI handles the routine, not the judgment calls in unclear situations.",
     faq_7q:"Is this a replacement for a receptionist?",faq_7a:"No. It's an assistant that takes over routine replies and bookings, so your receptionist — or you — can spend time on what matters more.",
     faq_8q:"Can I turn the AI off when needed?",faq_8a:"Yes, at any moment. Control always stays with you.",
     faq_9q:"What do you need from me to start?",faq_9a:"A short 15-minute conversation about your salon and access via official integrations. I handle the rest of the setup — you don't need to learn anything.",
-    ctaband_h2:"A free automation audit for your salon",ctaband_p:"In 15 minutes we'll find where your salon loses clients and what to automate first. No payment, no commitment.",ctaband_btn:"Get a free audit",
-    port_eyebrow:"Portfolio",port_h2:"My work",port_sub:"Real automations I have already built.",
+    ctaband_h2:"Test automation in your own salon",ctaband_p:"Send “BOT” in Direct — we’ll review your workflow and choose the first thing worth automating.",ctaband_btn:"Try 14 days free",
+    port_eyebrow:"Portfolio",port_h2:"My <i>work</i>",port_sub:"Real automations I have already built.",
     proj1_t:"AI Receptionist for a beauty salon",proj1_d:"24/7 AI replies in Instagram Direct, checks open slots and books the client into the calendar itself.",
     proj2_t:"Lead generation for salons",proj2_d:"Automation finds beauty salons on maps, collects data and builds a ready lead base in a spreadsheet.",
     proj3_t:"Business AI system",proj3_d:"AI agent in Telegram: processes messages, works with APIs and replies to clients automatically.",
@@ -1197,38 +1327,39 @@ const I18N = {
     proj3_prob:"Routine messages, requests and data updates eat hours every day — and everything depends on whether a person got to it.",
     proj3_sol:"An AI agent in Telegram receives messages, understands the request, calls the right APIs and replies to the client automatically — from request to reminder.",
     proj3_res:"Routine goes on autopilot: the business replies faster, and the team works with clients, not chats.",
-    cont_eyebrow:"Contact",cont_h2:"Ready to get more clients?",cont_sub:"Message me — we'll discuss your salon and I'll suggest what's worth automating first.",
-    form_name:"Your name",form_name_ph:"How to address you",form_contact:"Instagram, Telegram or Email",form_contact_ph:"@handle on Instagram, Telegram or email",form_msg:"Message",form_msg_ph:"Tell me briefly about your salon and what you want to improve",form_btn:"Send request",form_note:"I'll reply personally and without spam. Usually within a day.",
+    cont_eyebrow:"Contact",cont_h2:"Want to test NUVO in your salon?",cont_sub:"Send “BOT” to NUVO in Instagram Direct — we'll discuss your salon and decide what is worth automating first.",
+    form_name:"Your name",form_name_ph:"How to address you",form_contact:"Instagram, Telegram or Email",form_contact_ph:"@handle on Instagram, Telegram or email",form_msg:"Message",form_msg_ph:"Tell me briefly about your salon and what you want to improve",form_btn:"Send request",form_note:"The fastest contact is Instagram Direct @nuvo_aiautomation.ua.",
+    direct_kicker:"START WITH ONE MESSAGE",direct_title:"Send “BOT” in Direct",direct_sub:"We’ll briefly review your salon, choose the first workflow and agree on a test launch.",direct_s1:"Send “BOT”",direct_s2:"15-minute review",direct_s3:"14-day free test",direct_btn:"Send “BOT” on Instagram",direct_note:"No long form — straight to Direct.",float_desktop:"MESSAGE ON INSTAGRAM",float_mobile:"14 DAYS FREE → DIRECT",
     foot_rights:"all rights reserved",
     },
   de:{
-    nav_problems:"Probleme",nav_services:"Leistungen",nav_process:"Ablauf",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Beratung",
-    hero_eyebrow:"NUVO — Ihr Salon auf Autopilot",
-    hero_h1_a:"Ihr Salon sollte keine",hero_h1_b:"Kunden verlieren",
-    hero_sub:"Während Ihre Rezeption beschäftigt ist, antwortet die KI dem Kunden bereits in 3–5 Sekunden, bucht ihn über Instagram oder Telegram und synchronisiert alles mit Ihrem Kalender — rund um die Uhr.",
-    chip_1:"Antwortet in 3–5 Sek",chip_2:"Kalender-Integration",chip_3:"Instagram + Telegram",chip_4:"Läuft rund um die Uhr",chip_5:"Die ersten 14 Tage — kostenlos",ctaband_badge:"Die ersten 14 Tage — kostenlos",
-    plat_label:"Läuft dort, wo Ihre Kunden bereits sind",
-    hero_cta1:"Beratung erhalten",hero_cta2:"Auf Telegram schreiben",
-    hero_meta:"Läuft rund um die Uhr — auch wenn der Salon geschlossen ist",
+    nav_problems:"Probleme",nav_services:"Leistungen",nav_process:"So arbeiten wir",nav_case:"Portfolio",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"14 Tage kostenlos",
+    hero_eyebrow:"NUVO — AI + CRM FÜR BEAUTY",
+    hero_h1_a:"Ein Kunde schreibt.",hero_h1_b:"NUVO führt zur Buchung.",
+    hero_sub:"KI bearbeitet Direct-Nachrichten, unterstützt Online-Buchungen, sendet Terminerinnerungen und reaktiviert inaktive Kunden — während Sie sich um Ihre Gäste kümmern.",
+    chip_1:"KI-Antworten im Direct",chip_2:"Online-Buchung",chip_3:"Terminerinnerungen",chip_4:"Kundenreaktivierung",chip_5:"Die ersten 14 Tage — kostenlos",ctaband_badge:"Die ersten 14 Tage — kostenlos",
+    plat_label:"Integrationen für Ihren Ablauf",
+    hero_cta1:"14 Tage kostenlos testen",hero_cta2:"So funktioniert es",
+    hero_meta:"Start mit einer kurzen Analyse Ihres Salons",
     mock_1t:"Neue Direct-Nachricht",mock_1s:"„Was kostet eine Maniküre?\"",mock_1b:"KI antwortete",
     mock_2t:"Termin bestätigt",mock_2s:"Morgen, 14:00 — Haarschnitt",mock_2b:"Auto",
     mock_3t:"Kunde reaktiviert",mock_3s:"3 Monate inaktiv → gebucht",
-    mock_4t:"Erinnerungen gesendet",mock_4s:"an 12 Kunden zum Termin",mock_4b:"+3 Termine",
-    prob_eyebrow:"Das Problem",prob_h2:"Was Ihren Salon Geld kostet",prob_sub:"Kunden gehen meist nicht wegen der Preise verloren, sondern wegen Kleinigkeiten, die sich leicht automatisieren lassen.",
+    mock_4t:"Erinnerungen gesendet",mock_4s:"an Kunden vor dem Termin",mock_4b:"Auto",
+    prob_eyebrow:"Das Problem",prob_h2:"Wo Salons Anfragen und Zeit verlieren",prob_sub:"Wenn das Team beschäftigt ist, gehen Direct-Nachrichten, Buchungen und Wiederholungsbesuche leicht im Alltag unter.",
     prob_1t:"Langsame Antworten im Direct",prob_1p:"Während Sie mit einem Kunden beschäftigt sind, bleiben Nachrichten unbeantwortet — und die Person geht zur Konkurrenz.",
     prob_2t:"Verpasste Nachrichten",prob_2p:"Anfragen nachts und am Wochenende bleiben unbemerkt — das sind verlorene Termine und Umsatz.",
     prob_3t:"Chaos bei Terminen",prob_3p:"Doppelbuchungen, Zeitverwirrung und vergessene Besuche schaden dem Ruf des Salons.",
     prob_4t:"Alles hängt an Menschen",prob_4p:"Buchungen, Antworten und Erinnerungen hängen davon ab, ob die Rezeption dazu kam — und sie ist kein Roboter.",
     prob_5t:"Kunden kommen nicht zurück",prob_5p:"Ohne Erinnerung an einen Folgetermin vergessen die Leute einfach, erneut zu buchen.",
     prob_foot:"Gute Nachricht — all das lässt sich automatisieren.",prob_cta:"Lösungen ansehen",
-    res_eyebrow:"Das Ergebnis",res_h2:"Was sich nach der Automatisierung ändert",res_sub:"Sie kaufen keine „Technologie\" — Sie kaufen mehr Termine, weniger Routine und freie Zeit.",
+    res_eyebrow:"Das Ergebnis",res_h2:"Was sich nach der <i>Automatisierung</i> ändert",res_sub:"Ziel ist, wiederkehrende Arbeit aus dem Team zu nehmen und den Weg zur Buchung systematisch zu machen.",
     res_1t:"Schnellere Antworten",res_1s:"Kunden erhalten in Sekunden eine Antwort, jederzeit.",
     res_2t:"Weniger manuelle Arbeit",res_2s:"Die Automatisierung übernimmt die Routine, Sie die Kunden.",
     res_3t:"Mehr Termine",res_3s:"Keine Anfrage geht verloren — auch nachts oder am Wochenende.",
     res_4t:"Ordnung bei Terminen",res_4s:"Keine Doppelbuchungen und keine vergessenen Kunden.",
     res_5t:"Weniger verlorene Leads",res_5s:"Erinnerungen holen Kunden für einen Folgetermin zurück.",
     res_6t:"Mehr freie Zeit",res_6s:"Sie führen den Salon, nicht das Schreiben und Posten.",
-    serv_eyebrow:"Die Lösung",serv_h2:"Was ich für Ihren Salon automatisiere",serv_sub:"Jede Leistung löst ein konkretes Problem — und läuft ohne Ihr Zutun.",
+    serv_eyebrow:"NUVO Lösung",serv_h2:"Was NUVO für Ihren Salon <i>automatisiert</i>",serv_sub:"Jede Leistung löst ein konkretes Problem — und läuft ohne Ihr Zutun.",
     serv_1t:"KI-Antworten auf Instagram",serv_1p:"Der Bot beantwortet sofort Fragen zu Preisen, Leistungen und freien Zeiten — rund um die Uhr.",
     serv_2t:"Automatische Terminbuchung",serv_2p:"Kunden wählen selbst eine Zeit, und das System bucht sie ohne Anrufe und Verwirrung.",
     serv_3t:"Kunden-Reaktivierung",serv_3p:"Automatische Nachrichten holen Kunden zurück, die länger nicht da waren.",
@@ -1250,37 +1381,37 @@ const I18N = {
     cap_13t:"Treueprogramm",cap_13s:"Boni und Rabatte für Stammkunden.",
     cap_14t:"Sichere Datenspeicherung",cap_14s:"Ihre Kundenbasis bleibt unter Ihrer Kontrolle.",
     caps_btn_more:"Alle Möglichkeiten zeigen",caps_btn_less:"Einklappen",
-    foot_about:"KI und Automatisierung für Beauty-Salons. Weniger Routine, mehr Kunden und freie Zeit.",foot_phone_l:"Telefon",
-    proc_eyebrow:"Ablauf",proc_h2:"Wie die Arbeit abläuft",proc_sub:"Transparent und Schritt für Schritt — Sie verstehen immer, was passiert und warum.",
-    proc_intro:"Mein Name ist Oleksandr — ich entwickle KI-Automatisierung für Beauty-Unternehmen. Ich verkaufe keine „Technik um der Technik willen\": Zuerst finde ich heraus, wo Ihr Salon Kunden und Zeit verliert, dann baue ich eine Lösung genau dafür. Sie stehen immer persönlich mit mir in Kontakt, nicht mit einem Support.",
+    foot_about:"NUVO — AI- und CRM-Automatisierung für Beauty-Salons. CRM verwaltet Termine; wir automatisieren den Weg des Kunden bis zum Besuch.",foot_phone_l:"Telefon",
+    proc_eyebrow:"Ablauf",proc_h2:"Wie die <i>Arbeit</i> abläuft",proc_sub:"Transparent und Schritt für Schritt — Sie verstehen immer, was passiert und warum.",
+    proc_intro:"NUVO entwickelt AI- und CRM-Automatisierung für Beauty-Unternehmen. Zuerst analysieren wir Prozesse und Stellen, an denen Kunden verloren gehen; danach bauen und testen wir einen Workflow für Ihre konkreten Aufgaben.",
     proc_1t:"Geschäftsanalyse",proc_1p:"Ich analysiere Ihren Salon, Ihre Leistungen und die aktuelle Kommunikation.",
     proc_2t:"Schwachstellen finden",proc_2p:"Ich finde genau, wo Kunden und Zeit verloren gehen.",
     proc_3t:"Einrichtung",proc_3p:"Ich verbinde und konfiguriere die Automatisierung für Ihre Aufgaben.",
     proc_4t:"Test",proc_4p:"Ich prüfe, dass alles in realen Szenarien korrekt funktioniert.",
     proc_5t:"Support",proc_5p:"Ich bleibe in Kontakt und helfe, wann immer etwas gebraucht wird.",
-    flow_eyebrow:"Unter der Haube",flow_h2:"Wie es technisch funktioniert",flow_sub:"Einfach und transparent — von der Nachricht des Kunden bis zur fertigen Buchung in Ihrem Kalender.",
+    flow_eyebrow:"Unter der Haube",flow_h2:"Wie es technisch <i>funktioniert</i>",flow_sub:"Einfach und transparent — von der Nachricht des Kunden bis zur fertigen Buchung in Ihrem Kalender.",
     flow_1:"Kunde schreibt",flow_2:"Instagram / Telegram",flow_3:"CRM",flow_4:"Kalender",flow_5:"Buchung erstellt",
-    fw_eyebrow:"Für wen",fw_h2:"Passt zu jedem Beauty-Business",
+    fw_eyebrow:"Für wen",fw_h2:"Passt zu jedem <i>Beauty-Business</i>",
     fw_1:"Nail Studio",fw_2:"Hair Salon",fw_3:"Barbershop",fw_4:"Lash Studio",fw_5:"Kosmetik",fw_6:"Spa",fw_7:"Massage",fw_8:"Make-up",fw_9:"Brauen & PMU",fw_10:"Tattoo",fw_11:"Solarium",fw_12:"Haarentfernung",
     
     
-    stat_eyebrow:"Warum es funktioniert",stat_h2:"Die Branchendaten sprechen für sich",stat_sub:"Dies sind allgemeine Statistiken zu Geschäft und Automatisierung — keine Ergebnisse eines bestimmten Salons, sondern eine Bestätigung des Trends.",
+    stat_eyebrow:"Warum es funktioniert",stat_h2:"Die Branchendaten <i>sprechen für sich</i>",stat_sub:"Dies sind allgemeine Statistiken zu Geschäft und Automatisierung — keine Ergebnisse eines bestimmten Salons, sondern eine Bestätigung des Trends.",
     stat_1p:"der Fachkräfte verzeichneten eine Produktivitätssteigerung nach Einführung der Prozessautomatisierung.",
     stat_2p:"der Zeit für Routineaufgaben können Führungskräfte durch Automatisierung sparen.",
     stat_3p:"ihrer Arbeitslast halten Führungskräfte für automatisierbar.",
     stat_note:"Quellen: McKinsey-Studien und Branchenumfragen. Die Zahlen spiegeln allgemeine Trends der Geschäftsautomatisierung wider, kein garantiertes Ergebnis für einen bestimmten Salon.",
-    faq_eyebrow:"FAQ",faq_h2:"Häufige Fragen",
+    faq_eyebrow:"FAQ",faq_h2:"Häufige <i>Fragen</i>",
     faq_1q:"Was kostet das?",faq_1a:"Das hängt von Ihrem Geschäft ab — vom Umfang der Aufgaben und davon, was genau wir automatisieren. Den genauen Preis berechne ich persönlich im Chat nach einem kurzen Gespräch über Ihren Salon. Und die ersten 14 Tage sind kostenlos — Sie riskieren nichts.",
     faq_2q:"Wie lange dauert die Einrichtung?",faq_2a:"Das hängt von der Komplexität ab. Einfache Szenarien — ein paar Tage, komplexere — etwas länger. Genaue Zeiten nenne ich nach Analyse Ihres Falls.",
-    faq_3q:"Brauchen Sie meine Passwörter?",faq_3a:"Meist erfolgt die Verbindung über offizielle sichere Integrationen, ohne Passwörter direkt weiterzugeben. Alle Sicherheitsdetails besprechen wir vor dem Start.",
-    faq_4q:"Ist das sicher?",faq_4a:"Ja. Ich nutze offizielle Tools und Integrationen. Ihre Daten und Zugänge bleiben unter Ihrer Kontrolle.",
+    faq_3q:"Brauchen Sie meine Passwörter?",faq_3a:"Die Art der Anbindung hängt von den verwendeten Diensten ab. Wo verfügbar, nutzen wir offizielle Integrationen und klären benötigte Zugriffe sowie Sicherheitsregeln vor dem Start.",
+    faq_4q:"Ist das sicher?",faq_4a:"Die Sicherheit hängt von den konkreten Diensten und Integrationen ab. Vor dem Start klären wir benötigte Zugriffe, Datenspeicherung und wie Zugriffe wieder entzogen werden können.",
     faq_5q:"Funktioniert das für kleine Salons?",faq_5a:"Ja. Automatisierung ist besonders nützlich, wenn man nicht zu allem kommt — und genau so ist es in kleinen Salons.",
     faq_6q:"Was, wenn die KI einen Fehler macht?",faq_6a:"Komplexe oder untypische Anfragen werden persönlich an Sie weitergeleitet, statt verloren zu gehen. Die KI übernimmt die Routine, nicht die Entscheidung in unklaren Situationen.",
     faq_7q:"Ersetzt das die Rezeption?",faq_7a:"Nein. Es ist ein Assistent, der Routineantworten und Buchungen übernimmt, damit die Rezeption — oder Sie selbst — Zeit für Wichtigeres haben.",
     faq_8q:"Kann ich die KI bei Bedarf abschalten?",faq_8a:"Ja, jederzeit. Die Kontrolle bleibt immer bei Ihnen.",
     faq_9q:"Was brauchen Sie von mir für den Start?",faq_9a:"Ein kurzes 15-minütiges Gespräch über Ihren Salon und Zugänge über offizielle Integrationen. Den Rest der Einrichtung übernehme ich — Sie müssen nichts lernen.",
-    ctaband_h2:"Kostenloses Automatisierungs-Audit für Ihren Salon",ctaband_p:"In 15 Minuten finden wir heraus, wo Ihr Salon Kunden verliert und was zuerst automatisiert werden sollte. Ohne Kosten, ohne Verpflichtung.",ctaband_btn:"Kostenloses Audit erhalten",
-    port_eyebrow:"Portfolio",port_h2:"Meine Arbeiten",port_sub:"Echte Automatisierungen, die ich bereits gebaut habe.",
+    ctaband_h2:"Testen Sie Automatisierung in Ihrem Salon",ctaband_p:"Senden Sie „BOT“ im Direct — wir prüfen Ihren Ablauf und wählen den ersten sinnvollen Automatisierungsschritt.",ctaband_btn:"14 Tage kostenlos testen",
+    port_eyebrow:"Portfolio",port_h2:"Meine <i>Arbeiten</i>",port_sub:"Echte Automatisierungen, die ich bereits gebaut habe.",
     proj1_t:"KI-Rezeption für einen Beauty-Salon",proj1_d:"24/7 antwortet die KI im Instagram Direct, prüft freie Zeiten und bucht den Kunden selbst in den Kalender.",
     proj2_t:"Lead-Generierung für Salons",proj2_d:"Die Automatisierung findet Beauty-Salons auf Karten, sammelt Daten und erstellt eine fertige Lead-Basis in einer Tabelle.",
     proj3_t:"KI-System für Unternehmen",proj3_d:"KI-Agent in Telegram: verarbeitet Nachrichten, arbeitet mit APIs und antwortet Kunden automatisch.",
@@ -1294,8 +1425,9 @@ const I18N = {
     proj3_prob:"Routinenachrichten, Anfragen und Datenpflege fressen täglich Stunden — und alles hängt daran, ob jemand dazu kam.",
     proj3_sol:"Ein KI-Agent in Telegram empfängt Nachrichten, versteht die Anfrage, ruft die richtigen APIs auf und antwortet dem Kunden automatisch — von der Anfrage bis zur Erinnerung.",
     proj3_res:"Die Routine läuft auf Autopilot: Das Unternehmen antwortet schneller, und das Team kümmert sich um Kunden statt um Chats.",
-    cont_eyebrow:"Kontakt",cont_h2:"Bereit für mehr Kunden?",cont_sub:"Schreiben Sie mir — wir besprechen Ihren Salon und ich sage Ihnen, was zuerst automatisiert werden sollte.",
-    form_name:"Ihr Name",form_name_ph:"Wie soll ich Sie ansprechen",form_contact:"Instagram, Telegram oder E-Mail",form_contact_ph:"@Name auf Instagram, Telegram oder E-Mail",form_msg:"Nachricht",form_msg_ph:"Erzählen Sie kurz von Ihrem Salon und was Sie verbessern möchten",form_btn:"Anfrage senden",form_note:"Ich antworte persönlich und ohne Spam. Meist innerhalb eines Tages.",
+    cont_eyebrow:"Kontakt",cont_h2:"Möchten Sie NUVO in Ihrem Salon testen?",cont_sub:"Senden Sie NUVO „BOT“ per Instagram Direct — wir besprechen Ihren Salon und bestimmen, was zuerst automatisiert werden sollte.",
+    form_name:"Ihr Name",form_name_ph:"Wie soll ich Sie ansprechen",form_contact:"Instagram, Telegram oder E-Mail",form_contact_ph:"@Name auf Instagram, Telegram oder E-Mail",form_msg:"Nachricht",form_msg_ph:"Erzählen Sie kurz von Ihrem Salon und was Sie verbessern möchten",form_btn:"Anfrage senden",form_note:"Am schnellsten erreichen Sie NUVO per Instagram Direct @nuvo_aiautomation.ua.",
+    direct_kicker:"START MIT EINER NACHRICHT",direct_title:"Senden Sie „BOT“ im Direct",direct_sub:"Wir prüfen kurz Ihren Salon, wählen den ersten Ablauf und vereinbaren einen Teststart.",direct_s1:"„BOT“ senden",direct_s2:"15-Minuten-Analyse",direct_s3:"14 Tage kostenlos testen",direct_btn:"„BOT“ auf Instagram senden",direct_note:"Kein langes Formular — direkt in den Direct.",float_desktop:"AUF INSTAGRAM SCHREIBEN",float_mobile:"14 TAGE KOSTENLOS → DIRECT",
     foot_rights:"alle Rechte vorbehalten",
     }
 };
@@ -1312,17 +1444,25 @@ function applyLang(lang){
     const k = el.getAttribute('data-i18n');
     if(dict[k]!==undefined) el.textContent = dict[k];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
     const k = el.getAttribute('data-i18n-ph');
     if(dict[k]!==undefined) el.setAttribute('placeholder', dict[k]);
   });
   document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  document.querySelectorAll('[data-mobile-lang]').forEach(b=>b.classList.toggle('active', b.dataset.mobileLang===lang));
   const cl=document.getElementById('capsLabel');
   if(cl) cl.textContent = (typeof capsOpen!=='undefined' && capsOpen)?dict.caps_btn_less:dict.caps_btn_more;
   if(typeof pmodal!=='undefined' && pmodal.classList.contains('open') && lastProj) fillProj(lastProj);
 }
 document.querySelectorAll('#lang button').forEach(b=>{
   b.addEventListener('click',()=>applyLang(b.dataset.lang));
+});
+document.querySelectorAll('[data-mobile-lang]').forEach(b=>{
+  b.addEventListener('click',()=>{applyLang(b.dataset.mobileLang);mm?.classList.remove('open');burger?.classList.remove('active');});
 });
 
 /* ====================================================================
@@ -1363,20 +1503,26 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 const USE_N8N = false;                       // <-- зміни на true, коли підключиш n8n
 const N8N_WEBHOOK_URL = "";                  // <-- встав сюди URL свого n8n webhook
 
+const directPanel=document.getElementById('directPanel');
+const contactForm=document.querySelector('#contact .cform');
+if(USE_N8N){ if(directPanel) directPanel.style.display='none'; if(contactForm) contactForm.style.display='block'; }
+else { if(directPanel) directPanel.style.display='block'; if(contactForm) contactForm.style.display='none'; }
+
 /* ====================================================================
    CONTACT form
    Якщо n8n підключений (USE_N8N=true) — заявка йде у webhook.
-   Інакше — відкривається поштовий застосунок з готовим листом
-   на пошту NUVO. Це працює без сервера.
+   Інакше — відкривається Instagram NUVO.
+   Ми не вигадуємо нову пошту чи Telegram-акаунт для бренду.
    ==================================================================== */
-const CONTACT_EMAIL="nuvo.automation.studio@gmail.com";
-document.getElementById('formBtn').addEventListener('click',async ()=>{
+const INSTAGRAM_URL="https://www.instagram.com/nuvo_aiautomation.ua/";
+const formBtnEl=document.getElementById('formBtn');
+if(formBtnEl) formBtnEl.addEventListener('click',async ()=>{
   const btn=document.getElementById('formBtn');
   const name=(document.getElementById('fName')||{}).value||'';
   const contact=(document.getElementById('fContact')||{}).value||'';
   const message=(document.getElementById('fMsg')||{}).value||'';
   const okMsg={uk:'Дякую! Заявку надіслано ✓',en:'Thanks! Request sent ✓',de:'Danke! Anfrage gesendet ✓'};
-  const mailMsg={uk:'Відкриваю пошту… ✉',en:'Opening email… ✉',de:'E-Mail wird geöffnet… ✉'};
+  const mailMsg={uk:'Відкриваю Instagram…',en:'Opening Instagram…',de:'Instagram wird geöffnet…'};
   const errMsg={uk:'Помилка. Напишіть в Instagram 🙏',en:'Error. Message me on Instagram 🙏',de:'Fehler. Schreiben Sie auf Instagram 🙏'};
   const empty={uk:'Заповніть, будь ласка, поля 🙏',en:'Please fill in the fields 🙏',de:'Bitte füllen Sie die Felder aus 🙏'};
   if(!name.trim() && !contact.trim() && !message.trim()){
@@ -1391,12 +1537,8 @@ document.getElementById('formBtn').addEventListener('click',async ()=>{
       ['fName','fContact','fMsg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
     }catch(e){btn.textContent=errMsg[currentLang];btn.style.background='#c0392b';}
   }else{
-    const subjMap={uk:'Заявка з сайту NUVO',en:'Request from NUVO website',de:'Anfrage von der NUVO-Website'};
-    const body=`${{uk:'Імʼя',en:'Name',de:'Name'}[currentLang]}: ${name}\n`+
-               `${{uk:'Контакт',en:'Contact',de:'Kontakt'}[currentLang]}: ${contact}\n\n`+
-               `${{uk:'Повідомлення',en:'Message',de:'Nachricht'}[currentLang]}:\n${message}`;
-    window.location.href=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subjMap[currentLang])}&body=${encodeURIComponent(body)}`;
-    btn.textContent=mailMsg[currentLang];btn.style.background='#3aa655';
+    window.open(INSTAGRAM_URL,'_blank','noopener');
+    btn.textContent=mailMsg[currentLang];btn.style.background='#ffd400';btn.style.color='#090a0c';
   }
   setTimeout(()=>applyLang(currentLang),2600);
 });
@@ -1452,7 +1594,13 @@ document.getElementById('pmCta').addEventListener('click',closeProj);
 /* init */
 /* Автовизначення мови браузера: de → німецька, uk/ru → українська, інші → англійська */
 const browserLang=(navigator.language||'uk').slice(0,2).toLowerCase();
-applyLang(browserLang==='de'?'de':(browserLang==='uk'||browserLang==='ru')?'uk':browserLang==='en'?'en':'en');
+applyLang(browserLang==='de'?'de':browserLang==='en'?'en':'uk');
 </script>
+
+<a class="nuvo-float" href="https://www.instagram.com/nuvo_aiautomation.ua/" target="_blank" rel="noopener" aria-label="Написати БОТ у Instagram Direct">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+  <span class="float-desktop" data-i18n="float_desktop">НАПИСАТИ В INSTAGRAM</span>
+  <span class="float-mobile" data-i18n="float_mobile">14 ДНІВ БЕЗКОШТОВНО → DIRECT</span>
+</a>
 </body>
 </html>
